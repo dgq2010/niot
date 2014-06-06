@@ -132,26 +132,26 @@ public class RuleFuncTest {
 	}
 
 	// 函数Count与函数CigaOrgCode功能相同，Regex表中并没有用到Count函数
-	public static void testCount() {
-		JOptionPane.showMessageDialog(null, Thread.currentThread()
-				.getStackTrace()[1].getMethodName());
-		int[] index1 = { 0, 1 };
-		char[] IDstr1 = { '1', '0' };
-		UnitTestEqual(RuleFunction.Count(IDstr1, 2, index1, 2), "OK");
-
-		int[] index2 = { 0, 1, };
-		char[] IDstr2 = { '9', '9' };
-		UnitTestEqual(RuleFunction.Count(IDstr2, 2, index2, 2), "OK");
-
-		int[] index3 = { 0, 1 };
-		char[] IDstr3 = { '2', '1' };
-		UnitTestEqual(RuleFunction.Count(IDstr3, 2, index3, 2), "OK");
-
-		int[] index4 = { 0, 1 };
-		char[] IDstr4 = { '3', '9' };
-		UnitTestEqual(RuleFunction.Count(IDstr4, 2, index4, 2), "ERR");
-
-	}
+//	public static void testCount() {
+//		JOptionPane.showMessageDialog(null, Thread.currentThread()
+//				.getStackTrace()[1].getMethodName());
+//		int[] index1 = { 0, 1 };
+//		char[] IDstr1 = { '1', '0' };
+//		UnitTestEqual(RuleFunction.Count(IDstr1, 2, index1, 2), "OK");
+//
+//		int[] index2 = { 0, 1, };
+//		char[] IDstr2 = { '9', '9' };
+//		UnitTestEqual(RuleFunction.Count(IDstr2, 2, index2, 2), "OK");
+//
+//		int[] index3 = { 0, 1 };
+//		char[] IDstr3 = { '2', '1' };
+//		UnitTestEqual(RuleFunction.Count(IDstr3, 2, index3, 2), "OK");
+//
+//		int[] index4 = { 0, 1 };
+//		char[] IDstr4 = { '3', '9' };
+//		UnitTestEqual(RuleFunction.Count(IDstr4, 2, index4, 2), "ERR");
+//
+//	}
 
 	// 3, YC/T 400-2011
 	public static void testCigaDepCode() {
@@ -14727,18 +14727,18 @@ public class RuleFuncTest {
 			index1[i] = i;
 		}
 		System.out.print(i++);
-		UnitTestEqual(RuleFunction.Mod36_37(IDstr1, j, index1, j), "OK");
+		UnitTestEqual(RuleFunction.MOD3736(IDstr1, j, index1, j), "OK");
 		System.out.print(i++);
-		UnitTestEqual(RuleFunction.Mod36_37(IDstr2, j, index1, j), "OK");
+		UnitTestEqual(RuleFunction.MOD3736(IDstr2, j, index1, j), "OK");
 
 		System.out.print(i++);
-		UnitTestEqual(RuleFunction.Mod36_37(IDstr3, j, index1, j), "OK");
+		UnitTestEqual(RuleFunction.MOD3736(IDstr3, j, index1, j), "OK");
 
 		System.out.print(i++);
-		UnitTestEqual(RuleFunction.Mod36_37(IDstr4, j, index1, j), "OK");
+		UnitTestEqual(RuleFunction.MOD3736(IDstr4, j, index1, j), "OK");
 
 		System.out.print(i++);
-		UnitTestEqual(RuleFunction.Mod36_37(IDstr5, j, index1, j), "OK");
+		UnitTestEqual(RuleFunction.MOD3736(IDstr5, j, index1, j), "OK");
 	}
 
 	// 工商行政管理注册号编制规则
