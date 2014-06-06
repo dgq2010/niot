@@ -370,41 +370,41 @@ public class RuleFunction {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static String Count(char[] IDstr, int LenID, int[] Index,
-			int LenIndex) {
-		try {
-			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
-				return ERR;
-			}
-			if (LenIndex != 2) {
-				return ERR;
-			}
-
-			int index1 = Index[0];
-			int index2 = Index[1];
-
-			if (IDstr[index1] == '1') {
-				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '9')) {
-					return OK;
-				}
-			}
-
-			if (IDstr[index1] == '2') {
-				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '3')) {
-					return OK;
-				}
-			}
-			if (IDstr[index1] == '9') {
-				if (IDstr[index2] == '9') {
-					return OK;
-				}
-			}
-
-			return ERR;
-		} catch (Exception e) {
-			return ERR;
-		}
-	}
+//	public static String Count(char[] IDstr, int LenID, int[] Index,
+//			int LenIndex) {
+//		try {
+//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//				return ERR;
+//			}
+//			if (LenIndex != 2) {
+//				return ERR;
+//			}
+//
+//			int index1 = Index[0];
+//			int index2 = Index[1];
+//
+//			if (IDstr[index1] == '1') {
+//				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '9')) {
+//					return OK;
+//				}
+//			}
+//
+//			if (IDstr[index1] == '2') {
+//				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '3')) {
+//					return OK;
+//				}
+//			}
+//			if (IDstr[index1] == '9') {
+//				if (IDstr[index2] == '9') {
+//					return OK;
+//				}
+//			}
+//
+//			return ERR;
+//		} catch (Exception e) {
+//			return ERR;
+//		}
+//	}
 
 	// Function: Cigarette department or subordinate department code. There are
 	// totally 2 characters.
@@ -3460,38 +3460,38 @@ public class RuleFunction {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:方丹丽
-	public static String Mod36_37(char[] IDstr, int LenID, int[] Index,
-			int LenIndex) {
-		try {
-			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
-				return ERR;
-			}
-			if (LenIndex != 15) {
-				return ERR;
-			}
-			int[] a = new int[15];
-			for (int i = 0; i < 15; i++) {
-				a[14 - i] = IDstr[i] - 48;
-			}
-			int[] p = new int[15];
-			int[] s = new int[15];
-			int r = 2;
-			p[0] = 0;
-
-			for (int i = 0; i < 14; i++) {
-				s[i] = p[i] + a[14 - i];
-				p[i + 1] = s[i] * r;
-			}
-
-			if ((p[14] + a[0]) % 36 == 1 || (p[14] + a[0]) % 37 == 1) {
-				return OK;
-			}
-			return ERR;
-
-		} catch (Exception e) {
-			return ERR;
-		}
-	}
+//	public static String Mod36_37(char[] IDstr, int LenID, int[] Index,
+//			int LenIndex) {
+//		try {
+//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//				return ERR;
+//			}
+//			if (LenIndex != 15) {
+//				return ERR;
+//			}
+//			int[] a = new int[15];
+//			for (int i = 0; i < 15; i++) {
+//				a[14 - i] = IDstr[i] - 48;
+//			}
+//			int[] p = new int[15];
+//			int[] s = new int[15];
+//			int r = 2;
+//			p[0] = 0;
+//
+//			for (int i = 0; i < 14; i++) {
+//				s[i] = p[i] + a[14 - i];
+//				p[i + 1] = s[i] * r;
+//			}
+//
+//			if ((p[14] + a[0]) % 36 == 1 || (p[14] + a[0]) % 37 == 1) {
+//				return OK;
+//			}
+//			return ERR;
+//
+//		} catch (Exception e) {
+//			return ERR;
+//		}
+//	}
 
 	// Function: 实现校验6位数物流编码
 	// IDstr: ID string
@@ -5620,10 +5620,9 @@ public class RuleFunction {
 			// ISO 7064:1983.MOD 11-2校验算法，字符串开辟空间时要多一位留给最后加校验位
 			double sum = 0; // 最后的校验码
 			int i, j;
-			int b = LenIndex - 1;
 			int a;
 			a = 'A';
-			for (j = 0; j < LenIndex; j++) {
+			for (j = 0; j < LenIndex - 1; j++) {
 				for (i = 0; i < 26; i++) {
 					char c = (char) (a + i);
 					if ((int) IDstr[Index[j]] == c) {
@@ -5631,7 +5630,7 @@ public class RuleFunction {
 					}
 				}
 			}
-			for (i = 0; i < LenIndex; i++) {
+			for (i = 0; i < LenIndex - 1; i++) {
 				if (IDstr[Index[i]] > 47) {
 					IDstr[Index[i]] = (char) (IDstr[Index[i]] - 48);
 				}
@@ -5647,8 +5646,10 @@ public class RuleFunction {
 				p = (s * 2) % 37;
 			}
 			int mod;
-			mod = 37 - (p % 36); // 11
-			if (mod == (int) IDstr[Index[16]]) {
+			mod = 37 - (p % 36); 
+			String numLetter = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			char checkDigit = numLetter.charAt(mod);
+			if (checkDigit == IDstr[Index[LenIndex - 1]]) {
 				return OK;
 			} else {
 				return ERR;
@@ -6526,6 +6527,54 @@ public class RuleFunction {
 		} else {
 			return ERR;
 		}
+	}
+	
+	// Function:681
+	// IDstr: ID string
+	// LenID: the number of characters in the ID string
+	// Index: the list of corresponding indexes regarding to this algorithm
+	// LenIndex: the number of indexes
+	// Creator:许江峰
+	public static String FlavorSubstance(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		try {
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+
+			if (LenID == 4) {
+				int i = ((int) IDstr[Index[1]] - 48) * 100
+						+ ((int) IDstr[Index[2]] - 48) * 10
+						+ ((int) IDstr[Index[3]] - 48);
+				if ((int) IDstr[Index[0]] == 'N') {
+					if (i > 0 && i < 378) {
+						return OK;
+					}
+				} else {
+					return ERR;
+				}
+			} else if (LenID == 5) {
+				int j = ((int) IDstr[Index[1]] - 48) * 1000
+						+ ((int) IDstr[Index[2]] - 48) * 100
+						+ ((int) IDstr[Index[3]] - 48) * 10
+						+ ((int) IDstr[Index[4]] - 48);
+
+				if ((int) IDstr[Index[0]] == 'I') {
+					if (j > 1000 && j < 2087) {
+						return OK;
+					}
+				} else if ((int) IDstr[Index[0]] == 'A') {
+					if (j > 3000 && j < 3212) {
+						return OK;
+					}
+				} else {
+					return ERR;
+				}
+			}
+		} catch (Exception e) {
+			return ERR;
+		}
+		return ERR;
 	}
 
 	// Function: 757 表59 值 10 11 12 20
@@ -10630,7 +10679,7 @@ public class RuleFunction {
 		try {
 			String code = "";
 			for (int i = 0; i < 4; i++) {
-				code = code.concat(String.valueOf(IDstr[i]));
+				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
 			boolean ret = recoDao.getPortTariff9(code);
