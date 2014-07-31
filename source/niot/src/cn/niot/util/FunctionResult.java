@@ -10,6 +10,9 @@ public class FunctionResult {
 	// can be "Byte", "Length", "Function";
 	public String FunctionType = "Byte";
 	
+	// the output of length function
+	public int nSize = 0;
+	
 	/* a data structure of HashMap used to store the result, which includes two parts: index and corresponding char
 	 * length -> key == 0
 	 * */

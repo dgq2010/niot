@@ -323,7 +323,7 @@ public class RecoDao {
 	 * time: 2014年7月7日
 	 */
 	public String DBreadIoTIDTypesAndRules(HashMap<String, Integer> hashMapTypeSampleNumber, HashMap<String, String>hashMapTypeToLengthRule
-			, HashMap<String, ArrayList<String>>hashMapTypeToByteRule, HashMap<String, ArrayList<String>>hashMapTypeToFunctionRule) {		
+			, HashMap<String, ArrayList<String>>hashMapTypeToByteRule, HashMap<String, String []>hashMapTypeToFunctionRule) {		
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
@@ -333,7 +333,7 @@ public class RecoDao {
 
 			while (results.next()) {
 				ArrayList<String> ByteRules = new ArrayList<String>();// 字节规则列表
-				ArrayList<String> FunctionRules = new ArrayList<String>();// 函数规则列表
+				String [] FunctionRules;// 函数规则列表
 				String idType = results.getString("id");
 				String lengthRule = results.getString("length");
 				String byteRule = results.getString("byte");
@@ -363,9 +363,10 @@ public class RecoDao {
 				if (functionRules.length() > 0) {
 					String[] splitFunctionRules = functionRules.split("\\(\\?\\#ALGNAME=");
 					int FunctionLength = splitFunctionRules.length;
-					for (int i = 0; i < FunctionLength; i++) {
+					FunctionRules = new String [FunctionLength - 1];
+					for (int i = 1; i < FunctionLength; i++) {
 						if (splitFunctionRules[i].length() != 0) {
-							FunctionRules.add(splitFunctionRules[i]);						
+							FunctionRules[i - 1] = splitFunctionRules[i];						
 						}
 					}
 					hashMapTypeToFunctionRule.put(idType, FunctionRules);

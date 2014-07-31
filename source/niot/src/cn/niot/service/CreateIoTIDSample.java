@@ -21,7 +21,7 @@ public class CreateIoTIDSample {
 	static String EMPTY_STRING = "";
 	static int LENGTH_RULE_INDEX = 0;
 	
-	static HashMap<String, ArrayList<String>> hashMapTypeToFunctionRules;// 类型对应函数规则
+	static HashMap<String, String []> hashMapTypeToFunctionRules;// 类型对应函数规则
 	static HashMap<String, ArrayList<String>> hashMapTypeToByteRules;// 类型对应字节规则
 	static HashMap<String, String> hashMapTypeToLengthRule;// 类型对应长度规则
 	static HashMap<String, Integer> hashMapTypeSampleNumber;// 类型对应规则
@@ -37,7 +37,8 @@ public class CreateIoTIDSample {
 	public static void readDao(int type) {
 		hashMapTypeToLengthRule = new HashMap<String, String>();// 类型对应长度规则
 		hashMapTypeToByteRules = new HashMap<String, ArrayList<String>>();// 类型对应字节规则
-		hashMapTypeToFunctionRules = new HashMap<String, ArrayList<String>>();// 类型对应函数规则
+		//hashMapTypeToFunctionRules = new HashMap<String, ArrayList<String>>();// 类型对应函数规则
+		hashMapTypeToFunctionRules = new HashMap<String, String []>();// 类型对应函数规则
 		
 		RecoDao dao = RecoDao.getRecoDao();
 		/*
@@ -73,7 +74,7 @@ public class CreateIoTIDSample {
 			
 			String LengthRule = hashMapTypeToLengthRule.get(IDType);
 			ArrayList<String> ByteRuleSet = hashMapTypeToByteRules.get(IDType);
-			ArrayList<String> FunctionRuleSet = hashMapTypeToFunctionRules.get(IDType);
+			String [] FunctionRuleSet = hashMapTypeToFunctionRules.get(IDType);
 			
 			Integer Number = hashMapTypeSampleNumber.get(IDType);
 			
@@ -98,7 +99,7 @@ public class CreateIoTIDSample {
      * time:2014年7月25日
      */
 	public static String generateOneIoTIDInstance(String IoTID, String LengthRule, ArrayList<String> IoTIDByteRuleSet,
-			ArrayList<String> IoTIDFunctionRuleSet) {
+			String [] IoTIDFunctionRuleSet) {
 		String IoTIDInstance = EMPTY_STRING;
 		FunctionResult RuleResult = new FunctionResult();
 		// first, calculate the length of the coming IoTID code 
@@ -109,6 +110,7 @@ public class CreateIoTIDSample {
 		int CodeLength = Integer.parseInt((RuleResult.FunctionResult).get(LENGTH_RULE_INDEX));
 		
 		char [] CodeResult = new char[CodeLength];
+
 		int m = 0;	
 		for (m = 0; m < CodeLength; m++) {
 			CodeResult[m] = 0;

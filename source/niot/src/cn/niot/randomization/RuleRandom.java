@@ -44,7 +44,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator: Dengguangqing
-	public static FunctionResult TwoByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult TwoByteDecimalnt_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -89,7 +89,7 @@ public class RuleRandom {
 	// Index[1] and Index[2] are the index of subclass codes
 	// LenIndex: the number of indexes that must be 3
 	// creator: zll
-	public static FunctionResult CigaSubClassCode_Random(String curChars, String index) {
+	public static FunctionResult CigaSubClassCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -176,7 +176,7 @@ public class RuleRandom {
 	// Index[2] and Index[3] are the index of date
 	// LenIndex: the number of indexes that must be 4
 	// creator: zll
-	public static FunctionResult MonthDate_Random(String curChars, String index) {
+	public static FunctionResult MonthDate_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -236,7 +236,7 @@ public class RuleRandom {
 	// Index[1] is the index of the second character.
 	// LenIndex: the number of indexes that must be 2
 	// creator: zll
-	public static FunctionResult CigaOrgCode_Random(String curChars, String index) {
+	public static FunctionResult CigaOrgCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -279,7 +279,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes that must be 2
 	// creator: zll
-	public static FunctionResult CigaDepCode_Random(String curChars, String index) {
+	public static FunctionResult CigaDepCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -313,7 +313,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes that must be 4
 	// creator: zll
-	public static FunctionResult First4CharsofAdminDivisionforCiga_Random(String curChars, String index) {
+	public static FunctionResult First4CharsofAdminDivisionforCiga_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -353,7 +353,7 @@ public class RuleRandom {
 	// LenID: 标识编码的长度
 	// Index: 调用行政区划代码的位置
 	// LenIndex: 长度必须是2位
-	public static FunctionResult First2CharsofAdminDivision_Random(String curChars, String index) {
+	public static FunctionResult First2CharsofAdminDivision_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -390,7 +390,7 @@ public class RuleRandom {
 	// Index: 调用行政区划代码的位置
 	// LenIndex: 长度必须是6位
 	// creator: zll
-	public static FunctionResult AdminDivision_Random(String curChars, String index) {
+	public static FunctionResult AdminDivision_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -425,7 +425,7 @@ public class RuleRandom {
 	// Index: 调用世界各国和地区名称代码的位置
 	// LenIndex: 长度是多少，一定是4位
 	// creator: zll
-	public static FunctionResult CountryRegionCodeforCPC_Random(String curChars, String index) {
+	public static FunctionResult CountryRegionCodeforCPC_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -461,7 +461,7 @@ public class RuleRandom {
 	// Index: 调用世界各国和地区名称代码的位置
 	// LenIndex: 长度是多少，一定是2-3位
 	// creator: zll
-	public static FunctionResult CountryRegionCode_Random(String curChars, String index) {
+	public static FunctionResult CountryRegionCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -501,7 +501,7 @@ public class RuleRandom {
 	// Index: 调用烟草机械产品用物料代码的位置
 	// LenIndex: 长度是6位
 	// creator: zll
-	public static FunctionResult TabaccoMachineProduct_Random(String curChars, String index) {
+	public static FunctionResult TabaccoMachineProduct_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -538,7 +538,7 @@ public class RuleRandom {
 	// Index: 调用前缀码的位置
 	// LenIndex: 长度是3位
 	// creator: zll
-	public static FunctionResult PrefixofRetailCommodityNumber_Random(String curChars, String index) {
+	public static FunctionResult PrefixofRetailCommodityNumber_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -574,7 +574,7 @@ public class RuleRandom {
 	// Index: 调用前缀码的位置
 	// LenIndex: 长度是2位，为大写字母
 	// creator: zll
-	public static FunctionResult TabaccoMachineProducer_Random(String curChars, String index) {
+	public static FunctionResult TabaccoMachineProducer_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -609,7 +609,7 @@ public class RuleRandom {
 	// Index: 调用行政区好的位置
 	// LenIndex: 长度是4位，为数字
 	// creator: zll
-	public static FunctionResult DistrictNo_Random(String curChars, String index) {
+	public static FunctionResult DistrictNo_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -644,7 +644,7 @@ public class RuleRandom {
 	// Index: (18,-1),从18位以后的字符串进行正则表达式验证
 	// LenIndex: 长度必为2
 	// creator: zll
-	public static FunctionResult CIDRegex_Random(String curChars, String index) {
+	public static FunctionResult CIDRegex_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -682,7 +682,7 @@ public class RuleRandom {
 	// Index: 调用类别代码（1位），组别代码（2位）和品种代码（2位）的位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult TabaccoStandardPart_Random(String curChars, String index) {
+	public static FunctionResult TabaccoStandardPart_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -720,7 +720,7 @@ public class RuleRandom {
 	// Index: 调用类别代码（2位）和品种代码（3位）的位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult TabaccoMaterial_Random(String curChars, String index) {
+	public static FunctionResult TabaccoMaterial_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -757,7 +757,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=16
 	// creator: zll
-	public static FunctionResult IntFreitForwarding_Random(String curChars, String index) {
+	public static FunctionResult IntFreitForwarding_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -802,7 +802,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为6
 	// creator: zll
-	public static FunctionResult FoodAccount_Random(String curChars, String index) {
+	public static FunctionResult FoodAccount_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -837,7 +837,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult GrainEquipment_Random(String curChars, String index) {
+	public static FunctionResult GrainEquipment_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -872,7 +872,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为7
 	// creator: zll
-	public static FunctionResult GrainEstablishment_Random(String curChars, String index) {
+	public static FunctionResult GrainEstablishment_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -907,7 +907,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult TabaccoElectricComponent_Random(String curChars, String index) {
+	public static FunctionResult TabaccoElectricComponent_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -943,7 +943,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static FunctionResult CPCTwoByte_Random(String curChars, String index) {
+	public static FunctionResult CPCTwoByte_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -992,7 +992,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static FunctionResult Month_Random(String curChars, String index) {
+	public static FunctionResult Month_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1032,7 +1032,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为6
-	public static FunctionResult ClassOfGrain_Random(String curChars, String index) {
+	public static FunctionResult ClassOfGrain_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1151,7 +1151,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static FunctionResult TwobytleCode07_Random(String curChars, String index) {
+	public static FunctionResult TwobytleCode07_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1190,7 +1190,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static FunctionResult TwobytleCode06_Random(String curChars, String index) {
+	public static FunctionResult TwobytleCode06_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1228,7 +1228,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为4
-	public static FunctionResult CountUcode_Random(String curChars, String index) {
+	public static FunctionResult CountUcode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1270,7 +1270,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: Wu Zhenyu
-	public static FunctionResult DomainManagerInEPCCheck_Random(String curChars, String index) {
+	public static FunctionResult DomainManagerInEPCCheck_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1322,7 +1322,7 @@ public class RuleRandom {
 	// IDstr: ID string
 	// LenID: the number of characters in the ID string
 	// Creator:Wu Zhenyu
-	public static FunctionResult CheckCodeForCommodityCode_Random(String curChars, String index) {
+	public static FunctionResult CheckCodeForCommodityCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1371,7 +1371,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 12
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckBasedCompleteTime_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckBasedCompleteTime_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1451,7 +1451,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 12
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckBasedCoordinate_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckBasedCoordinate_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1486,7 +1486,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 12
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckBasedFenzong_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckBasedFenzong_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1548,7 +1548,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 12
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckBasedFenfu_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckBasedFenfu_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1594,7 +1594,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 4
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckUnitCode_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckUnitCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1633,7 +1633,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes is 12
 	// Creator:Wu Zhenyu
-	public static FunctionResult HouseCode_CheckTwelBitCode_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckTwelBitCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1665,7 +1665,7 @@ public class RuleRandom {
 	}
 
 	
-	public static FunctionResult HouseCode_CheckCode_Random(String curChars, String index) {
+	public static FunctionResult HouseCode_CheckCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1707,7 +1707,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
-	public static FunctionResult DeviceMOD163_Random(String curChars, String index) {
+	public static FunctionResult DeviceMOD163_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1739,7 +1739,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长3
 	// Creator:许江峰 232
-	public static FunctionResult Egg232_Random(String curChars, String index) {
+	public static FunctionResult Egg232_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1832,7 +1832,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult FiveByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult FiveByteDecimalnt_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1884,7 +1884,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult FourByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult FourByteDecimalnt_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -1932,7 +1932,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult InternationalSecurities_Random(String curChars, String index) {
+	public static FunctionResult InternationalSecurities_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2036,7 +2036,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult MOD112_Random(String curChars, String index) {
+	public static FunctionResult MOD112_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2097,7 +2097,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长16
 	// Creator:许江峰
-	public static FunctionResult MOD163_Random(String curChars, String index) {
+	public static FunctionResult MOD163_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2170,7 +2170,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult MrpCheck_Random(String curChars, String index) {
+	public static FunctionResult MrpCheck_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2238,7 +2238,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult MusicCheck_Random(String curChars, String index) {
+	public static FunctionResult MusicCheck_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2283,7 +2283,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult ThreeByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult ThreeByteDecimalnt_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2325,7 +2325,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult TwoByteSRMXSMYZ_Random(String curChars, String index) {
+	public static FunctionResult TwoByteSRMXSMYZ_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2365,7 +2365,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不固定
 	// creator: xjf
-	public static FunctionResult Weaves355_Random(String curChars, String index) {
+	public static FunctionResult Weaves355_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2403,7 +2403,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:0-13位为全球可回收资产代码,LenIndex必为3，第一位为起始的位数，第二位为正则可重复的次数,第三位为-1
 	// creator: zll
-	public static FunctionResult GraiSerialNo_Random(String curChars, String index) {
+	public static FunctionResult GraiSerialNo_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2444,7 +2444,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为1，只验证IDstr[1]是否为9
 	// creator: zll
-	public static FunctionResult MedAppCode_Random(String curChars, String index) {
+	public static FunctionResult MedAppCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2475,7 +2475,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为4
 	// creator: zll
-	public static FunctionResult TabaccoMaterials_Random(String curChars, String index) {
+	public static FunctionResult TabaccoMaterials_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2554,7 +2554,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfo_Random(String curChars, String index) {
+	public static FunctionResult FireInfo_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2594,7 +2594,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfotainass_Random(String curChars, String index) {
+	public static FunctionResult FireInfotainass_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2631,7 +2631,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfotainrate_Random(String curChars, String index) {
+	public static FunctionResult FireInfotainrate_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2671,7 +2671,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:12
 	// creator:fdl
-	public static FunctionResult Littlecode_Random(String curChars, String index) {
+	public static FunctionResult Littlecode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2707,7 +2707,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfocamp_Random(String curChars, String index) {
+	public static FunctionResult FireInfocamp_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2744,7 +2744,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:7
 	// creator:zt
-	public static FunctionResult FuneralInterment_Random(String curChars, String index) {
+	public static FunctionResult FuneralInterment_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2796,7 +2796,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult TobaccoTech_Random(String curChars, String index) {
+	public static FunctionResult TobaccoTech_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2836,7 +2836,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator: fdl
-	public static FunctionResult FireInfomation_Random(String curChars, String index) {
+	public static FunctionResult FireInfomation_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2872,7 +2872,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator: fdl
-	public static FunctionResult ThreeByteDecimalnt1_Random(String curChars, String index) {
+	public static FunctionResult ThreeByteDecimalnt1_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2914,7 +2914,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长13
 	// Creator:zt
-	public static FunctionResult MOD9710_Random(String curChars, String index) {
+	public static FunctionResult MOD9710_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2956,7 +2956,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult tabaccoC_Random(String curChars, String index) {
+	public static FunctionResult tabaccoC_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -2992,7 +2992,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfofailities_Random(String curChars, String index) {
+	public static FunctionResult FireInfofailities_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3026,7 +3026,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfowatersupply_Random(String curChars, String index) {
+	public static FunctionResult FireInfowatersupply_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3063,7 +3063,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: xjf
-	public static FunctionResult FireInfowatersource_Random(String curChars, String index) {
+	public static FunctionResult FireInfowatersource_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3104,7 +3104,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:12
 	// creator:fdl
-	public static FunctionResult CoalInterment_Random(String curChars, String index) {
+	public static FunctionResult CoalInterment_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3184,7 +3184,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfoSmoke_Random(String curChars, String index) {
+	public static FunctionResult FireInfoSmoke_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3220,7 +3220,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult ExtinguishFire_Random(String curChars, String index) {
+	public static FunctionResult ExtinguishFire_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3269,7 +3269,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:13
 	// creator:fdl
-	public static FunctionResult CheckCodebarcode_Random(String curChars, String index) {
+	public static FunctionResult CheckCodebarcode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3331,7 +3331,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfoBuild_Random(String curChars, String index) {
+	public static FunctionResult FireInfoBuild_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3368,7 +3368,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireInfoStstion_Random(String curChars, String index) {
+	public static FunctionResult FireInfoStstion_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3402,7 +3402,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult PositionClass_Random(String curChars, String index) {
+	public static FunctionResult PositionClass_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3488,7 +3488,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// Creator:方丹丽
 	// 校验例子码123450
-	public static FunctionResult LogisticsCheck_Random(String curChars, String index) {
+	public static FunctionResult LogisticsCheck_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3526,7 +3526,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult TheCenteralPartyCommitte_Random(String curChars, String index) {
+	public static FunctionResult TheCenteralPartyCommitte_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3561,7 +3561,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult Naturaldisaster_Random(String curChars, String index) {
+	public static FunctionResult Naturaldisaster_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3596,7 +3596,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult Logisticsoperation_Random(String curChars, String index) {
+	public static FunctionResult Logisticsoperation_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3631,7 +3631,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult Wasteproducts_Random(String curChars, String index) {
+	public static FunctionResult Wasteproducts_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3666,7 +3666,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult JadejewelryMaterialclassif_Random(String curChars, String index) {
+	public static FunctionResult JadejewelryMaterialclassif_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3701,7 +3701,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult EconomicCate_Random(String curChars, String index) {
+	public static FunctionResult EconomicCate_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3775,7 +3775,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult CodeUnderCount_Random(String curChars, String index) {
+	public static FunctionResult CodeUnderCount_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3808,7 +3808,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult NonMotorVehicle_Random(String curChars, String index) {
+	public static FunctionResult NonMotorVehicle_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3861,7 +3861,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult PoliticalCode_Random(String curChars, String index) {
+	public static FunctionResult PoliticalCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3893,7 +3893,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult CodeTobacco_Random(String curChars, String index) {
+	public static FunctionResult CodeTobacco_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3945,7 +3945,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult CodeHighway_Random(String curChars, String index) {
+	public static FunctionResult CodeHighway_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -3998,7 +3998,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult CodeDiscillinary_Random(String curChars, String index) {
+	public static FunctionResult CodeDiscillinary_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4060,7 +4060,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Climatic_Random(String curChars, String index) {
+	public static FunctionResult Climatic_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4164,7 +4164,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 1,2,3,4
 	// creator: xjf
-	public static FunctionResult FamilyRelationship_Random(String curChars, String index) {
+	public static FunctionResult FamilyRelationship_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4257,7 +4257,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: zll
-	public static FunctionResult FirevehicleState_Random(String curChars, String index) {
+	public static FunctionResult FirevehicleState_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4295,7 +4295,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: zll
-	public static FunctionResult FireCauseofcasuslty_Random(String curChars, String index) {
+	public static FunctionResult FireCauseofcasuslty_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4330,7 +4330,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult FireDisposalstate_Random(String curChars, String index) {
+	public static FunctionResult FireDisposalstate_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4365,7 +4365,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult FireDevelopstateORcategory_Random(String curChars, String index) {
+	public static FunctionResult FireDevelopstateORcategory_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4395,7 +4395,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult FireRating_Random(String curChars, String index) {
+	public static FunctionResult FireRating_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4425,7 +4425,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Firereading_Random(String curChars, String index) {
+	public static FunctionResult Firereading_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4455,7 +4455,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult FirerescuePlan_Random(String curChars, String index) {
+	public static FunctionResult FirerescuePlan_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4485,7 +4485,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 5
 	// creator: xjf
-	public static FunctionResult FireFightrescuePlan_Random(String curChars, String index) {
+	public static FunctionResult FireFightrescuePlan_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4544,7 +4544,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult Firealarm_Random(String curChars, String index) {
+	public static FunctionResult Firealarm_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4582,7 +4582,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FireautomaticSystem_Random(String curChars, String index) {
+	public static FunctionResult FireautomaticSystem_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4623,7 +4623,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult Firelocation_Random(String curChars, String index) {
+	public static FunctionResult Firelocation_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4655,7 +4655,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult Fireconstructionlicence_Random(String curChars, String index) {
+	public static FunctionResult Fireconstructionlicence_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4690,7 +4690,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: xjf
-	public static FunctionResult Firesupervisionenforcement_Random(String curChars, String index) {
+	public static FunctionResult Firesupervisionenforcement_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4733,7 +4733,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: xjf
-	public static FunctionResult Fireexpert_Random(String curChars, String index) {
+	public static FunctionResult Fireexpert_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4783,7 +4783,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Chemicalrisk_Random(String curChars, String index) {
+	public static FunctionResult Chemicalrisk_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4822,7 +4822,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 6
 	// creator: xjf
-	public static FunctionResult Casecharacer_Random(String curChars, String index) {        
+	public static FunctionResult Casecharacer_Random(FunctionResult InPutResult, String index) {        
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4859,7 +4859,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult TypePractitioner_Random(String curChars, String index) {
+	public static FunctionResult TypePractitioner_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4900,7 +4900,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult RexreationMatetial_Random(String curChars, String index) {
+	public static FunctionResult RexreationMatetial_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4944,7 +4944,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult StatuPractitioner_Random(String curChars, String index) {
+	public static FunctionResult StatuPractitioner_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -4982,7 +4982,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Recreationplace_Random(String curChars, String index) {
+	public static FunctionResult Recreationplace_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5021,7 +5021,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult PublicSecutity_Random(String curChars, String index) {
+	public static FunctionResult PublicSecutity_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5067,7 +5067,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: xjf
-	public static FunctionResult Borderinfo3_Random(String curChars, String index) {
+	public static FunctionResult Borderinfo3_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5106,7 +5106,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult Borderinfo4_Random(String curChars, String index) {
+	public static FunctionResult Borderinfo4_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5142,7 +5142,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Borderinfo5_Random(String curChars, String index) {
+	public static FunctionResult Borderinfo5_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5181,7 +5181,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult Borderinfo6_Random(String curChars, String index) {
+	public static FunctionResult Borderinfo6_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5223,7 +5223,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult FianceManage_Random(String curChars, String index) {
+	public static FunctionResult FianceManage_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5267,7 +5267,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: xjf
-	public static FunctionResult FinanceSecManageInfo_Random(String curChars, String index) {
+	public static FunctionResult FinanceSecManageInfo_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5303,7 +5303,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult ExplosiveCivilian_Random(String curChars, String index) {
+	public static FunctionResult ExplosiveCivilian_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5340,7 +5340,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult SixByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult SixByteDecimalnt_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5377,7 +5377,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 504
-	public static FunctionResult OneTO08_Random(String curChars, String index) {
+	public static FunctionResult OneTO08_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5407,7 +5407,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 504 509
-	public static FunctionResult OneTO09_Random(String curChars, String index) {
+	public static FunctionResult OneTO09_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5437,7 +5437,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 511
-	public static FunctionResult OneTO07_Random(String curChars, String index) {
+	public static FunctionResult OneTO07_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5467,7 +5467,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 512
-	public static FunctionResult OneTO05_Random(String curChars, String index) {
+	public static FunctionResult OneTO05_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5497,7 +5497,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 213
-	public static FunctionResult OneTO15_Random(String curChars, String index) {
+	public static FunctionResult OneTO15_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5527,7 +5527,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 213
-	public static FunctionResult OneTO13_Random(String curChars, String index) {
+	public static FunctionResult OneTO13_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5557,7 +5557,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 213
-	public static FunctionResult OneTO11_Random(String curChars, String index) {
+	public static FunctionResult OneTO11_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5586,7 +5586,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 214
-	public static FunctionResult OneTO14_Random(String curChars, String index) {
+	public static FunctionResult OneTO14_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5616,7 +5616,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO39_Random(String curChars, String index) {
+	public static FunctionResult OneTO39_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5646,7 +5646,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO22_Random(String curChars, String index) {
+	public static FunctionResult OneTO22_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5676,7 +5676,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO10_Random(String curChars, String index) {
+	public static FunctionResult OneTO10_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5706,7 +5706,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO29_Random(String curChars, String index) {
+	public static FunctionResult OneTO29_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5736,7 +5736,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO21_Random(String curChars, String index) {
+	public static FunctionResult OneTO21_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5766,7 +5766,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes ?????2
 	// Creator:???? 225
-	public static FunctionResult OneTO46_Random(String curChars, String index) {
+	public static FunctionResult OneTO46_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5796,7 +5796,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 225
-	public static FunctionResult OneTO72_Random(String curChars, String index) {
+	public static FunctionResult OneTO72_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5826,7 +5826,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult MOD3736_Random(String curChars, String index) {
+	public static FunctionResult MOD3736_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5879,7 +5879,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult MOD1110_Random(String curChars, String index) {
+	public static FunctionResult MOD1110_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5941,7 +5941,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult VersionISAN_Random(String curChars, String index) {
+	public static FunctionResult VersionISAN_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -5997,7 +5997,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult VehicleIdenCode_Random(String curChars, String index) {
+	public static FunctionResult VehicleIdenCode_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6125,7 +6125,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长16
 	// Creator:许江峰
-	public static FunctionResult CommodityCodeCheck632_Random(String curChars, String index) {
+	public static FunctionResult CommodityCodeCheck632_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6173,7 +6173,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰639
-	public static FunctionResult ZeroTO14_Random(String curChars, String index) {
+	public static FunctionResult ZeroTO14_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6201,7 +6201,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰654
-	public static FunctionResult ZeroTO24_Random(String curChars, String index) {
+	public static FunctionResult ZeroTO24_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6227,7 +6227,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰654
-	public static FunctionResult ZeroTO60_Random(String curChars, String index) {
+	public static FunctionResult ZeroTO60_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6279,7 +6279,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰657
-	public static FunctionResult Xiaoxie_Random(String curChars, String index) {
+	public static FunctionResult Xiaoxie_Random(FunctionResult InPutResult, String index) {
         FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6344,7 +6344,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰657
-	public static FunctionResult Daxie_Random(String curChars, String index) {
+	public static FunctionResult Daxie_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6409,7 +6409,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰657
-	public static FunctionResult Hunpai_Random(String curChars, String index) {
+	public static FunctionResult Hunpai_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6486,7 +6486,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰657
-	public static FunctionResult figure_Random(String curChars, String index) {
+	public static FunctionResult figure_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6680,7 +6680,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰664
-	public static FunctionResult Check4BitBarCode_Random(String curChars, String index) {
+	public static FunctionResult Check4BitBarCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6742,7 +6742,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰664
-	public static FunctionResult Check5BitBarCode_Random(String curChars, String index) {
+	public static FunctionResult Check5BitBarCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6820,7 +6820,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult FlavorSubstance_Random(String curChars, String index) {
+	public static FunctionResult FlavorSubstance_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6873,7 +6873,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: xjf
-	public static FunctionResult Highway59_Random(String curChars, String index) {
+	public static FunctionResult Highway59_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6907,7 +6907,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneTO11and90_Random(String curChars, String index) {
+	public static FunctionResult OneTO11and90_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6941,7 +6941,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult HighwayTransportationB9_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportationB9_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -6972,7 +6972,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长4
 	// Creator:许江峰
-	public static FunctionResult HighwayTransportationC3_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportationC3_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7009,7 +7009,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult HighwayTransportationC6_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportationC6_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7046,7 +7046,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult Porttariff_Random(String curChars, String index) {
+	public static FunctionResult Porttariff_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7075,7 +7075,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult Porttariff4_Random(String curChars, String index) {
+	public static FunctionResult Porttariff4_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7111,7 +7111,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult Porttariff10_Random(String curChars, String index) {
+	public static FunctionResult Porttariff10_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7153,7 +7153,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneoTO24_Random(String curChars, String index) {
+	public static FunctionResult OneoTO24_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7176,7 +7176,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneTO17_Random(String curChars, String index) {
+	public static FunctionResult OneTO17_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7206,7 +7206,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneTO17NO99_Random(String curChars, String index) {
+	public static FunctionResult OneTO17NO99_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7236,7 +7236,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneTO12No99_Random(String curChars, String index) {
+	public static FunctionResult OneTO12No99_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7266,7 +7266,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰
-	public static FunctionResult OneTO13No99_Random(String curChars, String index) {
+	public static FunctionResult OneTO13No99_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7296,7 +7296,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult TwoOrFour_Random(String curChars, String index) {
+	public static FunctionResult TwoOrFour_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7334,7 +7334,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table15_Random(String curChars, String index) {
+	public static FunctionResult Table15_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7430,7 +7430,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table18_Random(String curChars, String index) {
+	public static FunctionResult Table18_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7469,7 +7469,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table19_Random(String curChars, String index) {
+	public static FunctionResult Table19_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7508,7 +7508,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table20_Random(String curChars, String index) {
+	public static FunctionResult Table20_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7552,7 +7552,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table17_Random(String curChars, String index) {
+	public static FunctionResult Table17_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7592,7 +7592,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table22_Random(String curChars, String index) {
+	public static FunctionResult Table22_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7631,7 +7631,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table27_Random(String curChars, String index) {
+	public static FunctionResult Table27_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7671,7 +7671,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table28_Random(String curChars, String index) {
+	public static FunctionResult Table28_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7711,7 +7711,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table29_Random(String curChars, String index) {
+	public static FunctionResult Table29_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7760,7 +7760,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table30_Random(String curChars, String index) {
+	public static FunctionResult Table30_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7825,7 +7825,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table31_Random(String curChars, String index) {
+	public static FunctionResult Table31_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7880,7 +7880,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table32_Random(String curChars, String index) {
+	public static FunctionResult Table32_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7925,7 +7925,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table34_Random(String curChars, String index) {
+	public static FunctionResult Table34_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -7990,7 +7990,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table35_Random(String curChars, String index) {
+	public static FunctionResult Table35_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8030,7 +8030,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table38_Random(String curChars, String index) {
+	public static FunctionResult Table38_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8075,7 +8075,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table41_Random(String curChars, String index) {
+	public static FunctionResult Table41_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8120,7 +8120,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
-	public static FunctionResult Table43_Random(String curChars, String index) {
+	public static FunctionResult Table43_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8180,7 +8180,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 504
-	public static FunctionResult OneTO03_Random(String curChars, String index) {
+	public static FunctionResult OneTO03_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8210,7 +8210,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰 504
-	public static FunctionResult OneTO42No99_Random(String curChars, String index) {
+	public static FunctionResult OneTO42No99_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8240,7 +8240,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为6
 	// creator: zll
-	public static FunctionResult FoodTrade_Random(String curChars, String index) {
+	public static FunctionResult FoodTrade_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8275,7 +8275,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult FoodEconomy_Random(String curChars, String index) {
+	public static FunctionResult FoodEconomy_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8310,7 +8310,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult GainStoreHouse_Random(String curChars, String index) {
+	public static FunctionResult GainStoreHouse_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8345,7 +8345,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult GainsDiseases_Random(String curChars, String index) {
+	public static FunctionResult GainsDiseases_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8380,7 +8380,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult GainsProcess_Random(String curChars, String index) {
+	public static FunctionResult GainsProcess_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8415,7 +8415,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为4
 	// creator: zll
-	public static FunctionResult GainsEquipment_Random(String curChars, String index) {
+	public static FunctionResult GainsEquipment_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8450,7 +8450,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为3
 	// creator: zll
-	public static FunctionResult GainsConditionDetection_Random(String curChars, String index) {
+	public static FunctionResult GainsConditionDetection_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8485,7 +8485,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为5或者6
 	// creator: zll
-	public static FunctionResult GrainsSmartWMS_Random(String curChars, String index) {
+	public static FunctionResult GrainsSmartWMS_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8520,7 +8520,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult GrainsQualityStandard_Random(String curChars, String index) {
+	public static FunctionResult GrainsQualityStandard_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8555,7 +8555,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult MeasuringInstrument_Random(String curChars, String index) {
+	public static FunctionResult MeasuringInstrument_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8590,7 +8590,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为8
 	// creator: zll
-	public static FunctionResult GrainsIndex_Random(String curChars, String index) {
+	public static FunctionResult GrainsIndex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8625,7 +8625,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为7
 	// creator: zll
-	public static FunctionResult GrainsInformation_Random(String curChars, String index) {
+	public static FunctionResult GrainsInformation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8660,7 +8660,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为3
 	// creator: zll
-	public static FunctionResult GrainsAttribute_Random(String curChars, String index) {
+	public static FunctionResult GrainsAttribute_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8695,7 +8695,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为2
 	// creator: zll
-	public static FunctionResult GrainEnterprise_Random(String curChars, String index) {
+	public static FunctionResult GrainEnterprise_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8730,7 +8730,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为6
 	// creator: zll
-	public static FunctionResult GrainAdministrative_Random(String curChars, String index) {
+	public static FunctionResult GrainAdministrative_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8765,7 +8765,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度必为5
 	// creator: zll
-	public static FunctionResult ConstructionProducts_Random(String curChars, String index) {
+	public static FunctionResult ConstructionProducts_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8800,7 +8800,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度11-17
 	// creator: zll
-	public static FunctionResult CarrierIdentifier_Random(String curChars, String index) {
+	public static FunctionResult CarrierIdentifier_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8834,7 +8834,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:变长，最小长度4
 	// creator: zll
-	public static FunctionResult ElectronicMap_Random(String curChars, String index) {
+	public static FunctionResult ElectronicMap_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8869,7 +8869,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度8
 	// creator: zll
-	public static FunctionResult ChineseCharRegex_Random(String curChars, String index) {
+	public static FunctionResult ChineseCharRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8906,7 +8906,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
 	// creator: helinjia
-	public static FunctionResult TwobytleWeekCode_Random(String curChars, String index) {
+	public static FunctionResult TwobytleWeekCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8952,7 +8952,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度5
 	// creator: zll
-	public static FunctionResult GeographicInformation_Random(String curChars, String index) {
+	public static FunctionResult GeographicInformation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -8987,7 +8987,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不定长
 	// creator: zll
-	public static FunctionResult GeographicPropertyRegex_Random(String curChars, String index) {
+	public static FunctionResult GeographicPropertyRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9025,7 +9025,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不定长
 	// creator: zll
-	public static FunctionResult DigitRegex_Random(String curChars, String index) {
+	public static FunctionResult DigitRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9063,7 +9063,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为5
 	// creator: zll
-	public static FunctionResult TextileFabricNameCode_Random(String curChars, String index) {
+	public static FunctionResult TextileFabricNameCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9098,7 +9098,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult PropertiesMain_Random(String curChars, String index) {
+	public static FunctionResult PropertiesMain_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9134,7 +9134,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult PropertiesFiberCharacteristics_Random(String curChars, String index) {
+	public static FunctionResult PropertiesFiberCharacteristics_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9169,7 +9169,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult PropertiesMix_Random(String curChars, String index) {
+	public static FunctionResult PropertiesMix_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9208,7 +9208,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult PropertiesFabric_Random(String curChars, String index) {
+	public static FunctionResult PropertiesFabric_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9243,7 +9243,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult PropertiesDyeingandFinishing_Random(String curChars, String index) {
+	public static FunctionResult PropertiesDyeingandFinishing_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9278,7 +9278,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为9
 	// creator: zll
-	public static FunctionResult GeneralManufacturingProcess_Random(String curChars, String index) {
+	public static FunctionResult GeneralManufacturingProcess_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9313,7 +9313,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2
 	// creator: zll
-	public static FunctionResult TrafficInformation_Random(String curChars, String index) {
+	public static FunctionResult TrafficInformation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9360,7 +9360,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为2,0和-1
 	// creator: zll
-	public static FunctionResult UntransportableProduct_Random(String curChars, String index) {
+	public static FunctionResult UntransportableProduct_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9395,7 +9395,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度为3
 	// creator: zll
-	public static FunctionResult LastThreeUntransportableProduct_Random(String curChars, String index) {
+	public static FunctionResult LastThreeUntransportableProduct_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9430,7 +9430,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 固定长4
 	// Creator:zll
-	public static FunctionResult TrafficInformationCollection_Random(String curChars, String index) {
+	public static FunctionResult TrafficInformationCollection_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9462,7 +9462,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 固定长2
 	// Creator:zll
-	public static FunctionResult TobaccoLeafColor_Random(String curChars, String index) {
+	public static FunctionResult TobaccoLeafColor_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9497,7 +9497,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 固定长2
 	// Creator:zll
-	public static FunctionResult TrafficOrganization_Random(String curChars, String index) {
+	public static FunctionResult TrafficOrganization_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9532,7 +9532,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 固定长3
 	// Creator:zll
-	public static FunctionResult TobaccoLeafForm_Random(String curChars, String index) {
+	public static FunctionResult TobaccoLeafForm_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9567,7 +9567,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 固定长5
 	// Creator:zll
-	public static FunctionResult TobaccoLeafClass_Random(String curChars, String index) {
+	public static FunctionResult TobaccoLeafClass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9602,7 +9602,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult ChildrenExcrement_Random(String curChars, String index) {
+	public static FunctionResult ChildrenExcrement_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9637,7 +9637,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:zll
-	public static FunctionResult OneToEleven_Random(String curChars, String index) {
+	public static FunctionResult OneToEleven_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9670,7 +9670,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult DrinkingFrequency_Random(String curChars, String index) {
+	public static FunctionResult DrinkingFrequency_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9705,7 +9705,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult DrinkingClass_Random(String curChars, String index) {
+	public static FunctionResult DrinkingClass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9740,7 +9740,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult PhysicalActivityFrequency_Random(String curChars, String index) {
+	public static FunctionResult PhysicalActivityFrequency_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9775,7 +9775,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult TerminationofPregnancy_Random(String curChars, String index) {
+	public static FunctionResult TerminationofPregnancy_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9810,7 +9810,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult ModeofProduction_Random(String curChars, String index) {
+	public static FunctionResult ModeofProduction_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9845,7 +9845,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult DileveryPlace_Random(String curChars, String index) {
+	public static FunctionResult DileveryPlace_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9880,7 +9880,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为2-8
 	// Creator:zll
-	public static FunctionResult HealthSupervisionObject_Random(String curChars, String index) {
+	public static FunctionResult HealthSupervisionObject_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9915,7 +9915,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult CommunicationCode_Random(String curChars, String index) {
+	public static FunctionResult CommunicationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9950,7 +9950,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult HygieneAgencyPersonnel_Random(String curChars, String index) {
+	public static FunctionResult HygieneAgencyPersonnel_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -9985,7 +9985,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的的索引位置 长度为1-2
 	// Creator:zll
-	public static FunctionResult WorkerHealthSupervision_Random(String curChars, String index) {
+	public static FunctionResult WorkerHealthSupervision_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10021,7 +10021,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// Creator:方丹丽
 	// 检验例子码110108000000016
-	public static FunctionResult BussManaCheck_Random(String curChars, String index) {
+	public static FunctionResult BussManaCheck_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10068,7 +10068,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult JadejewelryClass_Random(String curChars, String index) {
+	public static FunctionResult JadejewelryClass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10102,7 +10102,7 @@ public class RuleRandom {
 	// LenID: 标识编码的长度4位
 	// Index: 调用验证算法的索引位置
 	// creator:fdl
-	public static FunctionResult InformationSafe_Random(String curChars, String index) {
+	public static FunctionResult InformationSafe_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10137,7 +10137,7 @@ public class RuleRandom {
 	// LenID: 标识编码的长度3位
 	// Index: 调用验证算法的索引位置
 	// creator:fdl
-	public static FunctionResult CodeHighWayLine_Random(String curChars, String index) {
+	public static FunctionResult CodeHighWayLine_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10183,7 +10183,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
-	public static FunctionResult goalsocialeconomic_Random(String curChars, String index) {
+	public static FunctionResult goalsocialeconomic_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10219,7 +10219,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
-	public static FunctionResult LogisticsInf_Random(String curChars, String index) {
+	public static FunctionResult LogisticsInf_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10254,7 +10254,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
-	public static FunctionResult clothesclass_Random(String curChars, String index) {
+	public static FunctionResult clothesclass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10289,7 +10289,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult ClothesName_Random(String curChars, String index) {
+	public static FunctionResult ClothesName_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10324,7 +10324,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
-	public static FunctionResult Pharmacequipment_Random(String curChars, String index) {
+	public static FunctionResult Pharmacequipment_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10359,7 +10359,7 @@ public class RuleRandom {
 	// Index: 调用沿海行政区域代码的位置
 	// LenIndex: 长度为六位
 	// creator: gcc
-	public static FunctionResult CoastalAdminAreaId_Random(String curChars, String index) {
+	public static FunctionResult CoastalAdminAreaId_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10395,7 +10395,7 @@ public class RuleRandom {
 	// Index: 调用船舶登记号代码的位置
 	// LenIndex: 长度为六位
 	// creator: gcc
-	public static FunctionResult InternationalShipCode_Random(String curChars, String index) {
+	public static FunctionResult InternationalShipCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10431,7 +10431,7 @@ public class RuleRandom {
 	// Index: 调用沿海行政区域代码前两位的位置
 	// LenIndex: 长度为两位
 	// creator: gcc
-	public static FunctionResult First2CharsofCoastalAdminAreaId_Random(String curChars, String index) {
+	public static FunctionResult First2CharsofCoastalAdminAreaId_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10469,7 +10469,7 @@ public class RuleRandom {
 	// Index: 调用经济类型代码的位置
 	// LenIndex: 长度为两位
 	// creator: gcc
-	public static FunctionResult WirtschaftsTypCode_Random(String curChars, String index) {
+	public static FunctionResult WirtschaftsTypCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10505,7 +10505,7 @@ public class RuleRandom {
 	// Index: 调用传染病名称代码的位置
 	// LenIndex: 长度必须为4位
 	// creator: gcc
-	public static FunctionResult InfectiousDiseases_Random(String curChars, String index) {
+	public static FunctionResult InfectiousDiseases_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10542,7 +10542,7 @@ public class RuleRandom {
 	// Index: 调用海洋站区号代码的位置
 	// LenIndex: 长度是两位
 	// creator: gcc
-	public static FunctionResult OceanStationCode_Random(String curChars, String index) {
+	public static FunctionResult OceanStationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10577,7 +10577,7 @@ public class RuleRandom {
 	// Index: 调用地理属性代码的位置
 	// LenIndex: 长度是四位
 	// creator: gcc
-	public static FunctionResult GeographicalCode_Random(String curChars, String index) {
+	public static FunctionResult GeographicalCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10613,7 +10613,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的索引位置长度为2-4
 	// creator: gcc
-	public static FunctionResult PesticideFormulationCode_Random(String curChars, String index) {
+	public static FunctionResult PesticideFormulationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10650,7 +10650,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用正则的索引位置长度为6-8
 	// creator: gcc
-	public static FunctionResult PassengerCarCode_Random(String curChars, String index) {
+	public static FunctionResult PassengerCarCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10687,7 +10687,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult RoadTransportation21_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation21_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10721,7 +10721,7 @@ public class RuleRandom {
 	// LenIndex: 调用正则的的索引位置 长度为0-8
 	// 判断0-8位是不是在数据库中存在
 	// Creator:wt
-	public static FunctionResult CivilAviation_Random(String curChars, String index) {
+	public static FunctionResult CivilAviation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10759,7 +10759,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult RoadTransportation22_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation22_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10793,7 +10793,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation32_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation32_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10826,7 +10826,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult RoadTransportation5_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation5_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10861,7 +10861,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation41_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation41_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10896,7 +10896,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation50_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation50_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10930,7 +10930,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation53_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation53_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -10965,7 +10965,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation63_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation63_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11034,7 +11034,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation60_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation60_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11072,7 +11072,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult RoadTransportation64_Random(String curChars, String index) {
+	public static FunctionResult RoadTransportation64_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11106,7 +11106,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation4b1_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4b1_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11140,7 +11140,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation4b7_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4b7_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11175,7 +11175,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation4b9_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4b9_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11209,7 +11209,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation4c3_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4c3_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11238,7 +11238,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult PortTariff3_Random(String curChars, String index) {
+	public static FunctionResult PortTariff3_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11267,7 +11267,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult PortTariff4_Random(String curChars, String index) {
+	public static FunctionResult PortTariff4_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11297,7 +11297,7 @@ public class RuleRandom {
 	}
 
 	// e.g 1000 /1010/1011/1020
-	public static FunctionResult PortTariff9_Random(String curChars, String index) {
+	public static FunctionResult PortTariff9_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11326,7 +11326,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult PortTariff25_Random(String curChars, String index) {
+	public static FunctionResult PortTariff25_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11355,7 +11355,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult PortTariff26_Random(String curChars, String index) {
+	public static FunctionResult PortTariff26_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11384,7 +11384,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult PortTariff10_Random(String curChars, String index) {
+	public static FunctionResult PortTariff10_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11419,7 +11419,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery2_Random(String curChars, String index) {
+	public static FunctionResult Machinery2_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11454,7 +11454,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult HighwayMaintenance4_Random(String curChars, String index) {
+	public static FunctionResult HighwayMaintenance4_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11489,7 +11489,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult HighwayMaintenance3_Random(String curChars, String index) {
+	public static FunctionResult HighwayMaintenance3_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11524,7 +11524,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery3_Random(String curChars, String index) {
+	public static FunctionResult Machinery3_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11559,7 +11559,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery4_Random(String curChars, String index) {
+	public static FunctionResult Machinery4_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11594,7 +11594,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery5_Random(String curChars, String index) {
+	public static FunctionResult Machinery5_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11629,7 +11629,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery6_Random(String curChars, String index) {
+	public static FunctionResult Machinery6_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11664,7 +11664,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery7_Random(String curChars, String index) {
+	public static FunctionResult Machinery7_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11699,7 +11699,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery8_Random(String curChars, String index) {
+	public static FunctionResult Machinery8_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11734,7 +11734,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery9_Random(String curChars, String index) {
+	public static FunctionResult Machinery9_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11769,7 +11769,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult Machinery10_Random(String curChars, String index) {
+	public static FunctionResult Machinery10_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11798,7 +11798,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult HighwayTransportation4c6_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4c6_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11834,7 +11834,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult WaterwayTransportation_Random(String curChars, String index) {
+	public static FunctionResult WaterwayTransportation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11870,7 +11870,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation4b10_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation4b10_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11903,7 +11903,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult HighwayTransportation_Random(String curChars, String index) {
+	public static FunctionResult HighwayTransportation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11938,7 +11938,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult TwobyteCode06and90_Random(String curChars, String index) {
+	public static FunctionResult TwobyteCode06and90_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11967,7 +11967,7 @@ public class RuleRandom {
 	 * list of corresponding indexes regarding to this algorithm LenIndex: the
 	 * number of indexes creator:wt
 	 */
-	public static FunctionResult SecurityAccounterments_Random(String curChars, String index) {
+	public static FunctionResult SecurityAccounterments_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -11998,7 +11998,7 @@ public class RuleRandom {
 //		}
 	}
 
-	public static FunctionResult SpecialVehicle_Random(String curChars, String index) {
+	public static FunctionResult SpecialVehicle_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12028,7 +12028,7 @@ public class RuleRandom {
 	 * algorithm Index: the list of corresponding indexes regarding to this
 	 * algorithm LenIndex: the number of indexes creator:wt
 	 */
-	public static FunctionResult TwoOrThree_Random(String curChars, String index) {
+	public static FunctionResult TwoOrThree_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12068,7 +12068,7 @@ public class RuleRandom {
 
 	// A1234
 	// 12345
-	public static FunctionResult CommodityName_Random(String curChars, String index) {
+	public static FunctionResult CommodityName_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12101,7 +12101,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:4
 	// creator:fdl
-	public static FunctionResult SocialWork_Random(String curChars, String index) {
+	public static FunctionResult SocialWork_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12148,7 +12148,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 3
 	// creator: lhx
-	public static FunctionResult FireInfoori_Random(String curChars, String index) {
+	public static FunctionResult FireInfoori_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12196,7 +12196,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: lhx
-	public static FunctionResult OfficialPostionCode_Random(String curChars, String index) {
+	public static FunctionResult OfficialPostionCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12231,7 +12231,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult MountainRangeAndPeakName_Random(String curChars, String index) {
+	public static FunctionResult MountainRangeAndPeakName_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12268,7 +12268,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult IntellectualProperty_Random(String curChars, String index) {
+	public static FunctionResult IntellectualProperty_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12304,7 +12304,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult ClassificationOfCivilAviation_Random(String curChars, String index) {
+	public static FunctionResult ClassificationOfCivilAviation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12340,7 +12340,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult NormalAndShortCycleSpeciality_Random(String curChars, String index) {
+	public static FunctionResult NormalAndShortCycleSpeciality_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12376,7 +12376,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult MaintenanceSystemPTwo_Random(String curChars, String index) {
+	public static FunctionResult MaintenanceSystemPTwo_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12412,7 +12412,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult CountryRegionCode1_Random(String curChars, String index) {
+	public static FunctionResult CountryRegionCode1_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12449,7 +12449,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult ElectricPower_Random(String curChars, String index) {
+	public static FunctionResult ElectricPower_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12486,7 +12486,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult PowerGrid_Random(String curChars, String index) {
+	public static FunctionResult PowerGrid_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12523,7 +12523,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult ElectricPowerIndustry_Random(String curChars, String index) {
+	public static FunctionResult ElectricPowerIndustry_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12559,7 +12559,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult ElectricPowerGeography_Random(String curChars, String index) {
+	public static FunctionResult ElectricPowerGeography_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12595,7 +12595,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult VoltageClass_Random(String curChars, String index) {
+	public static FunctionResult VoltageClass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12631,7 +12631,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult PowerGoodsP2_Random(String curChars, String index) {
+	public static FunctionResult PowerGoodsP2_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12667,7 +12667,7 @@ public class RuleRandom {
 	// Index: 调用标识编码的位置
 	// LenIndex: 长度为2
 	// creator: gcc
-	public static FunctionResult MetalHeatCode_Random(String curChars, String index) {
+	public static FunctionResult MetalHeatCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12713,7 +12713,7 @@ public class RuleRandom {
 	// Index: 调用标识编码的位置
 	// LenIndex: 长度为六位
 	// creator: gcc
-	public static FunctionResult GeographicInfoCode_Random(String curChars, String index) {
+	public static FunctionResult GeographicInfoCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12749,7 +12749,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex: 长度必为6
 	// creator: gcc
-	public static FunctionResult HarmfulFactor_Random(String curChars, String index) {
+	public static FunctionResult HarmfulFactor_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12784,7 +12784,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex: 长度必为6
 	// creator: gcc
-	public static FunctionResult RailwayStationCode_Random(String curChars, String index) {
+	public static FunctionResult RailwayStationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12819,7 +12819,7 @@ public class RuleRandom {
 	// Index: 调用正则的索引位置
 	// LenIndex: 不定长
 	// creator: gcc
-	public static FunctionResult ProtectionDegreeRegex_Random(String curChars, String index) {
+	public static FunctionResult ProtectionDegreeRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12858,7 +12858,7 @@ public class RuleRandom {
 	// Index: 调用正则的索引位置
 	// LenIndex: 不定长
 	// creator: gcc
-	public static FunctionResult ForestryClassRegex_Random(String curChars, String index) {
+	public static FunctionResult ForestryClassRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12897,7 +12897,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex: 不定长
 	// creator: gcc
-	public static FunctionResult MineralRegex_Random(String curChars, String index) {
+	public static FunctionResult MineralRegex_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12936,7 +12936,7 @@ public class RuleRandom {
 	// Index: 调用条款代码的位置
 	// LenIndex: 长度为两位
 	// creator: gcc
-	public static FunctionResult StevedorageChartering_Random(String curChars, String index) {
+	public static FunctionResult StevedorageChartering_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -12996,7 +12996,7 @@ public class RuleRandom {
 	// Index: 调用林木病害的位置
 	// LenIndex: 长度为六位
 	// creator: gcc
-	public static FunctionResult TreeDiseaseCode_Random(String curChars, String index) {
+	public static FunctionResult TreeDiseaseCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13032,7 +13032,7 @@ public class RuleRandom {
 	// Index: 调用船舶代码的位置
 	// LenIndex: 长度是四位
 	// creator: gcc
-	public static FunctionResult NavigationShip_Random(String curChars, String index) {
+	public static FunctionResult NavigationShip_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13068,7 +13068,7 @@ public class RuleRandom {
 	// Index: 调用消防训练分类与代码代码的位置
 	// LenIndex: 长度是六位
 	// creator: gcc
-	public static FunctionResult NavigationShipAddCode_Random(String curChars, String index) {
+	public static FunctionResult NavigationShipAddCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13121,7 +13121,7 @@ public class RuleRandom {
 	// Index: 调用起火原因分类与代码代码的位置
 	// LenIndex: 长度是六位
 	// creator: gcc
-	public static FunctionResult FireTrainCode_Random(String curChars, String index) {
+	public static FunctionResult FireTrainCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13203,7 +13203,7 @@ public class RuleRandom {
 	// Index: 调用消防出警事件分类与代码代码的位置
 	// LenIndex: 长度是四位
 	// creator: gcc
-	public static FunctionResult FireCauseCode_Random(String curChars, String index) {
+	public static FunctionResult FireCauseCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13304,7 +13304,7 @@ public class RuleRandom {
 	// Index: 调用消防出警事件分类与代码代码的位置
 	// LenIndex: 长度是四位
 	// creator: gcc
-	public static FunctionResult FireForceCode_Random(String curChars, String index) {
+	public static FunctionResult FireForceCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13408,7 +13408,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: gcc
-	public static FunctionResult FireInfotrain_Random(String curChars, String index) {
+	public static FunctionResult FireInfotrain_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13449,7 +13449,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: gcc
-	public static FunctionResult ServiceState_Random(String curChars, String index) {
+	public static FunctionResult ServiceState_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13488,7 +13488,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 2
 	// creator: gcc
-	public static FunctionResult PractitionerType_Random(String curChars, String index) {
+	public static FunctionResult PractitionerType_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13526,7 +13526,7 @@ public class RuleRandom {
 	// Index: 调用消防出警事件分类与代码代码的位置
 	// LenIndex: 长度是四位
 	// creator: gcc
-	public static FunctionResult FinancialCode_Random(String curChars, String index) {
+	public static FunctionResult FinancialCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13592,7 +13592,7 @@ public class RuleRandom {
 	// Index: 调用金库类别代码的位置
 	// LenIndex: 长度是两位
 	// creator: gcc
-	public static FunctionResult TreasuryClass_Random(String curChars, String index) {
+	public static FunctionResult TreasuryClass_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13633,7 +13633,7 @@ public class RuleRandom {
 	// Index: 调用职务类别代码的位置
 	// LenIndex: 长度是两位
 	// creator: gcc
-	public static FunctionResult JobClassificationCode_Random(String curChars, String index) {
+	public static FunctionResult JobClassificationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13719,7 +13719,7 @@ public class RuleRandom {
 	// Index: 标识编码的长度
 	// LenIndex: 调用索引位置长度为3
 	// creator: gcc
-	public static FunctionResult TravleDocumentCode_Random(String curChars, String index) {
+	public static FunctionResult TravleDocumentCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13756,7 +13756,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult ProvinceAdminCode_Random(String curChars, String index) {
+	public static FunctionResult ProvinceAdminCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13792,7 +13792,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult AdminDivision1_Random(String curChars, String index) {
+	public static FunctionResult AdminDivision1_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13829,7 +13829,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=9
 	// creator: yzc
-	public static FunctionResult DraftingRulesForCodes_Random(String curChars, String index) {
+	public static FunctionResult DraftingRulesForCodes_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13868,7 +13868,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度无穷
 	// creator: yzc
-	public static FunctionResult EnvironmentalInformation_Random(String curChars, String index) {
+	public static FunctionResult EnvironmentalInformation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13906,7 +13906,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度无穷
 	// creator: yzc
-	public static FunctionResult Wastewater_Random(String curChars, String index) {
+	public static FunctionResult Wastewater_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13944,7 +13944,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=4
 	// creator: yzc
-	public static FunctionResult BankCodes_Random(String curChars, String index) {
+	public static FunctionResult BankCodes_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -13982,7 +13982,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:yzc
-	public static FunctionResult DocumentEnvidence_Random(String curChars, String index) {
+	public static FunctionResult DocumentEnvidence_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14020,7 +14020,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:yzc
-	public static FunctionResult EconomicCasesUnit_Random(String curChars, String index) {
+	public static FunctionResult EconomicCasesUnit_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14058,7 +14058,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:yzc
-	public static FunctionResult CodesOfMakingCases_Random(String curChars, String index) {
+	public static FunctionResult CodesOfMakingCases_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14096,7 +14096,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:yzc
-	public static FunctionResult OneTO48_Random(String curChars, String index) {
+	public static FunctionResult OneTO48_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14126,7 +14126,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=3
 	// creator: yzc
-	public static FunctionResult NationalTrunkHighway_Random(String curChars, String index) {
+	public static FunctionResult NationalTrunkHighway_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14165,7 +14165,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置,6,-1
 	// LenIndex:2
 	// creator: wt
-	public static FunctionResult ParamCode_Random(String curChars, String index) {
+	public static FunctionResult ParamCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14212,7 +14212,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置,6,-1
 	// LenIndex:2
 	// creator: wt
-	public static FunctionResult ParamCode6_Random(String curChars, String index) {
+	public static FunctionResult ParamCode6_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14256,7 +14256,7 @@ public class RuleRandom {
 	/*
 	 * 前4位是数字，后2位是小数 1234.12 author:wt
 	 */
-	public static FunctionResult ParamCode7_Random(String curChars, String index) {
+	public static FunctionResult ParamCode7_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14286,7 +14286,7 @@ public class RuleRandom {
 	 * 
 	 * author:wt
 	 */
-	public static FunctionResult ParamCode17_Random(String curChars, String index) {
+	public static FunctionResult ParamCode17_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14349,7 +14349,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是6位或7位的数字 author：wt
 	 */
-	public static FunctionResult ParamCode19_Random(String curChars, String index) {
+	public static FunctionResult ParamCode19_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14392,7 +14392,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是4位或8位或9的数字 author：wt
 	 */
-	public static FunctionResult ParamCode20_Random(String curChars, String index) {
+	public static FunctionResult ParamCode20_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14446,7 +14446,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是8位或6位数字 当为8位时，码的第一位是1 当为6位时，码的第一位是2 author：wt
 	 */
-	public static FunctionResult ParamCode22_Random(String curChars, String index) {
+	public static FunctionResult ParamCode22_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14492,7 +14492,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是10位或8位数字 当为10位时，码的第1,2位是01 当为8位时，码的第1,2位是02 author：wt
 	 */
-	public static FunctionResult ParamCode27_Random(String curChars, String index) {
+	public static FunctionResult ParamCode27_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14538,7 +14538,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是4位或5位数字 当为4位时，码的第1,2位是01或03 当为5位时，码的第1,2位是02 author：wt
 	 */
-	public static FunctionResult ParamCode28_Random(String curChars, String index) {
+	public static FunctionResult ParamCode28_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14586,7 +14586,7 @@ public class RuleRandom {
 	 * 校验最后的码，可能是3,4,5,9位数字 当为3位时，码的第1,2位是06 当为4位时，码的第1,2位是01,02,05,07
 	 * 当为5位时，码的第1,2位是03 当为9位时，码的第1,2位是04 author：wt
 	 */
-	public static FunctionResult ParamCode29_Random(String curChars, String index) {
+	public static FunctionResult ParamCode29_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14661,7 +14661,7 @@ public class RuleRandom {
 	 * 当为4位时，码的第1,2位是09,10,11,12 当为5位时，码的第1,2位是07,08 当为6位时，码的第1,2位是02
 	 * 当为7位时，码的第1,2位是01,03 当为8位时，码的第1,2位是04 author：wt
 	 */
-	public static FunctionResult ParamCode30_Random(String curChars, String index) {
+	public static FunctionResult ParamCode30_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14772,7 +14772,7 @@ public class RuleRandom {
 	 * 校验最后的码，可能是4,5,6,7,8位数字 当为4位时，码的第1,2位是05,08 当为5位时，码的第1,2位是03,06,09
 	 * 当为6位时，码的第1,2位是07 当为7位时，码的第1,2位是04 当为8位时，码的第1,2位是01,02 author：wt
 	 */
-	public static FunctionResult ParamCode31_Random(String curChars, String index) {
+	public static FunctionResult ParamCode31_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14847,7 +14847,7 @@ public class RuleRandom {
 	 * 校验最后的码，可能是3,7,8位数字 当为3位时，码的第1,2位是05 当为7位时，码的第1,2位是03,04
 	 * 当为8位时，码的第1,2位是01,02 author：wt
 	 */
-	public static FunctionResult ParamCode32_Random(String curChars, String index) {
+	public static FunctionResult ParamCode32_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -14921,7 +14921,7 @@ public class RuleRandom {
 	 * 当为7位时，码的第1,2位是03,06 当为8位时，码的第1,2位是05,07 当为9位时，码的第1,2位是04
 	 * 当为10位时，码的第1,2位是02 当为11位时，码的第1,2位是01 author：wt
 	 */
-	public static FunctionResult ParamCode34_Random(String curChars, String index) {
+	public static FunctionResult ParamCode34_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15030,7 +15030,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是5,6位数字 当为5位时，码的第1,2位是3,4 当为6位时，码的第1,2位是1,2 author：wt
 	 */
-	public static FunctionResult ParamCode35_Random(String curChars, String index) {
+	public static FunctionResult ParamCode35_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15089,7 +15089,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是7,9,10位数字 当为7位时，码的第1位是3 当为9位时，码的第1位是1 当为10位时，码的第1位是2 author：wt
 	 */
-	public static FunctionResult ParamCode38_Random(String curChars, String index) {
+	public static FunctionResult ParamCode38_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15152,7 +15152,7 @@ public class RuleRandom {
 	/*
 	 * 校验最后的码，可能是6,7位数字 当为6位时，码的第1位是1或2 当为7位时，码的第1位是3 author：wt
 	 */
-	public static FunctionResult ParamCode41_Random(String curChars, String index) {
+	public static FunctionResult ParamCode41_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15201,7 +15201,7 @@ public class RuleRandom {
 	 * 当为6位时，码的第1,2位是01,06,12 当为7位时，码的第1,2位是02,03,04,05,07,08 当为8位时，码的第1,2位是14
 	 * author：wt
 	 */
-	public static FunctionResult ParamCode43_Random(String curChars, String index) {
+	public static FunctionResult ParamCode43_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15300,7 +15300,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials44_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials44_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15338,7 +15338,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials45_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials45_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15376,7 +15376,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials46_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials46_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15414,7 +15414,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials47_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials47_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15452,7 +15452,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials49_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials49_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15490,7 +15490,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials50_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials50_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15528,7 +15528,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials51_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials51_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15566,7 +15566,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials52_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials52_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15603,7 +15603,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials53_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials53_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15641,7 +15641,7 @@ public class RuleRandom {
 	 * number of indexes creator:wt
 	 */
 
-	public static FunctionResult PowerMaterials54_Random(String curChars, String index) {
+	public static FunctionResult PowerMaterials54_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15678,7 +15678,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a3
 	// creator:fdl
-	public static FunctionResult InternetWebService_Random(String curChars, String index) {
+	public static FunctionResult InternetWebService_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15709,7 +15709,7 @@ public class RuleRandom {
 
 	// 966-国家工程建设标准体系编码统一规则 fdl
 	// [A1 A2 A3 B1 C1 D1 E1 F1 G1 H1 J1 K1 L1 M1 N1 P1 Q1 R1]两位关联
-	public static FunctionResult projectbuild_Random(String curChars, String index) {
+	public static FunctionResult projectbuild_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15752,7 +15752,7 @@ public class RuleRandom {
 	}
 
 	// 放射源编码规则 核元素国家代码 fdl
-	public static FunctionResult NuclearelementNation_Random(String curChars, String index) {
+	public static FunctionResult NuclearelementNation_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15782,7 +15782,7 @@ public class RuleRandom {
 	}
 
 	// 放射源编码规则 fdl
-	public static FunctionResult Nuclearelements_Random(String curChars, String index) {
+	public static FunctionResult Nuclearelements_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15812,7 +15812,7 @@ public class RuleRandom {
 	}
 
 	// 工商行政管理注册号编制规则 fdl
-	public static FunctionResult BusinessAdminis_Random(String curChars, String index) {
+	public static FunctionResult BusinessAdminis_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15849,7 +15849,7 @@ public class RuleRandom {
 	// Index: (13,-1),从13位以后的字符串进行正则表达式验证
 	// LenIndex: 长度至少为1位，最多2位
 	// creator: fdl
-	public static FunctionResult CarProduct_Random(String curChars, String index) {
+	public static FunctionResult CarProduct_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15889,7 +15889,7 @@ public class RuleRandom {
 	// Index:4
 	// LenIndex: 长度必为4
 	// creator: fdl
-	public static FunctionResult CarProductCompnent_Random(String curChars, String index) {
+	public static FunctionResult CarProductCompnent_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15924,7 +15924,7 @@ public class RuleRandom {
 	// Index:15
 	// LenIndex: 长度必为15
 	// creator: fdl
-	public static FunctionResult StandardMusicCheckCode_Random(String curChars, String index) {
+	public static FunctionResult StandardMusicCheckCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -15968,7 +15968,7 @@ public class RuleRandom {
 	// Index:4
 	// LenIndex: 长度必为4
 	// creator: fdl
-	public static FunctionResult TCLBatteryProduct_Random(String curChars, String index) {
+	public static FunctionResult TCLBatteryProduct_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16003,7 +16003,7 @@ public class RuleRandom {
 	// Index:4
 	// LenIndex: 长度必为4
 	// creator: fdl
-	public static FunctionResult ProductCode_Random(String curChars, String index) {
+	public static FunctionResult ProductCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16049,7 +16049,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: lhx
-	public static FunctionResult ServiceContentCode_Random(String curChars, String index) {
+	public static FunctionResult ServiceContentCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16091,7 +16091,7 @@ public class RuleRandom {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: lhx
-	public static FunctionResult TraViolativeActionCode_Random(String curChars, String index) {
+	public static FunctionResult TraViolativeActionCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16155,7 +16155,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:lhx
-	public static FunctionResult TenByteDecimalnt_Random(String curChars, String index) {
+	public static FunctionResult TenByteDecimalnt_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16206,7 +16206,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 7
 	// Creator:lhx
-	public static FunctionResult IDcardByMaterial_Random(String curChars, String index) {
+	public static FunctionResult IDcardByMaterial_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16296,7 +16296,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:YZC
-	public static FunctionResult MOD11_Random(String curChars, String index) {
+	public static FunctionResult MOD11_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16360,7 +16360,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=2
 	// creator: yzc
-	public static FunctionResult CreditIdentifiers_Random(String curChars, String index) {
+	public static FunctionResult CreditIdentifiers_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16398,7 +16398,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=1
 	// creator: yzc
-	public static FunctionResult TubesValves_Random(String curChars, String index) {
+	public static FunctionResult TubesValves_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16436,7 +16436,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=1
 	// creator: yzc
-	public static FunctionResult TubesValves1_Random(String curChars, String index) {
+	public static FunctionResult TubesValves1_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16474,7 +16474,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult BarCodeForCommodity_Random(String curChars, String index) {
+	public static FunctionResult BarCodeForCommodity_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16517,7 +16517,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=12
 	// creator: yzc
-	public static FunctionResult IdentificationCardsP1_Random(String curChars, String index) {
+	public static FunctionResult IdentificationCardsP1_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16559,7 +16559,7 @@ public class RuleRandom {
 	/*
 	 * 校验前4位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase70_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase70_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16587,7 +16587,7 @@ public class RuleRandom {
 	/*
 	 * 校验前4位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase71_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase71_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16620,7 +16620,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase66_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase66_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16649,7 +16649,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase65_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase65_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16675,7 +16675,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase59_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase59_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16701,7 +16701,7 @@ public class RuleRandom {
 	/*
 	 * 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase47_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase47_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16735,7 +16735,7 @@ public class RuleRandom {
 	/*
 	 * 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase46_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase46_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16766,7 +16766,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase26_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase26_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16793,7 +16793,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase25_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase25_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16820,7 +16820,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase24_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase24_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16848,7 +16848,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase18_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase18_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16875,7 +16875,7 @@ public class RuleRandom {
 	/*
 	 * 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase17_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase17_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16906,7 +16906,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase16_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase16_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16933,7 +16933,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase13_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase13_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16961,7 +16961,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase8_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase8_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -16989,7 +16989,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase7_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase7_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17016,7 +17016,7 @@ public class RuleRandom {
 	/*
 	 * 校验前2位是不是这些数字 757 author:wt
 	 */
-	public static FunctionResult HighwayDatabase6_Random(String curChars, String index) {
+	public static FunctionResult HighwayDatabase6_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17047,7 +17047,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
-	public static FunctionResult GassCompany_Random(String curChars, String index) {
+	public static FunctionResult GassCompany_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17082,7 +17082,7 @@ public class RuleRandom {
 	 * 
 	 * author:wt
 	 */
-	public static FunctionResult HydrologicData_Random(String curChars, String index) {
+	public static FunctionResult HydrologicData_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17117,7 +17117,7 @@ public class RuleRandom {
 	 * 
 	 * author:wt
 	 */
-	public static FunctionResult MeatandVegetable_Random(String curChars, String index) {
+	public static FunctionResult MeatandVegetable_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17154,7 +17154,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator: fdl
-	public static FunctionResult ChinaAnimal_Random(String curChars, String index) {
+	public static FunctionResult ChinaAnimal_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17189,7 +17189,7 @@ public class RuleRandom {
 	// Index:5
 	// LenIndex: 长度必为5
 	// creator: fdl
-	public static FunctionResult ForestTypes_Random(String curChars, String index) {
+	public static FunctionResult ForestTypes_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17224,7 +17224,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult OrganizationCode_Random(String curChars, String index) {
+	public static FunctionResult OrganizationCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17257,7 +17257,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult Province_Random(String curChars, String index) {
+	public static FunctionResult Province_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17302,7 +17302,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult City_Random(String curChars, String index) {
+	public static FunctionResult City_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17337,7 +17337,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 5
 	// Creator:lhx
-	public static FunctionResult Letter_Random(String curChars, String index) {
+	public static FunctionResult Letter_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17376,7 +17376,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 6
 	// Creator:lhx
-	public static FunctionResult DigitAndLetter_Random(String curChars, String index) {
+	public static FunctionResult DigitAndLetter_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17416,7 +17416,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 10
 	// Creator:lhx
-	public static FunctionResult AnimalDisease_Random(String curChars, String index) {
+	public static FunctionResult AnimalDisease_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17454,7 +17454,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult OceanInfoMid_Random(String curChars, String index) {
+	public static FunctionResult OceanInfoMid_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17487,7 +17487,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 8
 	// Creator:lhx
-	public static FunctionResult MedicalInstru_Random(String curChars, String index) {
+	public static FunctionResult MedicalInstru_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17525,7 +17525,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 6
 	// Creator:lhx
-	public static FunctionResult TCMDisease_Random(String curChars, String index) {
+	public static FunctionResult TCMDisease_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17563,7 +17563,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 6
 	// Creator:lhx
-	public static FunctionResult TCMFeature_Random(String curChars, String index) {
+	public static FunctionResult TCMFeature_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17601,7 +17601,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult DZClassify_Random(String curChars, String index) {
+	public static FunctionResult DZClassify_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17639,7 +17639,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 2
 	// Creator:lhx
-	public static FunctionResult DZClassify710_Random(String curChars, String index) {
+	public static FunctionResult DZClassify710_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17677,7 +17677,7 @@ public class RuleRandom {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不定长
 	// creator: lhx
-	public static FunctionResult MeasureUnit_Random(String curChars, String index) {
+	public static FunctionResult MeasureUnit_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17713,7 +17713,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: dgq
-	public static FunctionResult MobilePhoneNum_Random(String curChars, String index) {
+	public static FunctionResult MobilePhoneNum_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17751,7 +17751,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: dgq
-	public static FunctionResult VehicleNONormal_Random(String curChars, String index) {
+	public static FunctionResult VehicleNONormal_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17789,7 +17789,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: dgq
-	public static FunctionResult VehicleNOArmy_Random(String curChars, String index) {
+	public static FunctionResult VehicleNOArmy_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17827,7 +17827,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: dgq
-	public static FunctionResult VehicleNOArmySuffix_Random(String curChars, String index) {
+	public static FunctionResult VehicleNOArmySuffix_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17862,7 +17862,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// creator: dgq
-	public static FunctionResult VehicleNOWJ_Random(String curChars, String index) {
+	public static FunctionResult VehicleNOWJ_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17891,7 +17891,7 @@ public class RuleRandom {
 	// Function:
 	// http://zh.wikipedia.org/zh-cn/%E5%9B%BD%E9%99%85%E6%A0%87%E5%87%86%E4%B9%A6%E5%8F%B7
 	// creator: menglunyang
-	public static FunctionResult ISBN13_Random(String curChars, String index) {
+	public static FunctionResult ISBN13_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17926,7 +17926,7 @@ public class RuleRandom {
 	/*
 	 * 1,2,3 digit wt
 	 */
-	public static FunctionResult One2ThreeDigit_Random(String curChars, String index) {
+	public static FunctionResult One2ThreeDigit_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17957,7 +17957,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:wt
-	public static FunctionResult A2EOrNull_Random(String curChars, String index) {
+	public static FunctionResult A2EOrNull_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -17989,7 +17989,7 @@ public class RuleRandom {
 
 	// special character underline _
 	// zll
-	public static FunctionResult Underline_Random(String curChars, String index) {
+	public static FunctionResult Underline_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18017,7 +18017,7 @@ public class RuleRandom {
 	}
 
 	// special character hyphen - zll
-	public static FunctionResult Hyphen_Random(String curChars, String index) {
+	public static FunctionResult Hyphen_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18045,7 +18045,7 @@ public class RuleRandom {
 	}
 
 	// specail character plus - zll
-	public static FunctionResult Plus_Random(String curChars, String index) {
+	public static FunctionResult Plus_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18073,7 +18073,7 @@ public class RuleRandom {
 	}
 
 	// specail character slash - zll
-	public static FunctionResult Slash_Random(String curChars, String index) {
+	public static FunctionResult Slash_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18101,7 +18101,7 @@ public class RuleRandom {
 	}
 
 	// specail character dot - zll
-	public static FunctionResult Dot_Random(String curChars, String index) {
+	public static FunctionResult Dot_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18133,7 +18133,7 @@ public class RuleRandom {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-	public static FunctionResult TwobytleCode08and90_Random(String curChars, String index) {
+	public static FunctionResult TwobytleCode08and90_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18167,7 +18167,7 @@ public class RuleRandom {
 	}
 
 	// DL/T_700.1-1999_53(910) yzc
-	public static FunctionResult Powergoodsuncertainly_Random(String curChars, String index) {
+	public static FunctionResult Powergoodsuncertainly_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18200,7 +18200,7 @@ public class RuleRandom {
 	}
 
 	// wt
-	public static FunctionResult OneTO10No99_Random(String curChars, String index) {
+	public static FunctionResult OneTO10No99_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18232,7 +18232,7 @@ public class RuleRandom {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator: fdl
-	public static FunctionResult ProductThreeByte_Random(String curChars, String index) {
+	public static FunctionResult ProductThreeByte_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18273,7 +18273,7 @@ public class RuleRandom {
 	}
 
 	// GB/T_28422-2012_6 wt
-	public static FunctionResult ClassOfCardCode_Random(String curChars, String index) {
+	public static FunctionResult ClassOfCardCode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
@@ -18304,7 +18304,7 @@ public class RuleRandom {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:12
 	// creator:fdl
-	public static FunctionResult Bigcode_Random(String curChars, String index) {
+	public static FunctionResult Bigcode_Random(FunctionResult InPutResult, String index) {
 		FunctionResult Result = new FunctionResult();
 		
 		// to do something here!!!
