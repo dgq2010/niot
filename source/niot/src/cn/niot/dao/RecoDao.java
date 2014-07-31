@@ -18,6 +18,7 @@ import mypack.Iotid;
 import org.hibernate.Query;
 import org.hibernate.Transaction;
 
+import cn.niot.service.CreateIoTIDSample;
 import cn.niot.util.JdbcUtils;
 
 import cn.niot.util.*;
@@ -181,7 +182,7 @@ public class RecoDao {
 								idType);
 					}
 				}
-				hashMapTypeToRules.put(idType, rules);
+				hashMapTypeToRules.put(idType, rules);				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -189,6 +190,72 @@ public class RecoDao {
 			JdbcUtils.free(null, null, connection);
 		}
 		return hashMapTypeToRules;
+	}
+	
+	/* Function: read data relating to IoTIDs and their rules from table "iotidcode"
+	 * Input: 
+	 * @param type: a flag used to hint which database reading method is used.
+	 * Output:
+	 * @param HashMap<String, ArrayList<String>>: one data structure of HashMap with key of IoTID type and value of a group of rules
+	 *        relating to the key.
+	 * creator: Guangqing Deng
+	 * time: 2014年7月7日
+	 */
+	public String DBreadIoTIDTypesAndRules(HashMap<String, Integer> hashMapTypeSampleNumber, HashMap<String, String>hashMapTypeToLengthRule
+			, HashMap<String, ArrayList<String>>hashMapTypeToByteRule, HashMap<String, ArrayList<String>>hashMapTypeToFunctionRule) {		
+		Connection connection = JdbcUtils.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet results = null;
+		try {
+			stmt = connection.prepareStatement(RecoUtil.SELECT_TYPEANDRULES);
+			results = stmt.executeQuery();
+
+			while (results.next()) {
+				ArrayList<String> ByteRules = new ArrayList<String>();// 字节规则列表
+				ArrayList<String> FunctionRules = new ArrayList<String>();// 函数规则列表
+				String idType = results.getString("id");
+				String lengthRule = results.getString("length");
+				String byteRule = results.getString("byte");
+				String functionRules = results.getString("function");
+				
+				int Number = results.getInt("number");
+				hashMapTypeSampleNumber.put(idType, Number);
+				
+				// process the length rule
+				if (lengthRule.length() > 0) {
+					lengthRule = "IoTIDLength)(?#PARA=" + lengthRule + "){]";
+					hashMapTypeToLengthRule.put(idType, lengthRule);
+				}
+				
+				// process the byte rule
+				if (byteRule.length() > 0) {
+					String[] byteStrArray = byteRule.split(";");
+					int ByteLength = byteStrArray.length;
+					for (int i = 0; i < ByteLength; i++) {
+						byteStrArray[i] = "IoTIDByte)(?#PARA=" + byteStrArray[i] + "){]";
+						ByteRules.add(byteStrArray[i]);							
+					}
+					hashMapTypeToByteRule.put(idType, ByteRules);
+				}				
+				
+				// at last, process the function rule
+				if (functionRules.length() > 0) {
+					String[] splitFunctionRules = functionRules.split("\\(\\?\\#ALGNAME=");
+					int FunctionLength = splitFunctionRules.length;
+					for (int i = 0; i < FunctionLength; i++) {
+						if (splitFunctionRules[i].length() != 0) {
+							FunctionRules.add(splitFunctionRules[i]);						
+						}
+					}
+					hashMapTypeToFunctionRule.put(idType, FunctionRules);
+				}				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.free(null, null, connection);
+		}
+		return "OK";
 	}
 
 	private void hashMapTypeToRulesSwitchhashMapRuleToTypes(
@@ -2205,6 +2272,7 @@ public class RecoDao {
 
 	// 275-物流作业货物分类代码编制方法 查表数据库
 	public boolean getPortTariff275(String code) {
+		
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
@@ -2218,7 +2286,8 @@ public class RecoDao {
 			while (results.next()) {
 				rowcount++;
 			}
-			if (1 == rowcount) {
+
+			if (rowcount >= 1) {
 				ret = true;
 				//System.out.println("results=" + results.toString());
 			}

@@ -532,7 +532,7 @@ public class IDstrRecognition {
 			//System.out.println(testID + "  " + test);
 			
 			// just for test, added by dgq
-			if (test.equals("ISWCT0345246801")) {
+			if (test.equals("6959999699990")) {
 				i = 0;
 			}			
 			
