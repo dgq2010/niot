@@ -48,7 +48,7 @@ public class RecoUtil {
 	public static final String SELECT_tabaccoC = "select * from tabaccoC where code=?";
 
 	// 烟草机械物料 分类和编码第2部分：专用件 附录D中的单位编码(672)
-	public static final String SELECT_TABACCOMACHINEPRODUCER = "select * from tabaccomachineproducer where code=? limit 1";
+	public static final String SELECT_TABACCOMACHINEPRODUCER = "select * from tabaccomachineproducer where id=? limit 1";
 
 	// CID调用4位数字行政区号
 	public static final String SELECT_DISTRICTNO = "select * from districtno where code=?";
@@ -122,7 +122,7 @@ public class RecoUtil {
 	public static final String SELECT_GRAINSATTRIBUTE = "select * from grainsattribute where code=?";
 
 	// select the first 7 numbers of a phone number
-	public static final String SELECT_PHONENUMBER = "select * from phonenumber where code=?";
+	public static final String SELECT_PHONENUMBER = "select * from phonenumber where MobileNumber=?";
 
 	// select the first 2 characters of a normal vehicle NO
 	public static final String SELECT_NORMALVEHICLENO = "select * from vehiclenonormal where code=?";
@@ -287,7 +287,7 @@ public class RecoUtil {
 	public static final String SELECT_OFFICIALPOSITION = "select *from officialposition where code=?";
 
 	// CoastalAdminAreaId
-	public static final String SELECT_COASTALADMINAREAID = "select * from CoastalAdminAreaId where code=?";
+	public static final String SELECT_COASTALADMINAREAID = "select * from CoastalAdminAreaId where id=?";
 
 	// infectiousDieases code
 	public static final String SELECT_INFECTIOUSDISEASES = "select * from Infectiousdiseases where code=?";
@@ -557,7 +557,11 @@ public class RecoUtil {
 	public static final String ADD_ONE_TO_PRIORPROBABILITY22 = "UPDATE iotid_copy SET priorProbability22 = priorProbability22+1 WHERE id = ?";
 	public static final String ADD_ONE_TO_PRIORPROBABILITY23 = "UPDATE iotid_copy SET priorProbability23 = priorProbability23+1 WHERE id = ?";
 
+	//added by lly on 0903
+	public static final String SELECT_MEASUREUNIT="select * from measureunit where code=?";
 
+	//added by WB on 0915
+	public static final String SELECT_pharmaceuticalmachinery="select * from pharmaceuticalmachinery where code=?";
 	// 获得URL地址ַ
 	public static String getURLParam(String paramName) {
 		ActionContext ctx = ActionContext.getContext();
@@ -581,4 +585,6 @@ public class RecoUtil {
 		}
 		return newMap;
 	}
+	
+	
 }

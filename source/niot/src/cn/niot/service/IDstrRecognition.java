@@ -25,20 +25,22 @@ public class IDstrRecognition {
 										// "OFF"
 	static int line = 0;
 
-	static HashMap<String, Double> rmvRuleSet;
-	static HashMap<String, Double> rmvIDSet;
-	static HashMap<String, ArrayList<String>> hashMapTypeToRules;// 类型对应规则
-	static HashMap<String, ArrayList<String>> hashMapRuleToTypes;// 规则对应类型
+	static HashMap<String, Double> rmvRuleSet = new HashMap<String, Double>();// rmvRuleSet<规则名，权重>;
+	static HashMap<String, Double> rmvIDSet = new HashMap<String, Double>();// rmvIDSet<类型名，先验概率>;
+	static HashMap<String, ArrayList<String>> hashMapTypeToRules = new HashMap<String, ArrayList<String>>();// 类型对应规则
+	static HashMap<String, ArrayList<String>> hashMapRuleToTypes  = new HashMap<String, ArrayList<String>>();// 规则对应类型;
 
+	static HashMap<String, Double> rmvRuleSetTemp = new HashMap<String, Double>();// rmvRuleSet<规则名，权重>;
+	static HashMap<String, Double> rmvIDSetTemp = new HashMap<String, Double>();// rmvIDSet<类型名，先验概率>;
+	static HashMap<String, ArrayList<String>> hashMapTypeToRulesTemp = new HashMap<String, ArrayList<String>>();// 类型对应规则
+	static HashMap<String, ArrayList<String>> hashMapRuleToTypesTemp  = new HashMap<String, ArrayList<String>>();// 规则对应类型;
 	public static void readDao(int type) {
-		hashMapTypeToRules = new HashMap<String, ArrayList<String>>();// 类型对应规则
-		hashMapRuleToTypes = new HashMap<String, ArrayList<String>>();// 规则对应类型
-		rmvRuleSet = new HashMap<String, Double>();// rmvRuleSet<规则名，权重>
-		rmvIDSet = new HashMap<String, Double>();// rmvIDSet<类型名，先验概率>
 		RecoDao dao = RecoDao.getRecoDao();
 		if (type == 0) {
-			hashMapTypeToRules = dao.DBreadTypeAndRules(rmvRuleSet, rmvIDSet,
-					hashMapRuleToTypes);
+			if (0 == hashMapRuleToTypes.size()) {
+				hashMapTypeToRules = dao.DBreadTypeAndRules(rmvRuleSet, rmvIDSet,
+						hashMapRuleToTypes);
+			}	
 		} else {
 			hashMapTypeToRules = dao.HibernateDBreadTypeAndRules(rmvRuleSet,
 					rmvIDSet, hashMapRuleToTypes);
@@ -46,21 +48,19 @@ public class IDstrRecognition {
 	}
 
 	public static HashMap<String, Double> IoTIDRecognizeAlg(String s) {
-		// System.out.println(System.currentTimeMillis());
+		rmvRuleSetTemp = (HashMap<String, Double>)rmvRuleSet.clone();// rmvRuleSet<规则名，权重>;
+		rmvIDSetTemp = (HashMap<String, Double>)rmvIDSet.clone();// rmvIDSet<类型名，先验概率>;
+		hashMapTypeToRulesTemp = (HashMap<String, ArrayList<String>>)hashMapTypeToRules.clone();// 类型对应规则
+		hashMapRuleToTypesTemp  = (HashMap<String, ArrayList<String>>)hashMapRuleToTypes.clone();// 规则对应类型;
+		
 		HashMap<String, Double> typeProbability = new HashMap<String, Double>();
 
 		long timeDaoBegin = 0, timeDao = 0, timeSortRulesBegin = 0, timeSortRules = 0, timeMatchBegin = 0, timeMatch = 0, timeSubtractionBegin = 0, timeSubtraction = 0, timeUnionBegin = 0, timeUnion = 0;
 
-		// RecoDao dao = RecoDao.getRecoDao();
-		// if("ON"==DEBUG_TIME)timeDaoBegin=System.currentTimeMillis();
-		// hashMapTypeToRules = dao.HibernateDBreadTypeAndRules(rmvRuleSet,
-		// rmvIDSet,
-		// hashMapRuleToTypes);
-		// if("ON"==DEBUG_TIME)timeDao=System.currentTimeMillis()-timeDaoBegin;
 		ArrayList<String> rulesList;
 		sortRules(); //Temporarily moved by dgq, 2014-04-21
 		//*
-		while (rmvIDSet.size() != 0 && rmvRuleSet.size() != 0) {
+		while (rmvIDSetTemp.size() != 0 && rmvRuleSetTemp.size() != 0) {
 			if ("ON" == DEBUG_TIME) {
 				timeSortRulesBegin = System.currentTimeMillis();
 			}
@@ -81,16 +81,16 @@ public class IDstrRecognition {
 				timeMatchBegin = System.currentTimeMillis();
 			}
 			if (match(splitRules[0], splitParameter[0], s)) {
-				// intersection(rmvIDSet, hashMapRuleToTypes.get(maxRule));
+				// intersection(rmvIDSet, hashMapRuleToTypesTemp.get(maxRule));
 				if ("ON" == DEBUG_TIME) {
 					timeMatch += (System.currentTimeMillis() - timeMatchBegin);
 				}
 				if ("ON" == DEBUG) {
 					System.out.println("OK");
 				}
-				rmvRuleSet.remove(maxRule);
+				rmvRuleSetTemp.remove(maxRule);
 			} else {
-				subtraction(rmvIDSet, hashMapRuleToTypes.get(maxRule));
+				subtraction(rmvIDSetTemp, hashMapRuleToTypesTemp.get(maxRule));
 				union(maxRule);
 				if ("ON" == DEBUG_TIME) {
 					timeMatch += (System.currentTimeMillis() - timeMatchBegin);
@@ -104,7 +104,7 @@ public class IDstrRecognition {
 				}
 
 				if ("ON" == DEBUG_TIME) {
-					//subtraction(rmvIDSet, hashMapRuleToTypes.get(maxRule));
+					//subtraction(rmvIDSet, hashMapRuleToTypesTemp.get(maxRule));
 					timeSubtraction += (System.currentTimeMillis() - timeSubtractionBegin);
 				}
 				if ("ON" == DEBUG_TIME) {
@@ -116,53 +116,9 @@ public class IDstrRecognition {
 					timeUnion += (System.currentTimeMillis() - timeUnionBegin);
 					
 				}
-			}
+			}	
 
-		}
-		//*/
-		/*
-		while (rmvIDSet.size() != 0 && rmvRuleSet.size() != 0) {
-			if ("ON" == DEBUG_TIME)
-				timeSortRulesBegin = System.currentTimeMillis();			
-			if ("ON" == DEBUG_TIME)timeSortRules = System.currentTimeMillis() - timeSortRulesBegin;
-			String maxRule = getMax();//Temporarily moved by dgq, 2014-04-21
-			//String maxRule = getMax_dgq();// Temporarily added by dgq,
-											// 2014-04-21
-			String[] splitRules = maxRule.split("\\)\\(\\?\\#PARA=");// 提取规则名
-			String[] splitParameter = splitRules[1].split("\\)\\{\\]");// 提取参数
-			if ("ON" == DEBUG) {
-				System.out.print("matching " + splitRules[0] + "("
-						+ splitParameter[0] + ").");
-			}
-			if ("ON" == DEBUG_TIME)
-				timeMatchBegin = System.currentTimeMillis();
-			if (match(splitRules[0], splitParameter[0], s)) {
-				// intersection(rmvIDSet, hashMapRuleToTypes.get(maxRule));
-				if ("ON" == DEBUG_TIME)
-					timeMatch = System.currentTimeMillis() - timeMatchBegin;
-				if ("ON" == DEBUG) {
-					System.out.println("OK");
-				}
-			} else {
-				if ("ON" == DEBUG_TIME)
-					timeMatch = System.currentTimeMillis() - timeMatchBegin;
-				if ("ON" == DEBUG) {
-					System.out.println("ERR");
-				}
-				if ("ON" == DEBUG_TIME)
-					timeSubtractionBegin = System.currentTimeMillis();
-				subtraction(rmvIDSet, hashMapRuleToTypes.get(maxRule));
-				if ("ON" == DEBUG_TIME)
-					timeSubtraction = System.currentTimeMillis()
-							- timeSubtractionBegin;
-			}
-			if ("ON" == DEBUG_TIME)
-				timeUnionBegin = System.currentTimeMillis();
-			union(maxRule);
-			if ("ON" == DEBUG_TIME)
-				timeUnion = System.currentTimeMillis() - timeUnionBegin;
-		} 
-		*/
+		}		
 		if ("ON" == DEBUG_TIME)
 			System.out.println("读数据库用时：" + timeDao + ",SortRules用时："
 					+ timeSortRules + ",Match用时：" + timeMatch
@@ -176,7 +132,7 @@ public class IDstrRecognition {
 		}
 
 		double totalProbabity = 0;
-		if (rmvIDSet.size() == 0) {
+		if (rmvIDSetTemp.size() == 0) {
 			if ("ON" == DEBUG) {
 				System.out.println(s + " doesn't belong any Type.");
 			}
@@ -184,10 +140,10 @@ public class IDstrRecognition {
 			if ("ON" == DEBUG_RES) {
 				System.out.print(s + " belong to:");
 			}
-			Iterator<String> iterator = rmvIDSet.keySet().iterator();
+			Iterator<String> iterator = rmvIDSetTemp.keySet().iterator();
 			while (iterator.hasNext()) {
 				Object key = iterator.next();
-				totalProbabity = totalProbabity + rmvIDSet.get(key);
+				totalProbabity = totalProbabity + rmvIDSetTemp.get(key);
 				if ("ON" == DEBUG_RES) {
 					System.out.print("DEBUG_RES" + (String) key + " ");
 				}
@@ -200,7 +156,7 @@ public class IDstrRecognition {
 			line = line + 1;
 			System.out.println(line);
 		}
-		Iterator<String> iterator2 = rmvIDSet.keySet().iterator();
+		Iterator<String> iterator2 = rmvIDSetTemp.keySet().iterator();
 		Date today = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("HH");
 		String time = f.format(today);
@@ -208,18 +164,10 @@ public class IDstrRecognition {
 			Object key2 = iterator2.next();
 			double probability = 0;
 			if (totalProbabity != 0){
-				probability = rmvIDSet.get(key2) / totalProbabity;
+				probability = rmvIDSetTemp.get(key2) / totalProbabity;
 			}			
 			typeProbability.put(String.valueOf(key2), probability);
 		}
-		/*
-		 * // change the pri probabilty while (iterator2.hasNext()) { Object
-		 * key2 = iterator2.next(); double probability = rmvIDSet.get(key2) /
-		 * totalProbabity; typeProbability.put(String.valueOf(key2),
-		 * probability); RecoDao.add1ToPriorProbabilityX(Integer.parseInt(time),
-		 * String.valueOf(key2)); }
-		 */
-		// System.out.println(System.currentTimeMillis());
 		return typeProbability;
 	}
 
@@ -292,6 +240,7 @@ public class IDstrRecognition {
 			Class[] c = new Class[4];
 			Class ruleFunctionClass = Class
 					.forName("cn.niot.rule.RuleFunction");
+			//System.out.println("Rule:"+maxRule+"     "+"para"+parameter+"   "+input);
 
 			if (maxRule.equals("IoTIDByte")) {
 				argOther[0] = input;
@@ -360,16 +309,16 @@ public class IDstrRecognition {
 	// some comments added by dengguangqing, on 2014-04-21
 	// get the rule with the largest weight
 	private static String getMax() {
-		Set<String> keySet = rmvRuleSet.keySet();
+		Set<String> keySet = rmvRuleSetTemp.keySet();
 		Iterator ikey = keySet.iterator();
 		String maxName = (String) ikey.next();
 		String nextName = "";
-		double max = rmvRuleSet.get(maxName);
+		double max = rmvRuleSetTemp.get(maxName);
 		double next = 0;
 
 		while (ikey.hasNext()) {
 			nextName = (String) ikey.next();
-			next = rmvRuleSet.get(nextName);
+			next = rmvRuleSetTemp.get(nextName);
 			String[] functionHead=nextName.split("\\)\\(\\?\\#PARA=");
 			if(functionHead[0].equals("IoTIDLength")){
 				return nextName;
@@ -389,7 +338,7 @@ public class IDstrRecognition {
 	// some comments added by dengguangqing, on 2014-04-21
 	// get one rule randomly
 	private static String getMax_dgq() {
-		Set<String> keySet = rmvRuleSet.keySet();
+		Set<String> keySet = rmvRuleSetTemp.keySet();
 		Iterator ikey = keySet.iterator();
 		String nextName = "";
 
@@ -403,24 +352,24 @@ public class IDstrRecognition {
 	private static void sortRules() {
 		// TODO Auto-generated method stub
 		double p = 0.0;
-		Set<String> rulekeySet = rmvRuleSet.keySet();
+		Set<String> rulekeySet = rmvRuleSetTemp.keySet();
 		Iterator<String> ruleikey = rulekeySet.iterator();
 		while (ruleikey.hasNext()) {
 			p = 0.0;
 			String ruleName = (String) ruleikey.next();
-			Set<String> idkeySet = rmvIDSet.keySet();
+			Set<String> idkeySet = rmvIDSetTemp.keySet();
 			Iterator<String> idikey = idkeySet.iterator();
 			/*
 			 * while (idikey.hasNext()) { String idName = idikey.next(); if
-			 * (hashMapRuleToTypes.get(ruleName).indexOf(idName) >= 0 &&
+			 * (hashMapRuleToTypesTemp.get(ruleName).indexOf(idName) >= 0 &&
 			 * rmvIDSet.containsKey(idName)) { p = p + (double)
 			 * rmvIDSet.get(idName); } }
 			 */
-			ArrayList<String> IDs = hashMapRuleToTypes.get(ruleName);
+			ArrayList<String> IDs = hashMapRuleToTypesTemp.get(ruleName);
 			double sum_p = 0;
 			for (int i = 0; i < IDs.size(); i++) {
 				String s = IDs.get(i).toString();
-				double currentP = rmvIDSet.get(s);
+				double currentP = rmvIDSetTemp.get(s);
 				sum_p += currentP;
 
 			}
@@ -433,8 +382,8 @@ public class IDstrRecognition {
 				System.out.println("ERROR!  " + ruleName
 						+ " p is not in 1~0 range,error!");
 			}
-			// rmvRuleSet.put(ruleName, w(p));// p!=0 or 1
-			rmvRuleSet.put(ruleName, w(sum_p));// p!=0 or 1
+			// rmvRuleSetTemp.put(ruleName, w(p));// p!=0 or 1
+			rmvRuleSetTemp.put(ruleName, w(sum_p));// p!=0 or 1
 		}
 	}
 
@@ -446,38 +395,17 @@ public class IDstrRecognition {
 
 	// comments added by dengguangqing, 2014-04-21
 	// remove those IDs in rmvIDSet relating to the rule which fails in matching
-	private static void subtraction(HashMap<String, Double> rmvIDSet,
+	private static void subtraction(HashMap<String, Double> rmvIDSetTemp,
 			ArrayList<String> arrayList) {
-		Iterator<String> iterator = rmvIDSet.keySet().iterator();
+		Iterator<String> iterator = rmvIDSetTemp.keySet().iterator();
 
 		while (iterator.hasNext()) {
 			String temp = (String) iterator.next();
 
 			if (arrayList.indexOf(temp) >= 0) { // ��arrayList���ҵ���
-				// rmvIDSet.remove(temp);
+				// rmvIDSetTemp.remove(temp);
 				iterator.remove();
 			}
-		}
-	}
-
-	//
-	private static void intersection(HashMap<String, Double> rmvIDSet,
-			ArrayList<String> arrayList) {
-		Iterator<String> iterator = rmvIDSet.keySet().iterator();
-
-		ArrayList<String> delete_list = new ArrayList<String>();
-
-		while (iterator.hasNext()) {
-			String temp = (String) iterator.next(); 
-
-			if (arrayList.indexOf(temp) == -1) { 
-				// rmvIDSet.remove(temp); 
-				delete_list.add(temp);
-			}
-		}
-
-		for (String id_str : delete_list) {
-			rmvIDSet.remove(id_str);
 		}
 	}
 
@@ -485,7 +413,7 @@ public class IDstrRecognition {
 	// update rmvRuleSet according to new rmvIDSet and currently already matched
 	// rule
 	private static void union(String delRule) {
-		Iterator<String> iter = rmvIDSet.keySet().iterator();// IoT ID set
+		Iterator<String> iter = rmvIDSetTemp.keySet().iterator();// IoT ID set
 
 		//ArrayList<String> arrayList = new ArrayList<String>(); 
 		ArrayList<String> arrayList_Rules;
@@ -495,18 +423,14 @@ public class IDstrRecognition {
 			String ID_key = (String) iter.next();
 
 			arrayList_Rules = new ArrayList<String>();
-			arrayList_Rules = hashMapTypeToRules.get(ID_key);// obtain the rule
-																// set
-																// corresponding
-																// to the given
-																// IoT ID
+			arrayList_Rules = hashMapTypeToRulesTemp.get(ID_key);
 
 			for (String rule : arrayList_Rules) {
 				arrayList.add(rule);
 			}
 		}
 
-		Iterator<String> iterator = rmvRuleSet.keySet().iterator();
+		Iterator<String> iterator = rmvRuleSetTemp.keySet().iterator();
 
 		while (iterator.hasNext()) {
 			String Rule_key = iterator.next();
@@ -516,30 +440,44 @@ public class IDstrRecognition {
 				iterator.remove();
 			}
 		}
-		rmvRuleSet.remove(delRule);
+		rmvRuleSetTemp.remove(delRule);
 	}
 
 	public static void testAndTestID() throws IOException {
+		//rmvRuleSetTemp = (HashMap<String, Double>)rmvRuleSet.clone();// rmvRuleSet<规则名，权重>;
+		//rmvIDSetTemp = (HashMap<String, Double>)rmvIDSet.clone();// rmvIDSet<类型名，先验概率>;
+		hashMapTypeToRulesTemp = (HashMap<String, ArrayList<String>>)hashMapTypeToRules.clone();// 类型对应规则
+		//hashMapRuleToTypesTemp  = (HashMap<String, ArrayList<String>>)hashMapRuleToTypes.clone();// 规则对应类型;
 		long timeRuleMatchBegin = System.currentTimeMillis();
 		HashMap<String, String> testHashMap = new HashMap<String, String>();
 		testHashMap = RecoDao.test();
+			
+		//added by dengguangqing 20140826
+		//testHashMap.clear();
+		//testHashMap.put("GA/T_556.10-2007","贵公发152524996503");
+		
 		Iterator<String> iterator1 = testHashMap.keySet().iterator();
+		int i = 0;
+		int k = 0;
 		while (iterator1.hasNext()) {
 			timeRuleMatchBegin = System.currentTimeMillis();
 			Object testID = iterator1.next();
 			String test = testHashMap.get(testID);
-			int i = 0;
-			//System.out.println(testID + "  " + test);
+//					
+//			System.out.println(k);
+//			k = k + 1;
+//			System.out.println(hashMapTypeToRulesTemp.size());
+//			System.out.println(testID + "  " + test + "\n");		
 			
-			// just for test, added by dgq
-			if (test.equals("6959999699990")) {
-				i = 0;
-			}			
-			
-			ArrayList<String> s = hashMapTypeToRules.get(testID);
+			ArrayList<String> s = hashMapTypeToRulesTemp.get(testID);
+			if (s == null){
+				System.out.println("the iotid is not conlcuded!\n" + "the ID is: " + testID + "  "  + "the Instance is: "+ test + "\n");
+				continue;
+			}
 			String resFlag = "OK";
 			String res = "";
 			int size = s.size();
+			
 			for (i = 0; i < size; i++) {
 				String temp = s.get(i);
 				String[] splitRules = temp.split("\\)\\(\\?\\#PARA=");// 提取规则名
@@ -573,40 +511,7 @@ public class IDstrRecognition {
 				output1.append(testID.toString()+":  " + test);
 				output1.append("\n");
 				output1.flush();
-				output1.close();
-				
-				////////////////added by dgq, on 2014-05-06//////////////////////////////////////////////////////////////
-				/*
-				IDstrRecognition.readDao(0);
-				HashMap<String, Double> typeProbability = IDstrRecognition.IoTIDRecognizeAlg(test);
-				Iterator iterator_IDPro = typeProbability.keySet().iterator();
-				
-				//added by dgq, on 2014-05-06
-				File outfile1 = new File("e://Collision.txt");
-				BufferedWriter outputfiles1 = new BufferedWriter(new FileWriter(outfile1, true));
-				outputfiles1.append(testID.toString()+" <=> ");
-				outputfiles1.flush();
-				outputfiles1.close();
-				
-				while (iterator_IDPro.hasNext()) {
-					String key_IDstd = iterator_IDPro.next().toString();
-					
-					//added by dgq, on 2014-05-06
-					File file = new File("e://Collision.txt");
-					BufferedWriter outputfile = new BufferedWriter(new FileWriter(file, true));
-					outputfile.append(key_IDstd);
-					outputfile.append("{]");
-					outputfile.flush();
-					outputfile.close();
-				}
-				//added by dgq, on 2014-05-06
-				File outfile = new File("e://Collision.txt");
-				BufferedWriter outputfiles = new BufferedWriter(new FileWriter(outfile, true));
-				outputfiles.append("\n");
-				outputfiles.flush();
-				outputfiles.close();
-				*/
-				//////////////////////////////////////////////////////////////////////////////
+				output1.close();				
 			} else {
 				File f = new File("e://DebugResultERROR.txt");
 				BufferedWriter output = new BufferedWriter(new FileWriter(f,
@@ -633,5 +538,156 @@ public class IDstrRecognition {
 			output1.flush();
 			output1.close();
 		}
+		
 	}
+	
+	public static void testAndTestIDRandom() throws IOException {
+		// 复制类型-规则集
+		hashMapTypeToRulesTemp = (HashMap<String, ArrayList<String>>) hashMapTypeToRules
+				.clone();// 类型对应规则
+		//读入类型-samples表名
+		HashMap<String, String> typetoTablename = RecoDaoRandom
+				.TypetoTableName();
+		Iterator<String> iterator = typetoTablename.keySet().iterator();
+		//统计信息
+		int num_OK=0;
+		int num_ERR=0;
+        //打印进度信息
+		int count=0;
+		// 对每一个类型分别进行测试
+		while (iterator.hasNext()) {
+		//while (true) {
+			File f = new File("e://debug//DebugResultERROR.txt");
+			File f1 = new File("e://debug//DebugResultALL.txt");
+			File f3 = new File("e://debug//RightType.txt");
+			File f4 = new File("e://debug//WrongType.txt");
+			File f5 = new File("e://debug//RightTypeNum.txt");
+			
+			int OK_TYPE_NUM=0;
+			// 查询映射表，找到该类型的samples所保存的表
+			String type = iterator.next();
+			String tableName = typetoTablename.get(type);
+			//String type="GA/T_556.10-2007";
+			//String tableName="GAT556102007";
+
+			// 读入某一类型的所有随机样本
+			HashMap<Integer, String> Samples = new HashMap<Integer, String>();
+			Samples = RecoDaoRandom.testSamples(tableName);
+
+			String TYPEFLAG="OK";
+			// 对每一个样本进行测试
+			try{
+			Iterator<Integer> iterator1 = Samples.keySet().iterator();
+			ArrayList<String> rules = hashMapTypeToRulesTemp.get(type);
+			if (rules == null) {
+				System.out.println("the iotid is not conlcuded!\n"
+						+ "the ID is: " + type);
+			}
+			while (iterator1.hasNext()) {
+				
+				int index = iterator1.next();
+				String code = Samples.get(index);
+
+				String resFlag = "OK";
+				String res = "";
+				
+				int size = rules.size();
+
+				// 对这个类型的所有规则进行测试
+				for (int i = 0; i < size; i++) {
+					String temp = rules.get(i);
+					String[] splitRules = temp.split("\\)\\(\\?\\#PARA=");// 提取规则名
+					String[] splitParameter = splitRules[1].split("\\)\\{\\]");// 提取参数
+					if (!match(splitRules[0], splitParameter[0], code)) {
+						resFlag = "ERR";
+						TYPEFLAG="ERR";
+						res = res + "ERROR!  IoTID:" + type + "  InputIDstr:"
+								+ code + "  Function:" + splitRules[0]
+								+ "  FuncPara:" + splitParameter[0] + "\n";
+					}
+					
+				}
+				
+
+				// 写入详细错误信息
+				if (resFlag.equals("ERR")) {
+					num_ERR++;
+					BufferedWriter output = new BufferedWriter(new FileWriter(
+							f, true));
+					output.append(res);
+					output.append("\n");
+					output.flush();
+					output.close();
+				}
+				else
+				{
+					num_OK++;
+					OK_TYPE_NUM++;
+				}
+
+				BufferedWriter output1 = new BufferedWriter(new FileWriter(f1,
+						true));
+				output1.append(resFlag + "  " + code.toString() + ":  " + type);
+				output1.append("\n");
+				output1.flush();
+				output1.close();
+
+			}
+
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		//记录整个类型的情况
+		if(TYPEFLAG.equals("OK")){
+		BufferedWriter output3 = new BufferedWriter(new FileWriter(f3,
+				true));
+		output3.append(type);
+		output3.append("\n");
+		output3.flush();
+		output3.close();
+		
+		//记录这个类型正确的数量
+		BufferedWriter output5 = new BufferedWriter(new FileWriter(f5,
+				true));
+		output5.append(type+":"+"   "+OK_TYPE_NUM);
+		output5.append("\n");
+		output5.flush();
+		output5.close();
+		}
+		else
+		{
+			BufferedWriter output4 = new BufferedWriter(new FileWriter(f4,
+					true));
+			output4.append(type);
+			output4.append("\n");
+			output4.flush();
+			output4.close();
+		}
+		
+		System.out.println("Finished"+count+"   "+type);
+		count++;
+		Samples=null;
+		System.gc();
+		OK_TYPE_NUM=0;
+		//break;
+		
+		}
+		
+		
+		File f2 = new File("e://debug//statics.txt");
+		BufferedWriter output2 = new BufferedWriter(new FileWriter(
+				f2, true));
+		output2.append(String.valueOf(num_ERR));
+		output2.append("\n");
+		output2.append(String.valueOf(num_OK));
+		output2.append("\n");
+		output2.flush();
+		output2.close();
+		
+		
+		
+
+	}
+
 }

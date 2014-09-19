@@ -1,8 +1,11 @@
 package cn.niot.rule;
 
+
 import cn.niot.dao.RecoDao;
 import cn.niot.util.RecoUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
@@ -370,41 +373,41 @@ public class RuleFunction {
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes, 固定为2
-//	public static String Count(char[] IDstr, int LenID, int[] Index,
-//			int LenIndex) {
-//		try {
-//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
-//				return ERR;
-//			}
-//			if (LenIndex != 2) {
-//				return ERR;
-//			}
-//
-//			int index1 = Index[0];
-//			int index2 = Index[1];
-//
-//			if (IDstr[index1] == '1') {
-//				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '9')) {
-//					return OK;
-//				}
-//			}
-//
-//			if (IDstr[index1] == '2') {
-//				if ((IDstr[index2] >= '0') && (IDstr[index2] <= '3')) {
-//					return OK;
-//				}
-//			}
-//			if (IDstr[index1] == '9') {
-//				if (IDstr[index2] == '9') {
-//					return OK;
-//				}
-//			}
-//
-//			return ERR;
-//		} catch (Exception e) {
-//			return ERR;
-//		}
-//	}
+	// public static String Count(char[] IDstr, int LenID, int[] Index,
+	// int LenIndex) {
+	// try {
+	// if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+	// return ERR;
+	// }
+	// if (LenIndex != 2) {
+	// return ERR;
+	// }
+	//
+	// int index1 = Index[0];
+	// int index2 = Index[1];
+	//
+	// if (IDstr[index1] == '1') {
+	// if ((IDstr[index2] >= '0') && (IDstr[index2] <= '9')) {
+	// return OK;
+	// }
+	// }
+	//
+	// if (IDstr[index1] == '2') {
+	// if ((IDstr[index2] >= '0') && (IDstr[index2] <= '3')) {
+	// return OK;
+	// }
+	// }
+	// if (IDstr[index1] == '9') {
+	// if (IDstr[index2] == '9') {
+	// return OK;
+	// }
+	// }
+	//
+	// return ERR;
+	// } catch (Exception e) {
+	// return ERR;
+	// }
+	// }
 
 	// Function: Cigarette department or subordinate department code. There are
 	// totally 2 characters.
@@ -463,7 +466,8 @@ public class RuleFunction {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			id = id.concat(append);
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,id);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,
+					id);
 			if (ret) {
 				return OK;
 			} else
@@ -495,7 +499,8 @@ public class RuleFunction {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			id = id.concat(append);
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,id);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,
+					id);
 			if (ret) {
 				return OK;
 			} else
@@ -525,7 +530,8 @@ public class RuleFunction {
 			for (int i = 0; i < LenIndex; i++) {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,id);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,
+					id);
 			if (ret) {
 				return OK;
 			} else
@@ -586,8 +592,17 @@ public class RuleFunction {
 			if (!(LenIndex == 2 || LenIndex == 3)) {
 				return ERR;
 			}
+			//modified by SQ on 0911
+			if(Index[1]==-1)
+			{
+				for (int i = 0; i < LenID; i++) {
+					code = code.concat(String.valueOf(IDstr[i]));
+				}
+				
+			}else{
 			for (int i = 0; i < LenIndex; i++) {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
+			}
 			}
 
 			RecoDao recoDao = new RecoDao();
@@ -616,12 +631,15 @@ public class RuleFunction {
 			if (LenIndex != 5) {
 				return ERR;
 			}
-			String code = String.valueOf(IDstr[Index[0]])+String.valueOf(IDstr[Index[1]])
-			+ String.valueOf(IDstr[Index[2]])+String.valueOf(IDstr[Index[3]])
-			+ String.valueOf(IDstr[Index[4]]);
+			String code = String.valueOf(IDstr[Index[0]])
+					+ String.valueOf(IDstr[Index[1]])
+					+ String.valueOf(IDstr[Index[2]])
+					+ String.valueOf(IDstr[Index[3]])
+					+ String.valueOf(IDstr[Index[4]]);
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOMACHINEPRODUCT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOMACHINEPRODUCT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -713,7 +731,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DISTRICTNO,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DISTRICTNO,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -771,12 +790,15 @@ public class RuleFunction {
 			if (LenIndex != 5) {
 				return ERR;
 			}
-			String code = String.valueOf(IDstr[Index[0]])+String.valueOf(IDstr[Index[1]])
-					+ String.valueOf(IDstr[Index[2]])+String.valueOf(IDstr[Index[3]])
+			String code = String.valueOf(IDstr[Index[0]])
+					+ String.valueOf(IDstr[Index[1]])
+					+ String.valueOf(IDstr[Index[2]])
+					+ String.valueOf(IDstr[Index[3]])
 					+ String.valueOf(IDstr[Index[4]]);
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOSTANDARDPART,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOSTANDARDPART, code);
 			if (ret) {
 				return OK;
 			} else
@@ -802,12 +824,14 @@ public class RuleFunction {
 				return ERR;
 			}
 			String code = String.valueOf(IDstr[Index[0]])
-					+ String.valueOf(IDstr[Index[1]])+String.valueOf(IDstr[Index[2]])
+					+ String.valueOf(IDstr[Index[1]])
+					+ String.valueOf(IDstr[Index[2]])
 					+ String.valueOf(IDstr[Index[3]])
 					+ String.valueOf(IDstr[Index[4]]);
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOMATERIAL,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOMATERIAL, code);
 			if (ret) {
 				return OK;
 			} else
@@ -823,7 +847,9 @@ public class RuleFunction {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=16
 	// creator: zll
-	public static String IntFreitForwarding(char[] IDstr, int LenID,
+	//modifiedy by lly on 0901
+	
+	/*public static String IntFreitForwarding(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
 			String code = "";
@@ -855,7 +881,45 @@ public class RuleFunction {
 		} catch (Exception e) {
 			return ERR;
 		}
+	}*/
+	public static String IntFreitForwarding(char[] IDstr, int LenID,
+			int[] Index, int LenIndex) {
+		try {
+			String code = "";
+			//String regex = "[a-zA-Z][a-zA-Z0-9]{0,15}";
+			String regex = "[A-Z]*[0-9]*";
+			int prefix = 18;
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+			if (Index[0] != prefix) {
+				return ERR;
+			}
+			if(LenID>35||LenID<19){
+				return ERR;
+			}
+			// 最后一位为校验位
+			for (int i = Index[0]; i < LenID - 1; i++) {
+				code = code.concat(String.valueOf(IDstr[i]));
+			}
+			Pattern pa = Pattern.compile(regex);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+
+			int[] modIndex = new int[LenID];
+			for (int i = 0; i < LenID; i++) {
+				modIndex[i] = i;
+			}
+			String modRet = MOD112(IDstr, LenID, modIndex, LenID);
+			if (ret && modRet.equals(OK)) {
+				return OK;
+			} else
+				return ERR;
+		} catch (Exception e) {
+			return ERR;
+		}
 	}
+
 
 	// Function: 粮食信息分类与编码 财务会计分类与代码(15)
 	// IDstr: 标识编码
@@ -877,7 +941,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOORDACCOUNT,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOORDACCOUNT,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -907,7 +972,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINEQUIPMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINEQUIPMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -937,7 +1003,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINESTABLISHMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINESTABLISHMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -963,11 +1030,13 @@ public class RuleFunction {
 				return ERR;
 			}
 			String code = String.valueOf(IDstr[Index[0]])
-					+ String.valueOf(IDstr[Index[1]])+String.valueOf(IDstr[Index[2]])
+					+ String.valueOf(IDstr[Index[1]])
+					+ String.valueOf(IDstr[Index[2]])
 					+ String.valueOf(IDstr[Index[3]])
 					+ String.valueOf(IDstr[Index[4]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOELECTRICCOMPONENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOELECTRICCOMPONENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -1255,6 +1324,23 @@ public class RuleFunction {
 			int index2 = Index[1];
 			int index3 = Index[2];
 			int index4 = Index[3];
+
+			// added by dgq, on 2014-8-7
+			//modified by SQ,on 2014-9-11,2014-09-16
+			if (!(((IDstr[index1] >= '0') && (IDstr[index1] <= '9')) ||((IDstr[index1] >= 'A') && (IDstr[index1] <= 'Z')) || ((IDstr[index1] >= 'a') && (IDstr[index1] <= 'z')))) {
+				return "ERR";
+			}
+
+			if (!(((IDstr[index2] >= '0') && (IDstr[index2] <= '9')) ||((IDstr[index2] >= 'A') && (IDstr[index2] <= 'Z')) || ((IDstr[index2] >= 'a') && (IDstr[index2] <= 'z')))) {
+				return "ERR";
+			}
+			if (!(((IDstr[index3] >= '0') && (IDstr[index3] <= '9')) ||((IDstr[index3] >= 'A') && (IDstr[index3] <= 'Z')) || ((IDstr[index3] >= 'a') && (IDstr[index3] <= 'z')))) {
+				return "ERR";
+			}
+			if (!(((IDstr[index4] >= '0') && (IDstr[index4] <= '9')) ||((IDstr[index4] >= 'A') && (IDstr[index4] <= 'Z')) || ((IDstr[index4] >= 'a') && (IDstr[index4] <= 'z')))) {
+				return "ERR";
+			}
+
 			if (IDstr[index1] == 'E') {
 				if ((IDstr[index2] == '0') && (IDstr[index3] == '0')
 						&& (IDstr[index4] == '0')) {
@@ -1357,7 +1443,7 @@ public class RuleFunction {
 				return OK;
 			} else {
 				return ERR;
-			}		 
+			}
 		} catch (Exception e) {
 			return ERR;
 		}
@@ -1400,24 +1486,18 @@ public class RuleFunction {
 			// 判断 月份
 			int[] Index_month = { Index[4], Index[5] };
 
-			// if ((Month(IDstr, LenID, Index_month, Index_month.length)) ==
-			// ERR) { // 江峰
-			// // 实现的函数，判断是否是月份
-			// return ERR;
-			// }
 
 			// xjf 修改后
-			if (IDstr[Index[4]] != '*' && Index[5] != '*') {
-				if ((Month(IDstr, LenID, Index_month, Index_month.length)) == ERR) { // 江峰
+			//modified by sq
+			if (IDstr[Index[4]] != '*' && IDstr[Index[5]] != '*') {
+				if ((Month(IDstr, LenID, Index_month, Index_month.length)).equals(ERR)) { // 江峰
 					// 实现的函数，判断是否是月份
 					return ERR;
 				}
 			}
 
-			if (IDstr[Index[4]] != '*' && Index[5] == '*') {
-				if ((int) IDstr[Index[4]] - 48 != 0
-						|| (int) IDstr[Index[4]] - 48 != 1
-						|| (int) IDstr[Index[4]] - 48 != 2) {
+			if (IDstr[Index[4]] != '*' &&IDstr[Index[5]] == '*') {
+				if (IDstr[Index[4]]!= '0'&& IDstr[Index[4]]!= '1') {
 					return ERR;
 				}
 			}
@@ -1621,8 +1701,9 @@ public class RuleFunction {
 					HouseCode_CheckBasedFenzong(IDstr, LenID, Index, LenIndex),
 					HouseCode_CheckBasedFenfu(IDstr, LenID, Index, LenIndex) };
 
+			//modified by sq on 0905
 			for (int i = 0; i < result.length; i++) {
-				if (result[i] == OK) {
+				if (result[i].equals(OK)) {
 					return OK;
 				}
 			}
@@ -1922,87 +2003,121 @@ public class RuleFunction {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
+//	public static String InternationalSecurities(char[] IDstr, int LenID,
+//			int[] Index, int LenIndex) {
+//		try {
+//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//				return ERR;
+//			}
+//			int i = 0; // 用于判断16进制
+//			int j; // 用于数组的遍历
+//			int b = 0;
+//			char a;
+//			a = 'A';
+//			for (j = 0; j < LenIndex - 1; j++) {
+//				for (i = 0; i < 26; i++) {
+//					char c = (char) (a + i);
+//
+//					if ((int) IDstr[Index[j]] == c) {
+//						IDstr[Index[j]] = (char) (10 + i);
+//
+//					}
+//				}
+//				if (IDstr[Index[j]] > 47) {
+//					IDstr[Index[j]] = (char) (IDstr[Index[j]] - 48);
+//				}
+//				if ((int) IDstr[Index[j]] / 10 >= 1)
+//					b++;
+//			}
+//			b = b + LenIndex - 1;
+//			int[] nums = new int[b];
+//			int e = 0;
+//			e = b - 1;
+//			for (j = 0; j < LenIndex - 1; j++) {
+//				if ((int) IDstr[Index[LenIndex - j - 2]] / 10 < 1) {
+//					nums[e] = (int) IDstr[Index[LenIndex - j - 2]];
+//					e--;
+//				}
+//				if ((int) IDstr[Index[LenIndex - j - 2]] / 10 >= 1) {
+//					nums[e] = (int) (IDstr[Index[LenIndex - j - 2]] % 10);
+//					e--;
+//					nums[e] = (int) Math.floor((int) IDstr[Index[LenIndex - j
+//							- 2]] / 10);
+//					e--;
+//				}
+//			}
+//			int f; // 用于X2的数组遍历
+//			int sum = 0; // 用于接受校验码
+//			int check; // 用于校验码的值
+//			int bb = 0;
+//			int ff = 0;
+//			for (f = 0; f < b; f++) {
+//				if ((b - f) % 2 != 0) {
+//					nums[f] = nums[f] * 2;
+//					if (nums[f] * 2 > 9) {
+//						bb++;
+//					}
+//				}
+//			}
+//			ff = bb + b - 1;
+//			int[] numss = new int[ff + 1];
+//			for (f = 0; f < b; f++) {
+//				if (nums[f] < 10) {
+//					numss[ff] = nums[f];
+//					ff--;
+//				}
+//				if (nums[f] >= 10) {
+//					numss[ff] = (int) (nums[f] % 10);
+//					ff--;
+//					numss[ff] = (int) 1;
+//					ff--;
+//				}
+//
+//			}
+//			for (f = 0; f < bb + b; f++) {
+//				sum = sum + numss[f];
+//			}
+//			if (10 - sum % 10 == 10) {
+//				check = 0;
+//			} else {
+//				check = 10 - sum % 10;
+//			}
+//
+//			if (check == (int) IDstr[Index[LenIndex - 1]] - 48) {
+//				return OK;
+//			} else {
+//				return ERR;
+//			}
+//		} catch (Exception e) {
+//			return ERR;
+//		}
+//	}
+	
+	
+	// Function: 实现模10“隔位乘2”求和的校验
+	// 即A-Z换算成10进制的10-35，对新的10进制组成新的数组；对新数组的从右到左开始每一位乘以2或1的循环求和sum
+	// 校验位的值为 10-sum%10
+	// 注意：最后一位为校验位置！
+	// IDstr: ID string
+	// LenID: the number of characters in the ID string
+	// Index: the list of corresponding indexes regarding to this algorithm
+	// LenIndex: the number of indexes
+	// Creator: wangbin
 	public static String InternationalSecurities(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
 			}
-			int i = 0; // 用于判断16进制
-			int j; // 用于数组的遍历
-			int b = 0;
-			char a;
-			a = 'A';
-			for (j = 0; j < LenIndex - 1; j++) {
-				for (i = 0; i < 26; i++) {
-					char c = (char) (a + i);
-
-					if ((int) IDstr[Index[j]] == c) {
-						IDstr[Index[j]] = (char) (10 + i);
-
-					}
-				}
-				if (IDstr[Index[j]] > 47) {
-					IDstr[Index[j]] = (char) (IDstr[Index[j]] - 48);
-				}
-				if ((int) IDstr[Index[j]] / 10 >= 1)
-					b++;
+			StringBuffer sb = new StringBuffer();
+			//取出除最后一位以外的数据
+			for(int i = 0;i < LenID - 1 ;i++){
+				sb.append(IDstr[i] + "");
 			}
-			b = b + LenIndex - 1;
-			int[] nums = new int[b];
-			int e = 0;
-			e = b - 1;
-			for (j = 0; j < LenIndex - 1; j++) {
-				if ((int) IDstr[Index[LenIndex - j - 2]] / 10 < 1) {
-					nums[e] = (int) IDstr[Index[LenIndex - j - 2]];
-					e--;
-				}
-				if ((int) IDstr[Index[LenIndex - j - 2]] / 10 >= 1) {
-					nums[e] = (int) (IDstr[Index[LenIndex - j - 2]] % 10);
-					e--;
-					nums[e] = (int) Math.floor((int) IDstr[Index[LenIndex - j
-							- 2]] / 10);
-					e--;
-				}
-			}
-			int f; // 用于X2的数组遍历
-			int sum = 0; // 用于接受校验码
-			int check; // 用于校验码的值
-			int bb = 0;
-			int ff = 0;
-			for (f = 0; f < b; f++) {
-				if ((b - f) % 2 != 0) {
-					nums[f] = nums[f] * 2;
-					if (nums[f] * 2 > 9) {
-						bb++;
-					}
-				}
-			}
-			ff = bb + b - 1;
-			int[] numss = new int[ff + 1];
-			for (f = 0; f < b; f++) {
-				if (nums[f] < 10) {
-					numss[ff] = nums[f];
-					ff--;
-				}
-				if (nums[f] >= 10) {
-					numss[ff] = (int) (nums[f] % 10);
-					ff--;
-					numss[ff] = (int) 1;
-					ff--;
-				}
-
-			}
-			for (f = 0; f < bb + b; f++) {
-				sum = sum + numss[f];
-			}
-			if (10 - sum % 10 == 10) {
-				check = 0;
-			} else {
-				check = 10 - sum % 10;
-			}
-
-			if (check == (int) IDstr[Index[LenIndex - 1]] - 48) {
+			
+			int check = Luhn_verify_AtoZ(sb.toString());
+			//校验最后一位与计算的check值是否相等
+			if (check == Integer.parseInt(IDstr[LenID -1]+"")) {
 				return OK;
 			} else {
 				return ERR;
@@ -2011,6 +2126,49 @@ public class RuleFunction {
 			return ERR;
 		}
 	}
+	//算法校验
+	public static int Luhn_verify_AtoZ(String str) {
+		StringBuffer sb = new StringBuffer();
+		
+		//根据规则，有字母的话是从第一位开始隔位*2，没有字母是从第二位算起隔位*2
+		int sign = 1;
+		// 首先将str中的A-Z转换为10-35，sign用来判断是否有字母，有字母的话，sign=2，%2==0,从第一位开始进行*2运算
+		//没有字母的话sign=1，从第二位开始进行*2运算
+		//依据标准GB/T_15694.1-1995 与 GB/T_21076-2007
+		for (char c : str.toCharArray()) {
+			if (c >= 65) {
+				sb.append(c - 55 + "");
+				sign = 2;
+			} else {
+				sb.append(c + "");
+			}
+		}
+		str = sb.toString();
+		//System.out.println("(转换A-Z后)的字符串为： " + str);
+		sb = new StringBuffer();
+		// 第一步，每隔一位 此位数*2
+		int str_length  = str.length();
+		for (int i = 0; i < str_length; i++) {
+			// *2变为字符串放入sb中
+			if (sign % 2 == 0) {
+				sb.append(Integer.parseInt(str.charAt(i) + "") * 2 + "");
+			} else {
+				sb.append(str.charAt(i) + "");
+			}
+		}
+		// 第二步，每一位相加
+		int verify = 0;
+		for (char c : sb.toString().toCharArray()) {
+			verify += Integer.parseInt(c + "");
+		}
+		//System.out.println("######verify" + verify);
+		// 第三步,整数向上取整
+		int verify_2 = (int) (Math.ceil((double) verify / 10) * 10);
+		//System.out.println("######verify_2:" + verify_2);
+		return verify_2 - verify;
+	}
+
+	
 
 	// Function: ISO 7064:1983.MOD 11-2校验算法 实现 C=11-MOD(∑Ci×Wi,11)
 	// 其中MOD－表示求余函数；i－表示代码字符从左至右位置序号；Ci－表示第i位置上的代码字符的值；Wi－表示第i位置上的加权因子，
@@ -2136,6 +2294,8 @@ public class RuleFunction {
 			return ERR;
 		}
 	}
+	
+
 
 	// Function: 实现校验
 	// 即数组奇数位乘以1与偶数位乘以2的和sum
@@ -2203,6 +2363,7 @@ public class RuleFunction {
 			return ERR;
 		}
 	}
+	
 
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
@@ -2398,6 +2559,11 @@ public class RuleFunction {
 			if (LenIndex != 1) {
 				return ERR;
 			}
+
+			if (IDstr[1] < '0' || IDstr[1] > '9') {
+				return ERR;
+			}
+
 			if (IDstr[1] == '9') {
 				if (!(IDstr[Index[0]] == '0' || IDstr[Index[0]] == '1' || IDstr[Index[0]] == '2')) {
 					return ERR;
@@ -2425,10 +2591,12 @@ public class RuleFunction {
 				return ERR;
 			}
 			String code = String.valueOf(IDstr[Index[0]])
-					+ String.valueOf(IDstr[Index[1]])+String.valueOf(IDstr[Index[2]])
+					+ String.valueOf(IDstr[Index[1]])
+					+ String.valueOf(IDstr[Index[2]])
 					+ String.valueOf(IDstr[Index[3]]);
 			RecoDao dao = new RecoDao();
-			boolean ret = dao.publicFunction(RecoUtil.SELECT_TABACCOMATERIALS,code);
+			boolean ret = dao.publicFunction(RecoUtil.SELECT_TABACCOMATERIALS,
+					code);
 			if (ret) {
 				return OK;
 			} else {
@@ -2698,20 +2866,21 @@ public class RuleFunction {
 			}
 			if (IDstr[Index[0]] == '1') {
 				boolean ret = recoDao.publicFunction(
-						RecoUtil.SELECT_FUNERALSERVICE,id);
+						RecoUtil.SELECT_FUNERALSERVICE, id);
 				if (ret) {
 					return OK;
 				} else
 					return ERR;
 			} else if (IDstr[Index[0]] == '2') {
 				boolean ret = recoDao.publicFunction(
-						RecoUtil.SELECT_FUNERALFACILITIES,id);
+						RecoUtil.SELECT_FUNERALFACILITIES, id);
 				if (ret) {
 					return OK;
 				} else
 					return ERR;
 			} else if (IDstr[Index[0]] == '3') {
-				boolean ret = recoDao.publicFunction(RecoUtil.SELECT_SUPPLIES,id);
+				boolean ret = recoDao.publicFunction(RecoUtil.SELECT_SUPPLIES,
+						id);
 				if (ret) {
 					return OK;
 				} else
@@ -2883,7 +3052,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF395,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF395,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -2989,7 +3159,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_tabaccoC,code);
+			boolean ret = recoDao
+					.publicFunction(RecoUtil.SELECT_tabaccoC, code);
 			if (ret) {
 				return OK;
 			} else
@@ -3450,38 +3621,38 @@ public class RuleFunction {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:方丹丽
-//	public static String Mod36_37(char[] IDstr, int LenID, int[] Index,
-//			int LenIndex) {
-//		try {
-//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
-//				return ERR;
-//			}
-//			if (LenIndex != 15) {
-//				return ERR;
-//			}
-//			int[] a = new int[15];
-//			for (int i = 0; i < 15; i++) {
-//				a[14 - i] = IDstr[i] - 48;
-//			}
-//			int[] p = new int[15];
-//			int[] s = new int[15];
-//			int r = 2;
-//			p[0] = 0;
-//
-//			for (int i = 0; i < 14; i++) {
-//				s[i] = p[i] + a[14 - i];
-//				p[i + 1] = s[i] * r;
-//			}
-//
-//			if ((p[14] + a[0]) % 36 == 1 || (p[14] + a[0]) % 37 == 1) {
-//				return OK;
-//			}
-//			return ERR;
-//
-//		} catch (Exception e) {
-//			return ERR;
-//		}
-//	}
+	// public static String Mod36_37(char[] IDstr, int LenID, int[] Index,
+	// int LenIndex) {
+	// try {
+	// if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+	// return ERR;
+	// }
+	// if (LenIndex != 15) {
+	// return ERR;
+	// }
+	// int[] a = new int[15];
+	// for (int i = 0; i < 15; i++) {
+	// a[14 - i] = IDstr[i] - 48;
+	// }
+	// int[] p = new int[15];
+	// int[] s = new int[15];
+	// int r = 2;
+	// p[0] = 0;
+	//
+	// for (int i = 0; i < 14; i++) {
+	// s[i] = p[i] + a[14 - i];
+	// p[i + 1] = s[i] * r;
+	// }
+	//
+	// if ((p[14] + a[0]) % 36 == 1 || (p[14] + a[0]) % 37 == 1) {
+	// return OK;
+	// }
+	// return ERR;
+	//
+	// } catch (Exception e) {
+	// return ERR;
+	// }
+	// }
 
 	// Function: 实现校验6位数物流编码
 	// IDstr: ID string
@@ -3506,7 +3677,12 @@ public class RuleFunction {
 			}
 			sum = 5 * a[1] + 4 * a[2] + 3 * a[3] + 2 * a[4];
 
-			if (sum % 11 == a[5]) {
+			int res = sum % 11;
+			if (10 == res) {
+				if (0 == a[5]) {
+					return OK;
+				}
+			} else if (res == a[5]) {
 				return OK;
 			}
 
@@ -3537,7 +3713,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF268,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF268,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -3567,7 +3744,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF270,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF270,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -3597,7 +3775,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF275,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF275,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -3627,7 +3806,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF276,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF276,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -3657,7 +3837,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa281,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa281, code);
 			if (ret) {
 				return OK;
 			} else
@@ -4663,6 +4844,7 @@ public class RuleFunction {
 	// LenIndex: the number of indexes
 	// LenIndex: the number of indexes that must be 4
 	// creator: xjf
+	//modified by lly on 0915
 	public static String Fireexpert(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		try {
@@ -4677,7 +4859,7 @@ public class RuleFunction {
 			int i3 = (int) IDstr[Index[2]] - 48;
 			int i4 = (int) IDstr[Index[3]] - 48;
 			int i = 1000 * i1 + 100 * i2 + 10 * i3 + i4;
-			int ii = 10 * i1 + i2;
+			int i01=10*i1+i2;
 			if (i >= 100 && i <= 107) {
 				return OK;
 			}
@@ -4693,14 +4875,18 @@ public class RuleFunction {
 			if (i >= 499 && i <= 500 || i == 9900) {
 				return OK;
 			}
-			if (ii >= 6 && ii <= 18) {
-				return OK;
-			}
+            if(i01>=10 && i01<=18 && i3==0 && i4==0){
+            	return OK;
+            }
+            if(i2>=6 && i2<=9 && i1==0 && i3==0 && i4==0){
+            	return OK;
+            }
 			return ERR;
 		} catch (Exception e) {
 			return ERR;
 		}
 	}
+
 
 	// Function: 453
 	// LenID: the number of characters in the ID string
@@ -5636,7 +5822,9 @@ public class RuleFunction {
 				p = (s * 2) % 37;
 			}
 			int mod;
-			mod = 37 - (p % 36); 
+			//mod = 37 - (p % 36);
+			mod = (37 - p) % 36;
+			
 			String numLetter = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			char checkDigit = numLetter.charAt(mod);
 			if (checkDigit == IDstr[Index[LenIndex - 1]]) {
@@ -5844,16 +6032,31 @@ public class RuleFunction {
 					IDstr[Index[i]] = (char) (IDstr[Index[i]] - 48);
 				}
 				j = i + 1;
+				
+//				if (j < 8) {
+//					sum1 = (9 - j) * (int) IDstr[Index[i]];
+//				}
+//				if (j == 8) {
+//					sum1 = 10 * (int) IDstr[Index[i]];
+//				}
+//				//modified by liu liying from "j > 9" to "j >=9"
+//				//if (j > 9) {
+//				if (j >= 9) {
+//					sum1 = (19 - j) * (int) IDstr[Index[i]];
+//				}
+//				sum = sum1 + sum;
+				
 				if (j < 8) {
 					sum1 = (9 - j) * (int) IDstr[Index[i]];
 				}
 				if (j == 8) {
 					sum1 = 10 * (int) IDstr[Index[i]];
 				}
-				if (j > 9) {
-					sum1 = (19 - j) * (int) IDstr[Index[i]];
+				if (j >=9) {
+					sum1 = (18 - j) * (int) IDstr[Index[i]];
 				}
 				sum = sum1 + sum;
+
 			}
 			int mod = sum % 11;
 			char check;
@@ -6395,56 +6598,124 @@ public class RuleFunction {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰664
+//	public static String Check4BitBarCode(char[] IDstr, int LenID, int[] Index,
+//			int LenIndex) {
+//		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//			return ERR;
+//		}
+//		int i;
+//		int[] newIDstr = new int[LenIndex];
+//		for (i = 0; i < LenIndex; i++) {
+//			newIDstr[i] = (int) (IDstr[Index[i]] - 48);
+//		}
+//		// 用于2-的第一位
+//		int a = newIDstr[1];
+//		int b = 0; // 用于接受加权值ֵ
+//		if (a * 2 < 10) {
+//			b = a * 2;
+//		} else if (a * 2 > 9) {
+//			b = (a * 2 - 1) % 10;
+//		}
+//		// 用于2-的第二位
+//		int a2 = newIDstr[2];
+//		int b2 = 0; // 用于接受加权值
+//		if (a2 * 2 < 10) {
+//			b2 = a2 * 2;
+//		} else if (a2 * 2 > 9) {
+//			b2 = (a2 * 2 - 1) % 10;
+//		}
+//		// 用于3的第三位
+//		int a3 = newIDstr[3];
+//		int b3 = 0; // 用于接受加权值
+//		if (a3 * 3 < 10) {
+//			b3 = a3 * 3;
+//		} else if (a3 * 3 > 9) {
+//			b3 = (a3 * 3) % 10;
+//		}
+//		// 用于5-的第四位
+//		int a4 = newIDstr[4];
+//		int b4 = 0; // 用于接受加权值
+//		if (a4 * 5 < 10) {
+//			b4 = a4 * 5;
+//		} else if (a4 * 5 > 9) {
+//			b4 = ((a4 * 5) - (int) Math.floor((a4 * 5) / 10)) % 10;
+//		}
+//		int check;
+//		check = ((b + b2 + b3 + b4) * 3) % 10;
+//		if (check == newIDstr[0]) {
+//			return OK;
+//		} else {
+//			return ERR;
+//		}
+//	}
+	
+	// Function: 校检位
+	// 注意：第一位为校验位
+	// IDstr: ID string
+	// LenID: the number of characters in the ID string
+	// Index: the list of corresponding indexes regarding to this algorithm
+	// LenIndex: the number of indexes 固定长2
+	// Creator:wangbin
+	/*
 	public static String Check4BitBarCode(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
 		}
-		int i;
-		int[] newIDstr = new int[LenIndex];
-		for (i = 0; i < LenIndex; i++) {
-			newIDstr[i] = (int) (IDstr[Index[i]] - 48);
+		StringBuffer sb = new StringBuffer();
+		for(int i = 1;i < LenID;i++){
+			sb.append(IDstr[i] + "");
 		}
-		// 用于2-的第一位
-		int a = newIDstr[1];
-		int b = 0; // 用于接受加权值ֵ
-		if (a * 2 < 10) {
-			b = a * 2;
-		} else if (a * 2 > 9) {
-			b = (a * 2 - 1) % 10;
+		int check = Check4BitBarCode(sb.toString());
+		if (check == Integer.parseInt(IDstr[0] + "")) {
+			return OK;
+		} else {
+			return ERR;
 		}
-		// 用于2-的第二位
-		int a2 = newIDstr[2];
-		int b2 = 0; // 用于接受加权值
-		if (a2 * 2 < 10) {
-			b2 = a2 * 2;
-		} else if (a2 * 2 > 9) {
-			b2 = (a2 * 2 - 1) % 10;
+	}*/
+	//modified by wangbin on 0901
+	public static String Check4BitBarCode(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+			return ERR;
 		}
-		// 用于3的第三位
-		int a3 = newIDstr[3];
-		int b3 = 0; // 用于接受加权值
-		if (a3 * 3 < 10) {
-			b3 = a3 * 3;
-		} else if (a3 * 3 > 9) {
-			b3 = (a3 * 3) % 10;
+		StringBuffer sb = new StringBuffer();
+
+		for (int i = 1; i < LenIndex; i++) {
+			sb.append(IDstr[Index[i]] + "");
 		}
-		// 用于5-的第四位
-		int a4 = newIDstr[4];
-		int b4 = 0; // 用于接受加权值
-		if (a4 * 5 < 10) {
-			b4 = a4 * 5;
-		} else if (a4 * 5 > 9) {
-			b4 = ((a4 * 5) - (int) Math.floor((a4 * 5) / 10)) % 10;
-		}
-		int check;
-		check = ((b + b2 + b3 + b4) * 3) % 10;
-		if (check == newIDstr[0]) {
+		int check = Check4BitBarCode(sb.toString());
+		if (check == Integer.parseInt(IDstr[Index[0]] + "")) {
 			return OK;
 		} else {
 			return ERR;
 		}
 	}
+
+	public static int Check4BitBarCode(String str){
+		//2-
+		String []ss_1 = {"0","2","4","6","8","9","1","3","5","7"};
+		//3
+		String []ss_2 = {"0","3","6","9","2","5","8","1","4","7"};
+		//5-
+		String []ss_3 = {"0","5","9","4","8","3","7","2","6","1"};
+		//加权因子计算
+		char cs [] = str.toCharArray();
+		StringBuffer sb = new StringBuffer();
+		sb.append(ss_1[Integer.parseInt(cs[0] + "")]);
+		sb.append(ss_1[Integer.parseInt(cs[1] + "")]);
+		sb.append(ss_2[Integer.parseInt(cs[2] + "")]);
+		sb.append(ss_3[Integer.parseInt(cs[3] + "")]);
+		//每位相加
+		int sign = 0;
+		for(char c :sb.toString().toCharArray()){
+			sign += Integer.parseInt(c+"");
+		}
+		//乘3去个位数
+		String str2 = sign*3+"";
+		return Integer.parseInt(str2.charAt(str2.length()-1)+"");
+	}
+
 
 	// Function: 校检位
 	// IDstr: ID string
@@ -6452,120 +6723,199 @@ public class RuleFunction {
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes 固定长2
 	// Creator:许江峰664
+//	public static String Check5BitBarCode(char[] IDstr, int LenID, int[] Index,
+//			int LenIndex) {
+//		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//			return ERR;
+//		}
+//		int i;
+//		int[] newIDstr = new int[LenIndex];
+//		for (i = 0; i < LenIndex; i++) {
+//			newIDstr[i] = (int) (IDstr[Index[i]] - 48);
+//		}
+//		// 用于2-的第五位
+//		int a = newIDstr[5];
+//		int b = 0; // 用于接受加权值
+//		if (a * 2 < 10) {
+//			b = a * 2;
+//		} else if (a * 2 > 9) {
+//			b = (a * 2 - 1) % 10;
+//		}
+//		// 用于2-的第二位
+//		int a2 = newIDstr[2];
+//		int b2 = 0; // 用于接受加权值
+//		if (a2 * 2 < 10) {
+//			b2 = a2 * 2;
+//		} else if (a2 * 2 > 9) {
+//			b2 = (a2 * 2 - 1) % 10;
+//		}
+//		// 用于5+的第一位
+//		int a1 = newIDstr[1];
+//		int b1 = 0; // 用于接受加权值
+//		if (a1 * 5 < 10) {
+//			b1 = a1 * 5;
+//		} else if (a1 * 5 > 9) {
+//			b1 = ((a1 * 5) + (int) Math.floor((a1 * 5) / 10)) % 10;
+//		}
+//		// 用于5+的第四位
+//		int a3 = newIDstr[4];
+//		int b3 = 0; // 用于接受加权值
+//		if (a3 * 5 < 10) {
+//			b3 = a3 * 5;
+//		} else if (a3 * 5 > 9) {
+//			b3 = ((a3 * 5) + (int) Math.floor((a3 * 5) / 10)) % 10;
+//		}
+//		// 用于5-的第三位
+//		int a4 = newIDstr[3];
+//		int b4 = 0; // 用于接受加权值
+//		if (a4 * 5 < 10) {
+//			b4 = a4 * 5;
+//		} else if (a4 * 5 > 9) {
+//			b4 = ((a4 * 5) - (int) Math.floor((a4 * 5) / 10)) % 10;
+//		}
+//		int check;
+//		check = 10 - (((b + b2 + b3 + b4 + b1)) % 10);
+//		// 用于5-的校检位
+//		int a0 = newIDstr[0];
+//		int b0 = 0; // 用于接受加权值
+//		if (a0 * 5 < 10) {
+//			b0 = a0 * 5;
+//		} else if (a0 * 5 > 9) {
+//			b0 = ((a0 * 5) - (int) Math.floor((a0 * 5) / 10)) % 10;
+//		}
+//		if (check == b0) {
+//			return OK;
+//		} else {
+//			return ERR;
+//		}
+//	}
+	
+	// Function: 校检位
+	// 注意：第一位是校验位，比如6,7,8,9,10,11 第6位为校验位
+	// IDstr: ID string
+	// LenID: the number of characters in the ID string
+	// Index: the list of corresponding indexes regarding to this algorithm
+	// LenIndex: the number of indexes 固定长2
+	// Creator:wangbin
+	/*public static String Check5BitBarCode(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+			return ERR;
+		}
+		StringBuffer sb = new StringBuffer();
+		for(int i = 1;i < LenID ;i++){
+			sb.append(IDstr[i] + "");
+		}
+		int check = Check5BitBarCode(sb.toString());
+		if (check == Integer.parseInt(IDstr[0] + "")) {
+			return OK;
+		} else {
+			return ERR;
+		}
+	}*/
+	//modified by wangbin on 0901
 	public static String Check5BitBarCode(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
 		}
-		int i;
-		int[] newIDstr = new int[LenIndex];
-		for (i = 0; i < LenIndex; i++) {
-			newIDstr[i] = (int) (IDstr[Index[i]] - 48);
+		StringBuffer sb = new StringBuffer();
+		for(int i = 1;i < LenIndex ;i++){
+			sb.append(IDstr[Index[i]] + "");
 		}
-		// 用于2-的第五位
-		int a = newIDstr[5];
-		int b = 0; // 用于接受加权值
-		if (a * 2 < 10) {
-			b = a * 2;
-		} else if (a * 2 > 9) {
-			b = (a * 2 - 1) % 10;
-		}
-		// 用于2-的第二位
-		int a2 = newIDstr[2];
-		int b2 = 0; // 用于接受加权值
-		if (a2 * 2 < 10) {
-			b2 = a2 * 2;
-		} else if (a2 * 2 > 9) {
-			b2 = (a2 * 2 - 1) % 10;
-		}
-		// 用于5+的第一位
-		int a1 = newIDstr[1];
-		int b1 = 0; // 用于接受加权值
-		if (a1 * 5 < 10) {
-			b1 = a1 * 5;
-		} else if (a1 * 5 > 9) {
-			b1 = ((a1 * 5) + (int) Math.floor((a1 * 5) / 10)) % 10;
-		}
-		// 用于5+的第四位
-		int a3 = newIDstr[4];
-		int b3 = 0; // 用于接受加权值
-		if (a3 * 5 < 10) {
-			b3 = a3 * 5;
-		} else if (a3 * 5 > 9) {
-			b3 = ((a3 * 5) + (int) Math.floor((a3 * 5) / 10)) % 10;
-		}
-		// 用于5-的第三位
-		int a4 = newIDstr[3];
-		int b4 = 0; // 用于接受加权值
-		if (a4 * 5 < 10) {
-			b4 = a4 * 5;
-		} else if (a4 * 5 > 9) {
-			b4 = ((a4 * 5) - (int) Math.floor((a4 * 5) / 10)) % 10;
-		}
-		int check;
-		check = 10 - (((b + b2 + b3 + b4 + b1)) % 10);
-		// 用于5-的校检位
-		int a0 = newIDstr[0];
-		int b0 = 0; // 用于接受加权值
-		if (a0 * 5 < 10) {
-			b0 = a0 * 5;
-		} else if (a0 * 5 > 9) {
-			b0 = ((a0 * 5) - (int) Math.floor((a0 * 5) / 10)) % 10;
-		}
-		if (check == b0) {
+		int check = Check5BitBarCode(sb.toString());
+		if (check == Integer.parseInt(IDstr[Index[0]] + "")) {
 			return OK;
 		} else {
 			return ERR;
 		}
 	}
+
+	public static int Check5BitBarCode(String str){
+		//2-
+		String []ss_1 = {"0","2","4","6","8","9","1","3","5","7"};
+		//3
+		String []ss_2 = {"0","3","6","9","2","5","8","1","4","7"};
+		//5-
+		String []ss_3 = {"0","5","9","4","8","3","7","2","6","1"};
+		//5+
+		String []ss_4 = {"0","5","1","6","2","7","3","8","4","9"};
+		//加权因子计算
+		char cs [] = str.toCharArray();
+		StringBuffer sb = new StringBuffer();
+		sb.append(ss_4[Integer.parseInt(cs[0] + "")]);
+		sb.append(ss_1[Integer.parseInt(cs[1] + "")]);
+		sb.append(ss_3[Integer.parseInt(cs[2] + "")]);
+		sb.append(ss_4[Integer.parseInt(cs[3] + "")]);
+		sb.append(ss_1[Integer.parseInt(cs[4] + "")]);
+		//每位相加
+		int verify = 0;
+		for(char c :sb.toString().toCharArray()){
+			verify += Integer.parseInt(c+"");
+		}
+		//整数向上取整
 	
+		//第三步,整数向上取整
+		int verify_2 = (int) (Math.ceil((double)verify/10 )*10);
+		//System.out.println("######verify_2:" + verify_2);
+		return verify_2 - verify;
+	}
+
+
 	// Function:681
 	// IDstr: ID string
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
 	// LenIndex: the number of indexes
 	// Creator:许江峰
+	//modified by WB on 0917
 	public static String FlavorSubstance(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		try {
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				//System.out.println("程序初步检验错误！");
 				return ERR;
 			}
 
 			if (LenID == 4) {
-				int i = ((int) IDstr[Index[1]] - 48) * 100
-						+ ((int) IDstr[Index[2]] - 48) * 10
-						+ ((int) IDstr[Index[3]] - 48);
-				if ((int) IDstr[Index[0]] == 'N') {
+				int i = ((int) IDstr[1] - 48) * 100
+						+ ((int) IDstr[2] - 48) * 10
+						+ ((int) IDstr[3] - 48);
+				if ((int) IDstr[0] == 'N') {
 					if (i > 0 && i < 378) {
 						return OK;
 					}
 				} else {
+					//System.out.println("不符合i > 0 && i < 378");
 					return ERR;
 				}
 			} else if (LenID == 5) {
-				int j = ((int) IDstr[Index[1]] - 48) * 1000
-						+ ((int) IDstr[Index[2]] - 48) * 100
-						+ ((int) IDstr[Index[3]] - 48) * 10
-						+ ((int) IDstr[Index[4]] - 48);
+				int j = ((int) IDstr[1] - 48) * 1000
+						+ ((int) IDstr[2] - 48) * 100
+						+ ((int) IDstr[3] - 48) * 10
+						+ ((int) IDstr[4] - 48);
 
-				if ((int) IDstr[Index[0]] == 'I') {
+				if ((int) IDstr[0] == 'I') {
 					if (j > 1000 && j < 2087) {
 						return OK;
 					}
-				} else if ((int) IDstr[Index[0]] == 'A') {
+				} else if ((int) IDstr[0] == 'A') {
 					if (j > 3000 && j < 3212) {
 						return OK;
 					}
 				} else {
+					//System.out.println("不符合(j > 3000 && j < 3212)");
 					return ERR;
 				}
 			}
 		} catch (Exception e) {
+			//System.out.println("程序异常！");
+			e.printStackTrace();
 			return ERR;
 		}
 		return ERR;
 	}
+
 
 	// Function: 757 表59 值 10 11 12 20
 	// LenID: the number of characters in the ID string
@@ -6945,6 +7295,26 @@ public class RuleFunction {
 		int index1 = (int) IDstr[Index[0]] - 48;
 		int index2 = (int) IDstr[Index[1]] - 48;
 		int Xx = 13;
+		int i = 10 * index1 + index2;
+		if (i >= 01 && i <= Xx) {
+			return OK;
+		} else
+			return ERR;
+
+	}
+	
+	//added by SQ
+	public static String OneTO15No99(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+			return ERR;
+		}
+		if (LenIndex != 2) {
+			return ERR;
+		}
+		int index1 = (int) IDstr[Index[0]] - 48;
+		int index2 = (int) IDstr[Index[1]] - 48;
+		int Xx = 15;
 		int i = 10 * index1 + index2;
 		if (i >= 01 && i <= Xx) {
 			return OK;
@@ -8046,7 +8416,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOODTRADE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOODTRADE,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -8076,7 +8447,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOODECONOMY,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_FOODECONOMY,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -8106,7 +8478,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSTOREHOUSE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSTOREHOUSE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8136,7 +8509,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSDISEASES,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSDISEASES, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8166,7 +8540,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSPROCESS,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSPROCESS,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -8196,7 +8571,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSEQUIPMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSEQUIPMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8226,7 +8602,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINCONDITIONDETECTION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINCONDITIONDETECTION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8256,7 +8633,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSSMARTWMS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSSMARTWMS, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8286,7 +8664,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRIANQUALITYSTANDARD,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRIANQUALITYSTANDARD, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8316,7 +8695,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MEASURINGINSTRUMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MEASURINGINSTRUMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8346,7 +8726,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSINDEX,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSINDEX,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -8376,7 +8757,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSINFORMATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSINFORMATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8406,7 +8788,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSATTRIBUTE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSATTRIBUTE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8466,7 +8849,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GRAINSADMINISTRATIVE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GRAINSADMINISTRATIVE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8496,7 +8880,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_CONSTRUCTIONPRODUCTS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_CONSTRUCTIONPRODUCTS, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8555,7 +8940,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRONICMAP,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRONICMAP,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -8575,7 +8961,9 @@ public class RuleFunction {
 			int LenIndex) {
 		try {
 			String code = "";
-			String regex = "(4[E-F,e-f][0-9,A-F,a-f]{2}|[5-8,A-F,a-f][0-9,A-F,a-f]{3}|9[0-9,A-E,a-e]][0-9,A-F,a-f]{2}|9[F,f][0-9][0-9,A-F,a-f]|9[F,f][a,A][0-5]){2}";
+		    //String regex = "(4[E-F,e-f][0-9,A-F,a-f]{2}|[5-8,A-F,a-f][0-9,A-F,a-f]{3}|9[0-9,A-E,a-e]][0-9,A-F,a-f]{2}|9[F,f][0-9][0-9,A-F,a-f]|9[F,f][a,A][0-5]){2}";
+			//modified by SQ on 0912
+			String regex = "(4[E-F,e-f][0-9,A-F,a-f]{2}|[5-8,A-F,a-f][0-9,A-F,a-f]{3}|9[0-9,A-E,a-e][0-9,A-F,a-f]{2}|9[F,f][0-9][0-9,A-F,a-f]|9[F,f][a,A][0-5]){2}";
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
 			}
@@ -8658,7 +9046,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GEOGRAPHICINFORMATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GEOGRAPHICINFORMATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8707,6 +9096,8 @@ public class RuleFunction {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不定长
 	// creator: zll
+	//modified by lly on 0915
+	//modified by lly on 0917
 	public static String DigitRegex(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		try {
@@ -8734,6 +9125,7 @@ public class RuleFunction {
 		}
 	}
 
+
 	// Function: 纺织面料编码化纤部分(64)纺织面料名称代码
 	// IDstr: 标识编码
 	// LenID: 标识编码的长度
@@ -8754,7 +9146,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TETILEFABRICNAME,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TETILEFABRICNAME, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8784,8 +9177,10 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESMAINMATERIAL,code);
-			boolean retMain = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESMAIN,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PROPERTIESMAINMATERIAL, code);
+			boolean retMain = recoDao.publicFunction(
+					RecoUtil.SELECT_PROPERTIESMAIN, code);
 			if (ret || retMain) {
 				return OK;
 			} else
@@ -8815,7 +9210,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIERFIBERCHARACTERS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PROPERTIERFIBERCHARACTERS, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8846,7 +9242,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESMIX,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESMIX,
+					code);
 			Pattern pa = Pattern.compile(regex);
 			Matcher ma = pa.matcher(code);
 			boolean retRegex = ma.matches();
@@ -8879,7 +9276,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESFABRIC,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PROPERTIESFABRIC, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8909,7 +9307,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROPERTIESDYEING,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PROPERTIESDYEING, code);
 			if (ret) {
 				return OK;
 			} else
@@ -8939,7 +9338,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MANUFACTURINGPROCESS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MANUFACTURINGPROCESS, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9011,7 +9411,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_UNTRANSPORTABLEPRODUCT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_UNTRANSPORTABLEPRODUCT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9066,10 +9467,12 @@ public class RuleFunction {
 			return ERR;
 		}
 		String code = String.valueOf(IDstr[Index[0]])
-				+ String.valueOf(IDstr[Index[1]])+String.valueOf(IDstr[Index[2]])
+				+ String.valueOf(IDstr[Index[1]])
+				+ String.valueOf(IDstr[Index[2]])
 				+ String.valueOf(IDstr[Index[3]]);
 		RecoDao recoDao = new RecoDao();
-		boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TRAFFICINFORMATIONCOLLECTION,code);
+		boolean ret = recoDao.publicFunction(
+				RecoUtil.SELECT_TRAFFICINFORMATIONCOLLECTION, code);
 		if (ret) {
 			return OK;
 		} else
@@ -9096,7 +9499,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOLEAFCOLOR,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOLEAFCOLOR, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9126,7 +9530,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOORGANIZATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOORGANIZATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9156,7 +9561,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOLEAFFORM,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOLEAFFORM, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9186,7 +9592,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TABACCOLEAFCLASS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TABACCOLEAFCLASS, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9216,7 +9623,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_CHILDRENEXCREMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_CHILDRENEXCREMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9274,7 +9682,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DRINKINGFREQUENCY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_DRINKINGFREQUENCY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9304,7 +9713,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DRINKINGCLASS,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DRINKINGCLASS,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -9334,7 +9744,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PHYSICALACTIVITYFREQUENCY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PHYSICALACTIVITYFREQUENCY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9364,7 +9775,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TERMINATIONOFPREGNENCY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TERMINATIONOFPREGNENCY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9394,7 +9806,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MODEOFPRODUCTION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MODEOFPRODUCTION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9424,7 +9837,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DILIVERYPLACE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DILIVERYPLACE,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -9454,7 +9868,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HEALTHSUPERVISIONOBJECT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HEALTHSUPERVISIONOBJECT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9484,7 +9899,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_COMMUNICATIONCODE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_COMMUNICATIONCODE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9514,7 +9930,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HYGIENEAGENCYPERSONNEL,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HYGIENEAGENCYPERSONNEL, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9544,7 +9961,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_WORKERHEALTHSUPERVISION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_WORKERHEALTHSUPERVISION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9617,7 +10035,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF281,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF281,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -9647,7 +10066,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa282,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa282, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9703,21 +10123,23 @@ public class RuleFunction {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
+	//modified by lly on 0917
 	public static String goalsocialeconomic(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
 		}
 		// if (LenIndex != 6) {
-		// return ERR;
-		// }
+		 //return ERR;
+		 //}
 		try {
 			String code = "";
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < LenID; i++) {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa284,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa284, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9727,6 +10149,7 @@ public class RuleFunction {
 		}
 
 	}
+
 
 	// 285-——物流信息分类和代码表 查表数据库
 	// IDstr: 标识编码
@@ -9734,12 +10157,14 @@ public class RuleFunction {
 	// Index: 调用验证算法的索引位置
 	// LenIndex:a6
 	// creator:fdl
-	public static String LogisticsInf(char[] IDstr, int LenID, int[] Index,
+	//modified by WB on 0917
+
+public static String LogisticsInf(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
 		}
-		if (LenIndex != 5 && LenIndex != 7) {
+		if (LenID != 5 && LenID != 7) {
 			return ERR;
 		}
 		try {
@@ -9748,7 +10173,43 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa285,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa285, code);
+			if (ret) {
+				return OK;
+			} else{
+				return ERR;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERR;
+		}
+	}
+
+
+	// 287-——服装分类和代码表 查表数据库
+	// IDstr: 标识编码
+	// LenID: 标识编码的长度6位
+	// Index: 调用验证算法的索引位置
+	// LenIndex:a6
+	// creator:fdl
+	//modified by lly on 0917
+	public static String clothesclass(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+			return ERR;
+		}
+	//	if (LenIndex != 6) {
+		//	return ERR;
+		//}
+		try {
+			String code = "";
+			for (int i = 0; i < IDstr.length; i++) {
+				code = code.concat(String.valueOf(IDstr[i]));
+			}
+			RecoDao recoDao = new RecoDao();
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa287, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9758,35 +10219,6 @@ public class RuleFunction {
 		}
 	}
 
-	// 287-——服装分类和代码表 查表数据库
-	// IDstr: 标识编码
-	// LenID: 标识编码的长度6位
-	// Index: 调用验证算法的索引位置
-	// LenIndex:a6
-	// creator:fdl
-	public static String clothesclass(char[] IDstr, int LenID, int[] Index,
-			int LenIndex) {
-		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
-			return ERR;
-		}
-		if (LenIndex != 6 && LenIndex != 4) {
-			return ERR;
-		}
-		try {
-			String code = "";
-			for (int i = 0; i < IDstr.length; i++) {
-				code = code.concat(String.valueOf(IDstr[i]));
-			}
-			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa287,code);
-			if (ret) {
-				return OK;
-			} else
-				return ERR;
-		} catch (Exception e) {
-			return ERR;
-		}
-	}
 
 	// 288-——服装名字分类代码编制方法 查表数据库
 	// IDstr: 标识编码
@@ -9808,7 +10240,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa288,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa288, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9838,7 +10271,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFFMa191,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTARIFFMa191, code);
 			if (ret) {
 				return OK;
 			} else
@@ -9863,12 +10297,12 @@ public class RuleFunction {
 			if (LenIndex != 6) {
 				return ERR;
 			}
-			String id = "";
+			String code = "";
 			RecoDao recoDao = new RecoDao();
 			for (int i = 0; i < LenIndex; i++) {
-				id = id.concat(String.valueOf(IDstr[Index[i]]));
+				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recoDao.getCoastalAdminAreaID(id);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_COASTALADMINAREAID,code);
 			if (ret) {
 				return OK;
 			} else {
@@ -9899,7 +10333,8 @@ public class RuleFunction {
 			for (int i = 0; i < LenIndex; i++) {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_INTERNATIONALSHIP,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_INTERNATIONALSHIP, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -9932,7 +10367,8 @@ public class RuleFunction {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			id = id.concat(append);
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_COASTALADMINAREAID,id);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_COASTALADMINAREAID, id);
 			if (ret) {
 				return OK;
 			} else {
@@ -9963,7 +10399,8 @@ public class RuleFunction {
 			for (int i = 0; i < LenIndex; i++) {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_WIRTSCHAFTSTYPCODE,id);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_WIRTSCHAFTSTYPCODE, id);
 			if (ret) {
 				return OK;
 			} else {
@@ -9995,7 +10432,8 @@ public class RuleFunction {
 			for (int i = 0; i < LenIndex; i++) {
 				id = id.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recodao.publicFunction(RecoUtil.SELECT_INFECTIOUSDISEASES,id);
+			boolean ret = recodao.publicFunction(
+					RecoUtil.SELECT_INFECTIOUSDISEASES, id);
 			if (ret) {
 				return OK;
 			} else {
@@ -10056,7 +10494,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GEOGRAPHICALCODE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GEOGRAPHICALCODE, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -10088,7 +10527,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PESTICIDECODE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PESTICIDECODE,
+					code);
 			if (ret) {
 				return OK;
 			} else {
@@ -10120,7 +10560,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PASSENGERCARCODE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PASSENGERCARCODE, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -10149,7 +10590,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION21,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION21, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10183,7 +10625,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_CIVILAVIATION,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_CIVILAVIATION,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10211,7 +10654,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION22,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION22, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10240,7 +10684,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION32,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION32, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10269,7 +10714,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION5,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION5, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10299,7 +10745,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION41,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION41, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10328,7 +10775,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION50,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION50, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10358,7 +10806,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION53,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION53, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10387,7 +10836,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION63,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION63, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10416,7 +10866,7 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORT,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10449,7 +10899,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[2]])
 					+ String.valueOf(IDstr[Index[3]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION60,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION60, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10478,7 +10929,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ROADTRANSPORTATION64,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ROADTRANSPORTATION64, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10507,7 +10959,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B1,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B1, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10537,7 +10990,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B7,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B7, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10566,7 +11020,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]])
 					+ String.valueOf(IDstr[Index[1]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B9,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B9, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10597,7 +11052,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4C3,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4C3, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10621,7 +11077,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF3,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF3,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10645,7 +11102,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF4,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF4,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10670,7 +11128,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF9,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF9,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10694,7 +11153,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF25,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF25,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10718,7 +11178,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF26,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF26,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10742,7 +11203,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF10,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF10,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10772,7 +11234,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY2,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY2,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10802,7 +11265,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYMAINTENANCE4,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYMAINTENANCE4, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10832,7 +11296,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYMAINTENANCE3,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYMAINTENANCE3, code);
 			if (ret) {
 				return OK;
 			} else
@@ -10862,7 +11327,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY3,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY3,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10892,7 +11358,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY4,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY4,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10922,7 +11389,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY5,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY5,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10952,7 +11420,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY6,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY6,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -10982,7 +11451,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY7,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY7,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11012,7 +11482,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY8,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY8,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11042,7 +11513,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY9,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY9,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11072,7 +11544,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY10,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MACHINERY10,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11082,6 +11555,7 @@ public class RuleFunction {
 		}
 	}
 
+	//modified by SQ on 0912
 	public static String HighwayTransportation4c6(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
@@ -11093,10 +11567,11 @@ public class RuleFunction {
 		try {
 			String code = "";
 			for (int i = 0; i < 2; i++) {
-				code = code.concat(String.valueOf(IDstr[i]));
+				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4C6,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4C6, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11127,7 +11602,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_WATERWAYTRANSPORTATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_WATERWAYTRANSPORTATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11155,7 +11631,8 @@ public class RuleFunction {
 		try {
 			String code = String.valueOf(IDstr[Index[0]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B10,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION4B10, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11185,7 +11662,8 @@ public class RuleFunction {
 					+ String.valueOf(IDstr[Index[1]])
 					+ String.valueOf(IDstr[Index[2]]);
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYTRANSPORTATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYTRANSPORTATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11242,7 +11720,8 @@ public class RuleFunction {
 		String code = new String(IDstr);
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_SECURITYACCOUNTERMENTS,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_SECURITYACCOUNTERMENTS, code);
 			if (ret)
 				return OK;
 			else
@@ -11261,7 +11740,8 @@ public class RuleFunction {
 		String code = new String(IDstr);
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_SPECIALVEHICLE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_SPECIALVEHICLE, code);
 			if (ret)
 				return OK;
 			else
@@ -11294,9 +11774,10 @@ public class RuleFunction {
 			} else
 				return ERR;
 		} else if (LenID == 16) {
+			//modified by SQ:
 			int index1 = (int) IDstr[Index[0]] - 48;
-			int index2 = (int) IDstr[Index[0]] - 48;
-			int index3 = (int) IDstr[Index[0]] - 48;
+			int index2 = (int) IDstr[Index[1]] - 48;
+			int index3 = (int) IDstr[Index[2]] - 48;
 			if (index1 < 0 || index1 > 9 || index2 < 0 || index2 > 9
 					|| index3 < 0 || index3 > 9)
 				return ERR;
@@ -11439,7 +11920,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_OFFICIALPOSITION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_OFFICIALPOSITION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11471,7 +11953,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MOUNTAINRANGEANDPEAKNAME,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MOUNTAINRANGEANDPEAKNAME, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11502,7 +11985,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_INTELLECTUALPROPERTY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_INTELLECTUALPROPERTY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11533,7 +12017,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_CLASSIFICATIONOFCIVILAVIATION,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_CLASSIFICATIONOFCIVILAVIATION, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11564,7 +12049,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_NORMALANDSHORTCYCLESPECIALITY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_NORMALANDSHORTCYCLESPECIALITY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11595,7 +12081,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MAINTENANCESYSTEMPTWO,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MAINTENANCESYSTEMPTWO, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11611,6 +12098,8 @@ public class RuleFunction {
 	// Index: 调用正则的的索引位置
 	// LenIndex:
 	// Creator:YZC
+	
+	/*
 	public static String CountryRegionCode1(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
@@ -11627,7 +12116,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_COUNTRYREGIONCODE1,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_COUNTRYREGIONCODE1, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11635,7 +12125,38 @@ public class RuleFunction {
 		} catch (Exception e) {
 			return ERR;
 		}
+	}*/
+	//modified by wangbin on 0901
+	public static String CountryRegionCode1(char[] IDstr, int LenID,
+			int[] Index, int LenIndex) {
+		try {
+			String code = "";
+			for (int i = 0; i < LenIndex; i++) {
+				if (Index[i] < -1 || (Index[i] >= LenID && LenID != 2)) {
+					return ERR;
+				} else if (Index[i] >= LenID) {
+					LenIndex = LenIndex - 1;
+				}
+			}
+			if (!(LenIndex == 2 || LenIndex == 3)) {
+				return ERR;
+			}
+			for (int i = 0; i < LenIndex; i++) {
+				code = code.concat(String.valueOf(IDstr[Index[i]]));
+			}
+
+			RecoDao recoDao = new RecoDao();
+			boolean ret = recoDao.getCountryRegionCode(code);
+			if (ret) {
+				return OK;
+			} else
+				return ERR;
+		} catch (Exception e) {
+			return ERR;
+		}
+
 	}
+
 
 	// Function:电力科技成果分类与代码（784）
 	// CODEstr: 标识编码
@@ -11659,7 +12180,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRICPOWER,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRICPOWER,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11668,6 +12190,7 @@ public class RuleFunction {
 			return ERR;
 		}
 	}
+	
 
 	// Function:全国电网名称代码（785）
 	// CODEstr: 标识编码
@@ -11691,7 +12214,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERGRID,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERGRID,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11722,7 +12246,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRICPOWERINDUSTRY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ELECTRICPOWERINDUSTRY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11753,7 +12278,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ELECTRICPOWERGEOGRAPHY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ELECTRICPOWERGEOGRAPHY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11784,7 +12310,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_VOLTAGECLASS,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_VOLTAGECLASS,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11814,7 +12341,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERGOODSP2,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERGOODSP2,
+					code);
 			if (ret) {
 				return OK;
 			} else {
@@ -11886,7 +12414,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GEOGRAPHICINFO,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_GEOGRAPHICINFO, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -11917,7 +12446,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HARMFULFACTOR,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HARMFULFACTOR,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -11947,7 +12477,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_RAILWAYSTATIONCODE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_RAILWAYSTATIONCODE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -11963,11 +12494,44 @@ public class RuleFunction {
 	// Index: 调用正则的索引位置
 	// LenIndex: 不定长
 	// creator: gcc
+//	public static String ProtectionDegreeRegex(char[] IDstr, int LenID,
+//			int[] Index, int LenIndex) {
+//		try {
+//			String code = "";
+//			String regex = "[A-Z]*";
+//			int prefix = 4;
+//			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+//				return ERR;
+//			}
+//			if (Index[0] != prefix) {
+//				return ERR;
+//			}
+//			for (int i = Index[0]; i < LenID; i++) {
+//				code = code.concat(String.valueOf(IDstr[i]));
+//			}
+//			Pattern pa = Pattern.compile(regex);
+//			Matcher ma = pa.matcher(code);
+//			boolean ret = ma.matches();
+//			if (ret) {
+//				return OK;
+//			} else {
+//				return ERR;
+//			}
+//		} catch (Exception e) {
+//			return ERR;
+//		}
+//	}
+	
+	
+	// Function: 旋转电机整体结构的防护等级（IP代码） 分级(261)
+	// IDstr: 标识编码
+	// LenID: 标识编码的长度
+	// Index: 调用正则的索引位置
+	// LenIndex: 不定长
+	// creator: gcc
 	public static String ProtectionDegreeRegex(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
-			String code = "";
-			String regex = "[A-Z]*";
 			int prefix = 4;
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
@@ -11975,21 +12539,25 @@ public class RuleFunction {
 			if (Index[0] != prefix) {
 				return ERR;
 			}
+			
+			//检测不能重复、没有逆序
+			char compare='0';
 			for (int i = Index[0]; i < LenID; i++) {
-				code = code.concat(String.valueOf(IDstr[i]));
+				
+				if(IDstr[i]<'A'||IDstr[i]>'Z'||IDstr[i]<=compare)
+				{
+					return ERR;
+				}
+				compare=IDstr[i];
 			}
-			Pattern pa = Pattern.compile(regex);
-			Matcher ma = pa.matcher(code);
-			boolean ret = ma.matches();
-			if (ret) {
-				return OK;
-			} else {
-				return ERR;
-			}
+			return OK;
+			
+			
 		} catch (Exception e) {
 			return ERR;
 		}
 	}
+
 
 	// Function: 林业档案分类与代码（237）
 	// IDstr: 标识编码
@@ -12134,7 +12702,8 @@ public class RuleFunction {
 			for (int i = 0; i < LenIndex; i++) {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TREEDISEASE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TREEDISEASE,
+					code);
 			if (ret) {
 				return OK;
 			} else {
@@ -12165,7 +12734,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_NAVIGATIONSHIP,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_NAVIGATIONSHIP, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -12798,7 +13368,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TRAVLEDOCUMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_TRAVLEDOCUMENT, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -12830,7 +13401,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PROVINCEADMINCODE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PROVINCEADMINCODE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -12862,7 +13434,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION1,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ADMINDIVISION1, code);
 			if (ret) {
 				return OK;
 			} else
@@ -12949,7 +13522,9 @@ public class RuleFunction {
 			int LenIndex) {
 		try {
 			String code = "";
-			String regex = "[0-9][1-9]*";
+			//modified by SQ on 0912
+			String regex = "[1-9]*";
+			
 			int prefix = 5;
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
@@ -12957,7 +13532,8 @@ public class RuleFunction {
 			if (Index[0] != prefix) {
 				return ERR;
 			}
-			for (int i = Index[0]; i < LenID; i++) {
+			//modified by SQ on 0911
+			for (int i = prefix; i < LenID; i++) {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			Pattern pa = Pattern.compile(regex);
@@ -13741,11 +14317,12 @@ public class RuleFunction {
 			return ERR;
 	}
 
+	//modified by lly on 0901
 	/*
 	 * 校验最后的码，可能是4,5,6,7,8位数字 当为4位时，码的第1,2位是05,08 当为5位时，码的第1,2位是03,06,09
 	 * 当为6位时，码的第1,2位是07 当为7位时，码的第1,2位是04 当为8位时，码的第1,2位是01,02 author：wt
 	 */
-	public static String ParamCode31(char[] IDstr, int LenID, int[] Index,
+	/*public static String ParamCode31(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
@@ -13795,21 +14372,86 @@ public class RuleFunction {
 			} else
 				return ERR;
 		} else
+		
+	}*/
+	public static String ParamCode31(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 			return ERR;
-		/*
-		 * if (LenIndex == 4) { for (int i = 0; i < 4; i++) { int index = (int)
-		 * IDstr[Index[i]] - 48; if (index < 0 || index > 9) return ERR; } if
-		 * (IDstr[0] == '0' && (IDstr[1] == '1' || IDstr[1] == '2' || IDstr[1]
-		 * == '5' || IDstr[1] == '7')) return OK; else return ERR; } if
-		 * (LenIndex == 5) { for (int i = 0; i < 5; i++) { int index = (int)
-		 * IDstr[Index[i]] - 48; if (index < 0 || index > 9) return ERR; } if
-		 * (IDstr[0] == '0' && IDstr[1] == '3') return OK; else return ERR; } if
-		 * (LenIndex == 9) { for (int i = 0; i < 9; i++) { int index = (int)
-		 * IDstr[Index[i]] - 48; if (index < 0 || index > 9) return ERR; } if
-		 * (IDstr[0] == '0' && IDstr[1] == '4') return OK; else return ERR; }
-		 * return ERR;
-		 */
+		}
+		String code = "";
+		for (int i = Index[0]; i < IDstr.length; i++) {
+			code = code.concat(String.valueOf(IDstr[i]));
+		}
+		int len = code.length();
+		if (len == 4) {
+			String regex1 = "[0-9]{4}";
+			Pattern pa = Pattern.compile(regex1);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+			if (ret) {
+				if (IDstr[0] == '0'
+						&& (IDstr[1] == '5' || IDstr[1] == '8'))
+					return OK;
+				else
+					return ERR;
+			} else
+				return ERR;
+		} else if (len == 5) {
+			String regex2 = "[0-9]{5}";
+			Pattern pa = Pattern.compile(regex2);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+			if (ret) {
+				if (IDstr[0] == '0' && (IDstr[1] == '3'|| IDstr[1] == '6'|| IDstr[1] == '9'))
+					return OK;
+				else
+					return ERR;
+			} else
+				return ERR;
+		} else if (len == 6) {
+			String regex2 = "[0-9]{6}";
+			Pattern pa = Pattern.compile(regex2);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+			if (ret) {
+				if (IDstr[0] == '0' && IDstr[1] == '7')
+					return OK;
+				else
+					return ERR;
+
+			} else
+				return ERR;
+		} else if (len == 7) {
+			String regex1 = "[0-9]{7}";
+			Pattern pa = Pattern.compile(regex1);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+			if (ret) {
+				if (IDstr[0] == '0'
+						&& IDstr[1] == '4')
+					return OK;
+				else
+					return ERR;
+			} else
+				return ERR;
+		} else if (len == 8) {
+			String regex1 = "[0-9]{8}";
+			Pattern pa = Pattern.compile(regex1);
+			Matcher ma = pa.matcher(code);
+			boolean ret = ma.matches();
+			if (ret) {
+				if (IDstr[0] == '0'
+						&& (IDstr[1] == '1' || IDstr[1] == '2'))
+					return OK;
+				else
+					return ERR;
+			} else
+				return ERR;
+		} else
+			return ERR;
 	}
+
 
 	/*
 	 * 校验最后的码，可能是3,7,8位数字 当为3位时，码的第1,2位是05 当为7位时，码的第1,2位是03,04
@@ -14183,7 +14825,10 @@ public class RuleFunction {
 			} else
 				return ERR;
 		} else if (len == 6) {
-			String regex2 = "[0-9]{5}";
+			//String regex2 = "[0-9]{5}";
+			
+			// modified by shenqing, 2014-8-19
+			String regex2 = "[0-9]{6}";
 			Pattern pa = Pattern.compile(regex2);
 			Matcher ma = pa.matcher(code);
 			boolean ret = ma.matches();
@@ -14253,7 +14898,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS44,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS44, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14286,7 +14932,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS45,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS45, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14319,7 +14966,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS46,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS46, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14352,7 +15000,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS47,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS47, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14385,7 +15034,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS49,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS49, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14418,7 +15068,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS50,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS50, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14451,7 +15102,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS51,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS51, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14484,7 +15136,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS52,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS52, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14516,7 +15169,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS53,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS53, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14549,7 +15203,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_POWERMATERIALS54,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_POWERMATERIALS54, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14580,7 +15235,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF509,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTARIFF509,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -14644,7 +15300,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTNuclearelementNation,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTNuclearelementNation, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14669,7 +15326,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTNuclearelements,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTNuclearelements, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14694,7 +15352,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ADMINDIVISION,
+					code);
 			if (ret) {
 				return OK;
 			} else if (code.equals("100000")) {
@@ -14761,7 +15420,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTCarProductCompnent,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTCarProductCompnent, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14786,16 +15446,19 @@ public class RuleFunction {
 			if (LenIndex != 15) {
 				return ERR;
 			}
-			int i;
+			int i = 0;
 			int[] newIDstr = new int[LenIndex];
 			for (i = 0; i < LenIndex - 4; i++) {
 				newIDstr[i] = (int) (IDstr[Index[i + 4]] - 48);
 			}
 
-			int sum = 0;
+			int sum = 0;			
+			sum = 1 + sum;
+			
 			for (int j = 1; j < 10; j++) {
-				sum = 1 + sum + i * newIDstr[i];
+				sum = sum + j * newIDstr[j];
 			}
+			
 			sum = sum + newIDstr[10];
 
 			int check;
@@ -14830,7 +15493,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTTCLBatteryProduct,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTTCLBatteryProduct, code);
 			if (ret) {
 				return OK;
 			} else
@@ -14871,7 +15535,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTProductCode,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTProductCode, code);
 			if (ret) {
 				return OK;
 			} else {
@@ -15294,7 +15959,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_BARCODEFORCOMMODITY,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_BARCODEFORCOMMODITY, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15310,11 +15976,12 @@ public class RuleFunction {
 	// Index: 调用正则的的索引位置
 	// LenIndex:长度<=12
 	// creator: yzc
+	//modified by WB on 0918
 	public static String IdentificationCardsP1(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
 			String code = "";
-			String regex = "[0-9]{0,11}";
+			String regex = "[0-9]{0,12}";
 			int prefix = 6;
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
@@ -15323,6 +15990,8 @@ public class RuleFunction {
 				return ERR;
 			}
 			// 最后一位为校验位
+			//System.out.println("LenID : "  + LenID);
+			//System.out.println("Index[0] :"  + Index[0]);
 			for (int i = Index[0]; i < LenID; i++) {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
@@ -15337,12 +16006,17 @@ public class RuleFunction {
 					LenID);
 			if (ret && modRet.equals(OK)) {
 				return OK;
-			} else
+			} else{
+				
 				return ERR;
+			}
+				
 		} catch (Exception e) {
+					e.printStackTrace();
 			return ERR;
 		}
 	}
+
 
 	/*
 	 * 校验前4位是不是这些数字 757 author:wt
@@ -15385,7 +16059,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYDATABASE71,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYDATABASE71, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15479,7 +16154,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYDATABASE47,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYDATABASE47, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15505,7 +16181,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYDATABASE46,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYDATABASE46, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15620,7 +16297,8 @@ public class RuleFunction {
 		}
 		try {
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HIGHWAYDATABASE17,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HIGHWAYDATABASE17, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15765,7 +16443,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(CODEstr[Index[i]]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GASSCOMPANY,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_GASSCOMPANY,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -15794,7 +16473,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_HYDROLOGICDATA,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_HYDROLOGICDATA, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15824,7 +16504,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MEATANDVEGETABLE,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MEATANDVEGETABLE, code);
 			if (ret) {
 				return OK;
 			} else
@@ -15835,8 +16516,7 @@ public class RuleFunction {
 	}
 
 	// 中国动物分类代码 fdl
-	// Function: represent a decimal integer whose value range is from 010 to
-	// 999
+	// Function: to do
 	// IDstr: ID string
 	// LenID: the number of characters in the ID string
 	// Index: the list of corresponding indexes regarding to this algorithm
@@ -15886,7 +16566,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[i]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PORTForestTypes,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_PORTForestTypes, code);
 			if (ret) {
 				return OK;
 			}
@@ -16084,7 +16765,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ANIMIALDISEASE700,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_ANIMIALDISEASE700, code);
 			if (ret) {
 				return OK;
 			} else
@@ -16145,7 +16827,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MEDICALINSTRUMENT,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_MEDICALINSTRUMENT, code);
 			if (ret) {
 				return OK;
 			} else
@@ -16178,7 +16861,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TCMDISEASE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TCMDISEASE,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16211,7 +16895,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TCMFEATURE,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_TCMFEATURE,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16244,7 +16929,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DZCLASSIIFY,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DZCLASSIIFY,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16277,7 +16963,8 @@ public class RuleFunction {
 				code = code.concat(String.valueOf(IDstr[k]));
 			}
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DZCLASSIFY710,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_DZCLASSIFY710,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16294,6 +16981,8 @@ public class RuleFunction {
 	// Index: 调用正则的的索引位置
 	// LenIndex:不定长
 	// creator: lhx
+	//modified by lly on 0903
+	/*
 	public static String MeasureUnit(char[] IDstr, int LenID, int[] Index,
 			int LenIndex) {
 		try {
@@ -16316,7 +17005,36 @@ public class RuleFunction {
 		} catch (Exception e) {
 			return ERR;
 		}
+	}*/
+	public static String MeasureUnit(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		try {
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+			//
+			if (LenID != 2 &&LenID != 3&& LenID!=1) {
+				return ERR;
+			}
+			String code = "";
+
+			for (int k = 0; k < LenID; k++) {
+
+				code = code.concat(String.valueOf(IDstr[k]));
+			}
+			RecoDao recoDao = new RecoDao();
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_MEASUREUNIT,
+					code);
+			if (ret) {
+				return OK;
+			} else
+				return ERR;
+
+		} catch (Exception e) {
+			return ERR;
+		}
 	}
+
 
 	// Function: check the legality of the first seven numbers of a given mobile
 	// phone number
@@ -16341,7 +17059,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PHONENUMBER,code);
+			boolean ret = recoDao.getPrefixPhoneNO(code);
+			//boolean ret = recoDao.publicFunction(RecoUtil.SELECT_PHONENUMBER,code);
 			if (ret) {
 				return OK;
 			} else
@@ -16374,7 +17093,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_NORMALVEHICLENO,code);
+			boolean ret = recoDao.publicFunction(
+					RecoUtil.SELECT_NORMALVEHICLENO, code);
 			if (ret) {
 				return OK;
 			} else
@@ -16407,7 +17127,8 @@ public class RuleFunction {
 			}
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ARMYVEHICLENO,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_ARMYVEHICLENO,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16465,7 +17186,8 @@ public class RuleFunction {
 			String code = String.valueOf(IDstr[Index[0]]);
 
 			RecoDao recoDao = new RecoDao();
-			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_WJVEHICLENO,code);
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_WJVEHICLENO,
+					code);
 			if (ret) {
 				return OK;
 			} else
@@ -16707,12 +17429,17 @@ public class RuleFunction {
 	}
 
 	// DL/T_700.1-1999_53(910) yzc
+	//modified by SQ on 0915
 	public static String Powergoodsuncertainly(char[] IDstr, int LenID,
 			int[] Index, int LenIndex) {
 		try {
 			String code = "";
-			String regex = "[0-9]{0,2}";
-			int prefix = 7;
+			//String regex = "[0-9]{0,2}";
+			//String regex = "[0-9]{0,1,2}";
+			
+			String regex = "[0-9]{2,4}";
+			
+			int prefix = 10;
 			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
 				return ERR;
 			}
@@ -16721,6 +17448,7 @@ public class RuleFunction {
 			}
 			for (int i = Index[0]; i < LenID; i++) {
 				code = code.concat(String.valueOf(IDstr[i]));
+
 			}
 			Pattern pa = Pattern.compile(regex);
 			Matcher ma = pa.matcher(code);
@@ -16811,8 +17539,8 @@ public class RuleFunction {
 		int index1 = (int) IDstr[Index[0]] - 48;
 		int index2 = (int) IDstr[Index[1]] - 48;
 		int num = 10 * index1 + index2;
-		if (num >= 21 && num <= 53 && index1 >= 0 && index2 <= 9 && index2 >= 0
-				&& index2 <= 9)
+		if ((index1 >= 0 && index1 <= 9) && (index2 >= 0 && index2 <= 9)
+				&& (num >= 21 && num <= 53))
 			return OK;
 		else
 			return ERR;
@@ -16848,4 +17576,562 @@ public class RuleFunction {
 			return ERR;
 		}
 	}
+	
+	public static String HighWayTransportBandC(char[] CODEstr, int LenCODE,
+			int[] Index, int LenIndex) {
+		try {
+			String code = "";
+			if (!checkInputParam(CODEstr, LenCODE, Index, LenIndex)) {
+				return ERR;
+			}
+
+			if (LenIndex != 2) {
+				return ERR;
+			}
+			for (int i = Index[0]; i <CODEstr.length ; i++) {
+				code = code.concat(String.valueOf(CODEstr[i]));
+			}
+			//System.out.println("the code:"+code);
+			List<String> ls = new ArrayList<String>();
+			//附录B
+			
+			//table1 10-12,20-22,29,30
+			for (int i = 10; i <= 12; i++) {
+				ls.add(String.valueOf(i));
+			}
+			for (int i = 20; i <= 22; i++) {
+				ls.add(String.valueOf(i));
+			}
+			ls.add("29");
+			ls.add("30");
+			//table2 1,2
+			ls.add("1");
+			ls.add("2");
+			//table3 1-3
+			ls.add("1");
+			ls.add("2");
+			ls.add("3");
+			//table4 1-2
+			ls.add("1");
+			ls.add("2");
+			//table5 1-2
+			ls.add("1");
+			ls.add("2");
+			//table6 1,2,5,6
+			ls.add("1");
+			ls.add("2");
+			ls.add("5");
+			ls.add("6");
+			//table7 100 110-112 120-122 130-132 139 140 200 210 300 310 320 400 500 600 610 620
+			ls.add("100");
+			for (int i = 110; i <= 112; i++) {
+				ls.add(String.valueOf(i));
+			}
+			for (int i = 120; i <= 122; i++) {
+				ls.add(String.valueOf(i));
+			}
+			for (int i = 130; i <= 132; i++) {
+				ls.add(String.valueOf(i));
+			}
+			ls.add("139");
+			ls.add("140");
+			ls.add("200");
+			ls.add("210");
+			ls.add("300");
+			ls.add("310");
+			ls.add("320");
+			ls.add("400");
+			ls.add("500");
+			ls.add("600");
+			ls.add("610");
+			ls.add("620");
+			//table8 1-4,9
+			for (int i = 1; i <= 4; i++) {
+				ls.add(String.valueOf(i));
+			}
+			ls.add("9");
+			//table9 10-12,19-22,29,30
+			for (int i = 10; i <= 12; i++) {
+				ls.add(String.valueOf(i));
+			}
+			for (int i = 19; i <= 22; i++) {
+				ls.add(String.valueOf(i));
+			}
+			ls.add("29");
+			ls.add("30");
+			//table10 1-5,9
+			for (int i = 1; i <= 5; i++) {
+				ls.add(String.valueOf(i));
+			}
+			ls.add("9");
+			//table11 1-4
+			for (int i = 1; i <= 4; i++) {
+				ls.add(String.valueOf(i));
+			}
+			//table12 1-3
+			for (int i = 1; i <= 3; i++) {
+				ls.add(String.valueOf(i));
+			}
+			//table13
+			ls.add("1");
+			ls.add("2");
+			//table14
+			ls.add("1");
+			//table15
+			ls.add("1");
+			ls.add("2");
+			
+			//附录C
+			//table1 100 110 120 130 140-143 149 150 151 159 160 170-175 179 190 200 210 220 230
+			//240 290 300 310 320 330 340 390 900
+			for(int i=10;i<=13;i++)
+			{
+				ls.add(String.valueOf(i)+"0");
+			}
+			for(int i=140;i<=143;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("149");
+			ls.add("150");
+			ls.add("151");
+			ls.add("159");
+			ls.add("160");
+			for(int i=170;i<=175;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("179");
+			ls.add("190");
+			ls.add("200");
+			ls.add("210");
+			ls.add("220");
+			ls.add("230");
+			ls.add("240");
+			ls.add("290");
+			ls.add("300");
+			ls.add("310");
+			ls.add("320");
+			ls.add("330");
+			ls.add("340");
+			ls.add("390");
+			ls.add("900");
+			
+			//table2 1-4 *7 *8  
+			for(int i=1;i<=4;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("*7");
+			ls.add("*8 ");
+			
+			//table3 0100 0200 0210 0300 0400 0500 0600 0700 0800 0810 0900 1000 1100 1200
+			//1300 1400 1500 1520 1600 1610 1700
+			ls.add("0100");
+			ls.add("0200");
+			ls.add("0210");
+			ls.add("0300");
+			ls.add("0400");
+			ls.add("0500");
+			ls.add("0600");
+			ls.add("0700");
+			ls.add("0800");
+			ls.add("0810");
+			ls.add("0900");
+			ls.add("1000");
+			ls.add("1100");
+			ls.add("1200");
+			ls.add("1300");
+			ls.add("1400");
+			ls.add("1500");
+			ls.add("1520");
+			ls.add("1600");
+			ls.add("1610");
+			ls.add("1700");
+			
+			//table4 G S X Y Z
+			ls.add("G");
+			ls.add("S");
+			ls.add("X");
+			ls.add("Y");
+			ls.add("Z");
+			
+			//table5 1-4 *7 8 9
+			for(int i=1;i<=4;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("*7");
+			ls.add("8");
+			ls.add("9");
+			
+			//table6 10-12 20-23 30-33 40-42 *80 *90
+			for(int i=10;i<=12;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			for(int i=20;i<=23;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			for(int i=30;i<=33;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			for(int i=40;i<=42;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("*80");
+			ls.add("*90");
+			
+			//table special
+			int res=0;
+			//G001-G098
+			for(int i=1;i<=9;i++)
+			{
+				
+				ls.add("G00"+String.valueOf(i));
+			}
+			for(int i=10;i<=98;i++)
+			{
+				ls.add("G0"+String.valueOf(i));
+			}
+			//G101-G198
+			for(int i=101;i<=198;i++)
+			{
+				ls.add("G"+String.valueOf(i));
+			}
+			//G201-G298
+			for(int i=201;i<=298;i++)
+			{
+				ls.add("G"+String.valueOf(i));
+			}
+			//G301-G398
+			for(int i=301;i<=398;i++)
+			{
+				ls.add("G"+String.valueOf(i));
+			}
+			
+			//S01-S198
+			for(int i=101;i<=198;i++)
+			{
+				ls.add("S"+String.valueOf(i));
+			}
+			//S201-S298
+			for(int i=201;i<=298;i++)
+			{
+				ls.add("S"+String.valueOf(i));
+			}
+			//S301-S398
+			for(int i=301;i<=398;i++)
+			{
+				ls.add("S"+String.valueOf(i));
+			}
+			
+			//X001-X998
+			for(int i=1;i<=9;i++)
+			{
+				ls.add("X00"+String.valueOf(i));
+			}
+			for(int i=10;i<=99;i++)
+			{
+				ls.add("X0"+String.valueOf(i));
+			}
+			for(int i=100;i<=998;i++)
+			{
+				ls.add("X"+String.valueOf(i));
+			}
+			
+			//Y001-Y998
+			for(int i=1;i<=9;i++)
+			{
+				ls.add("Y00"+String.valueOf(i));
+			}
+			for(int i=10;i<=99;i++)
+			{
+				ls.add("Y0"+String.valueOf(i));
+			}
+			for(int i=100;i<=998;i++)
+			{
+				ls.add("Y"+String.valueOf(i));
+			}
+			
+			//Z001-Z998
+			for(int i=1;i<=9;i++)
+			{
+				ls.add("Z00"+String.valueOf(i));
+			}
+			for(int i=10;i<=99;i++)
+			{
+				ls.add("Z0"+String.valueOf(i));
+			}
+			for(int i=100;i<=998;i++)
+			{
+				ls.add("Z"+String.valueOf(i));
+			}
+			
+			//table7 1-5,*8
+			for(int i=1;i<=5;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("*8");
+			
+			//table8 1-3,*4 9
+			for(int i=1;i<=3;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("*4");
+			ls.add("9");
+			
+			//table9 1-4,9
+			for(int i=1;i<=4;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("9");
+			
+			//table10 1-6 9
+			for(int i=1;i<=6;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("9");
+			
+			//table11 1-4 9
+			for(int i=1;i<=4;i++)
+			{
+				ls.add(String.valueOf(i));
+			}
+			ls.add("9");
+			
+			//检查是否存在
+			for(int i=0;i<ls.size();i++)
+			{
+				if(code.equals(ls.get(i)))
+				{
+					return OK;
+				}
+			}
+			return ERR;
+			
+		   
+		} catch (Exception e) {
+			return ERR;
+		}
+	}
+	
+	public static String ChineseGongFa(char[] CODEstr, int LenCODE,
+			int[] Index, int LenIndex) {
+		try {
+			String code = "";
+			if (!checkInputParam(CODEstr, LenCODE, Index, LenIndex)) {
+				return ERR;
+			}
+
+			if (LenIndex != 2) {
+				return ERR;
+			}
+			for (int i = 0; i < LenIndex; i++) {
+				code = code.concat(String.valueOf(CODEstr[Index[i]]));
+			}
+			if(code.equals("公发"))
+				return OK;
+			else
+				return ERR;
+			
+		} catch (Exception e) {
+			return ERR;
+		}
+	}
+	
+	//added by lly on 0901
+	//new function
+	public static String OneTO09Not99(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+			return ERR;
+		}
+		if (LenIndex != 2) {
+			return ERR;
+		}
+		int index1 = (int) IDstr[Index[0]] - 48;
+		int index2 = (int) IDstr[Index[1]] - 48;
+		int Xx = 9;
+		int i = 10 * index1 + index2;
+		if (i >= 01 && i <= Xx) {
+			return OK;
+		} else
+			return ERR;
+
+	}
+	
+	//added by WB on 0915
+	/**
+	 * user:wb date:2014-09-12
+	 * pharmaceuticalmachinery表的操作，标准YY_0260-1997
+	 * 函数规则是(?#ALGNAME=Pharmaceuticalmachinery)(?#PARA=0,1,2,3,4,5,6,7){]
+	 * 
+	 */	public static String Pharmaceuticalmachinery(char[] IDstr, int LenID, int[] Index,
+			int LenIndex) {
+		try {
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+			if (LenIndex != 8) {
+				return ERR;
+			}
+			String code = "";
+			for (int i = 0; i < 8; i++) {
+				code = code.concat(String.valueOf(IDstr[i]));
+			}
+			RecoDao recoDao = new RecoDao();
+			boolean ret = recoDao.publicFunction(RecoUtil.SELECT_pharmaceuticalmachinery,
+					code);
+			if (ret) {
+				return OK;
+			} else
+				return ERR;
+		} catch (Exception e) {
+			return ERR;
+		}
+	}
+
+	 //added by WB on 0915
+	 public static String Right_Diagonal(char[] IDstr, int LenID, int[] Index,
+				int LenIndex) {
+			try {
+				String code = "";
+				String regex = "[-]";
+				if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+					return ERR;
+				}
+				StringBuffer sb = new StringBuffer();
+				for(int i = 0;i < LenIndex;i++){
+					sb.append(IDstr[Index[i]]);
+					
+				}
+				code = sb.toString();
+				//由数字和 /或 除字母I、O和Q以外的字母组成
+
+
+				//先排除全部是数字的情况
+				String  regex_all_number = "[0-9]+";
+				if(code.matches(regex_all_number)){
+					return ERR;
+				}
+				//一定不全部都是数字
+				//然后也不能一个数字都没有
+				boolean ret_oneMore_number = false;
+				for(int i = 0;i <LenIndex;i++){
+					String s = code.charAt(i) + "";
+					if(s.matches(regex_all_number)){
+						ret_oneMore_number = true;
+						break;
+					}
+				}
+				if(!ret_oneMore_number){
+					return ERR;
+				}
+				//到这可以认为至少有一个数字并且不全部是数字！
+				if(code.contains("/")){
+					//数字与/
+					//为了判断只有数字跟/，不能有其他东东，将数字改为/
+					char[] cs = code.toCharArray();
+					int length_cs = cs.length;
+					for(int i = 0;i <length_cs;i++){
+						String s  = cs[i]+"";
+						if(s.matches(regex_all_number)){
+							cs[i] = '/';
+						}
+					}
+					//数字全部转换为‘/’
+					StringBuffer sb2 =new StringBuffer();
+					for(char c :cs){
+						sb.append(c+"");
+					}
+					String regex_all = "[/]+";
+					String code_new = sb.toString();
+					if(code_new.matches(regex_all)){
+						return OK;
+					}else{
+						return ERR;
+					}
+					
+				}else{
+					//判断是否有字母，有的话先将数字转化为字母A，然后有字母I、O和Q的错误，其他正确
+					char[] cs = code.toCharArray();
+					int length_cs = cs.length;
+					for(int i = 0;i <length_cs;i++){
+						String s  = cs[i]+"";
+						if(s.matches(regex_all_number)){
+							cs[i] = 'A';
+						}
+					}
+					//数字全部转换为字母A
+					StringBuffer sb2 =new StringBuffer();
+					for(char c :cs){
+						sb.append(c+"");
+					}
+					String code_new = sb.toString();
+					String regex_not_IOQ ="[A-Z&&[^IOQ]]+"; 
+					if(code_new.matches(regex_not_IOQ)){
+						return OK;
+					}else{
+						return ERR;
+					}
+					
+					
+				}
+				
+			} catch (Exception e) {
+				return ERR;
+			}
+		}
+	 
+	 //added by lly on 0917
+	 public static String OneTO5NO99(char[] IDstr, int LenID, int[] Index,
+				int LenIndex) {
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+			if (LenIndex != 2) {
+				return ERR;
+			}
+			int index1 = (int) IDstr[Index[0]] - 48;
+			int index2 = (int) IDstr[Index[1]] - 48;
+			int Xx = 5;
+			int i = 10 * index1 + index2;
+			if (i >= 01 && i <= Xx) {
+				return OK;
+			} else
+				return ERR;
+
+		}
+
+	 //added by lly on 0917
+	 public static String OneTO11NO99(char[] IDstr, int LenID, int[] Index,
+				int LenIndex) {
+			if (!checkInputParam(IDstr, LenID, Index, LenIndex)) {
+				return ERR;
+			}
+			if (LenIndex != 2) {
+				return ERR;
+			}
+			int index1 = (int) IDstr[Index[0]] - 48;
+			int index2 = (int) IDstr[Index[1]] - 48;
+			int Xx = 11;
+			int i = 10 * index1 + index2;
+			if (i >= 01 && i <= Xx) {
+				return OK;
+			} else
+				return ERR;
+		}
+
+
+
+
+
 }

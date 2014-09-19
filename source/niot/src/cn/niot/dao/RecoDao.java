@@ -26,17 +26,15 @@ import org.hibernate.Transaction;
 import cn.niot.util.JdbcUtils;
 
 import cn.niot.util.*;
+import java.util.*;
 
 public class RecoDao {
-	
-	public static int flagHash = 0;
-	
-	//定义动态数据TableName用于存储从Mysql取出的表名
+	// 定义动态数据TableName用于存储从Mysql取出的表名
 	public static ArrayList<String> TableName = new ArrayList<String>();
 	// 将数据分别以code和id作为key存入哈希表中，只需要执行一次，以后就直接取数据
-	public static Hashtable htKeyCodeAsValue = new Hashtable<String,Hashtable>();
-	public static Hashtable htKeyIdAsValue = new Hashtable<String,Hashtable>();
-	
+	public static HashMap htCodeID = new HashMap<String, HashMap>();
+	public static HashMap htIDCode = new HashMap<String, HashMap>();
+
 	private static RecoDao recoDao = new RecoDao();
 
 	// public static Connection connection = null;
@@ -44,106 +42,129 @@ public class RecoDao {
 		return recoDao;
 	}
 
-	
 	// 提取函数，用于提取sql语句中的表名
 	public String extractFunction(String sql) {
 		Pattern regex = Pattern.compile("(?<=from\\s)\\w+");
 		Matcher m = regex.matcher(sql);
-		while(m.find()) {
+		while (m.find()) {
 			return m.group();
 		}
-		
 		return null;
-		
-	}
-	
-	// 公共函数
-	public boolean publicFunction(String sql, String code) {
-		
-		Hashtable hashtable = new Hashtable<String,String>();
-		String tableName = extractFunction(sql);
-		boolean ret = false;
-		System.out.println(code);
-		System.out.println(tableName);
-		
-		try {
-			if(flagHash == 0) {
-				hashTable();
-				flagHash = 1;
-			}
-		
-			if(hashtable.get(code) != null)
-			{
-				System.out.println("not null");
-				ret = true;
-			}
-		} finally {
-			JdbcUtils.free(null, null, null);
-		}
-		
-		return ret;
-		
 	}
 
-	
-	// 将数据分别以code和id作为key存入哈希表中，只需要执行一次，以后就直接取数据
-	public void hashTable(){
+	// 公共函数
+	public boolean publicFunction(String sql, String code) {
+		String tableName = extractFunction(sql);
+		HashMap htCodeIDCurTable = new HashMap();
+		boolean ret = false;
 		
-		//注册JDBC驱动
+		if (htCodeID.size() == 0) {
+			hashTable();
+		}
+		
+		
+		htCodeIDCurTable = (HashMap) htCodeID.get(tableName);
+		Iterator it= htCodeIDCurTable.keySet().iterator(); 
+
+
+		if (0 == htCodeIDCurTable.size()) {
+			return false;
+		}
+
+		Object id;
+		id=htCodeIDCurTable.get(code);
+		if (null != htCodeIDCurTable.get(code)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// 将数据分别以code和id作为key存入哈希表中，只需要执行一次，以后就直接取数据
+	public void hashTable() {
+		// ע��JDBC��
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//连接Mysql数据库
-        Connection connection = null;
+
+		// ����Mysql��ݿ�
+		Connection connection = null;
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://218.241.108.143:3306/idrecohash", "root", "niot");
+			// "jdbc:mysql://218.241.108.143:3306/idrecohash", "root", "niot");
+			connection = DriverManager.getConnection(
+					"jdbc:mysql://218.241.108.143:3306/idrecohash", "root", "niot");
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			DatabaseMetaData meta = null;;
-			ResultSet rs = meta .getTables(null, null,null,null);			
-			while(rs.next()) {
-				TableName.add(rs.getString("TABLE_NAME"));
+			// DatabaseMetaData meta = null;
+			DatabaseMetaData meta = connection.getMetaData();
+			ResultSet rs = meta.getTables(null, null, null, null);
+			//System.out.println("EverHere!");
+			while (rs.next()) {
+				String CurTableName = rs.getString("TABLE_NAME");
+				
+				if ((CurTableName.equals("iotid"))||(CurTableName.equals("countryregioncode"))
+						|| (CurTableName.equals("iotid_copy"))
+						|| (CurTableName.equals("iotdetail"))
+						|| (CurTableName.equals("test"))
+						|| (CurTableName.equals("phonenumber"))
+						|| (CurTableName.equals("iotidcode"))
+						|| (CurTableName.equals("iotidcode_test"))) {
+					//System.out.println(CurTableName);
+					continue;
+				} else {
+					TableName.add(CurTableName);
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//results[i]用于存储SQL语句的运行结果
-		PreparedStatement stmt[] = new PreparedStatement[TableName.size()];
-		ResultSet results[] = new ResultSet[TableName.size()];
-		
+
 		try {
-			
-			for (int i = 0; i < TableName.size(); i++) {
-			
-			stmt[i] = connection.prepareStatement("select * from "+TableName.get(i));
-			results[i] = stmt[i].executeQuery();
+			System.gc();
+			int tableSize = TableName.size();
+			// tableSize = 100;
+			PreparedStatement stmt;
+			ResultSet result;
+			for (int i = 0; i < tableSize; i++) {
+				String curTableName = TableName.get(i);
+				stmt = connection.prepareStatement("select * from "
+						+ curTableName);
+				result = stmt.executeQuery();
+				HashMap htCodeID_Temp = new HashMap();
+				HashMap htIDCode_Temp = new HashMap();
+				while (result.next()) {
+					Integer id = result.getInt("id");
+					String code = result.getString("code");
+					// htKeyCode[i].put(results[i].getObject("code"),
+					// results[i].getObject("id"));
+					// htCodeID.put(results[i].getObject("code"),
+					// results[i].getObject("id"));
+					// htKeyId[i].put(results[i].getObject("id"),
+					// results[i].getObject("code"));
+					// htIDCode.put(id, code);
+					htCodeID_Temp.put(code, id);
+					// htKeyIdCode.put(TableName.get(i) + "_" + id , code);
+				}
+				//System.out.println("***"+curTableName);
+				htCodeID.put(curTableName, htCodeID_Temp);
+				// if (curTableName.equals("phonenumber")) {
+				// htKeyIdAsValue_phone.put(curTableName, htIDCode);
+				// } else {
+				// htKeyIdAsValue.put(curTableName, htIDCode);
+				// }
+
 			}
-					
-		  //将数据库中表的信息存入相应的哈希表，code作为key，id作为value
-		    for(int i = 0; i < TableName.size(); i++) {
-		    	//System.out.println(TableName.get(i));
-		    	Hashtable htCodeID = new Hashtable();
-		    	Hashtable htIDCode = new Hashtable();
-		    	while (results[i].next()) {
-		    		//htKeyCode[i].put(results[i].getObject("code"), results[i].getObject("id"));
-		    		htCodeID.put(results[i].getObject("code"), results[i].getObject("id")); 
-		    		//htKeyId[i].put(results[i].getObject("id"), results[i].getObject("code"));
-		    		htIDCode.put(results[i].getObject("id"), results[i].getObject("code"));
-		    	}
-		    	htKeyCodeAsValue.put(TableName.get(i), htCodeID);
-		    	htKeyIdAsValue.put(TableName.get(i), htIDCode);
-		    }	    
+			result = null;
+			stmt = null;
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 			// TODO Auto-generated catch block
@@ -151,7 +172,6 @@ public class RecoDao {
 		}
 	}
 
-	
 	public String getIoTID(String id) {
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
@@ -194,7 +214,7 @@ public class RecoDao {
 			int rowcount = 0;
 			for (Iotid admin : list) {
 				ArrayList<String> rules = new ArrayList<String>();// ֵ е
-																	// ArrayList
+				// ArrayList
 				String idType = admin.getid();// results.getString("id");
 				String lengthRule = admin.getLength();// results.getString("length");
 				String byteRule = admin.getByte_();// results.getString("byte");
@@ -207,8 +227,8 @@ public class RecoDao {
 					rmvRuleSet.put(lengthRule, 0.5);// rmvRuleSet length
 					hashMapTypeToRulesSwitchhashMapRuleToTypes(
 							hashMapRuleToTypes, lengthRule, idType);// hashMapTypeToRulesת
-																	// hashMapRuleToTypes,
-																	// length
+					// hashMapRuleToTypes,
+					// length
 				}
 				if (byteRule.length() != 0) {
 					String[] byteStrArray = byteRule.split(";");
@@ -219,8 +239,8 @@ public class RecoDao {
 						rmvRuleSet.put(byteStrArray[i], 0.5);// rmvRuleSet byte
 						hashMapTypeToRulesSwitchhashMapRuleToTypes(
 								hashMapRuleToTypes, byteStrArray[i], idType);// hashMapTypeToRulesת
-																				// hashMapRuleToTypes,
-																				// byte
+						// hashMapRuleToTypes,
+						// byte
 					}
 				}
 				rmvIDSet.put(idType, priorProbability);// rmvRuleSet ID, 0.5
@@ -312,18 +332,23 @@ public class RecoDao {
 		}
 		return hashMapTypeToRules;
 	}
-	
-	/* Function: read data relating to IoTIDs and their rules from table "iotidcode"
-	 * Input: 
+
+	/*
+	 * Function: read data relating to IoTIDs and their rules from table
+	 * "iotidcode" Input:
+	 * 
 	 * @param type: a flag used to hint which database reading method is used.
 	 * Output:
-	 * @param HashMap<String, ArrayList<String>>: one data structure of HashMap with key of IoTID type and value of a group of rules
-	 *        relating to the key.
-	 * creator: Guangqing Deng
-	 * time: 2014年7月7日
+	 * 
+	 * @param HashMap<String, ArrayList<String>>: one data structure of HashMap
+	 * with key of IoTID type and value of a group of rules relating to the key.
+	 * creator: Guangqing Deng time: 2014年7月7日
 	 */
-	public String DBreadIoTIDTypesAndRules(HashMap<String, Integer> hashMapTypeSampleNumber, HashMap<String, String>hashMapTypeToLengthRule
-			, HashMap<String, ArrayList<String>>hashMapTypeToByteRule, HashMap<String, String []>hashMapTypeToFunctionRule) {		
+	public String DBreadIoTIDTypesAndRules(
+			HashMap<String, Integer> hashMapTypeSampleNumber,
+			HashMap<String, String> hashMapTypeToLengthRule,
+			HashMap<String, ArrayList<String>> hashMapTypeToByteRule,
+			HashMap<String, String[]> hashMapTypeToFunctionRule) {
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
@@ -333,44 +358,46 @@ public class RecoDao {
 
 			while (results.next()) {
 				ArrayList<String> ByteRules = new ArrayList<String>();// 字节规则列表
-				String [] FunctionRules;// 函数规则列表
+				String[] FunctionRules;// 函数规则列表
 				String idType = results.getString("id");
 				String lengthRule = results.getString("length");
 				String byteRule = results.getString("byte");
 				String functionRules = results.getString("function");
-				
+
 				int Number = results.getInt("number");
 				hashMapTypeSampleNumber.put(idType, Number);
-				
+
 				// process the length rule
 				if (lengthRule.length() > 0) {
 					lengthRule = "IoTIDLength)(?#PARA=" + lengthRule + "){]";
 					hashMapTypeToLengthRule.put(idType, lengthRule);
 				}
-				
+
 				// process the byte rule
 				if (byteRule.length() > 0) {
 					String[] byteStrArray = byteRule.split(";");
 					int ByteLength = byteStrArray.length;
 					for (int i = 0; i < ByteLength; i++) {
-						byteStrArray[i] = "IoTIDByte)(?#PARA=" + byteStrArray[i] + "){]";
-						ByteRules.add(byteStrArray[i]);							
+						byteStrArray[i] = "IoTIDByte)(?#PARA="
+								+ byteStrArray[i] + "){]";
+						ByteRules.add(byteStrArray[i]);
 					}
 					hashMapTypeToByteRule.put(idType, ByteRules);
-				}				
-				
+				}
+
 				// at last, process the function rule
 				if (functionRules.length() > 0) {
-					String[] splitFunctionRules = functionRules.split("\\(\\?\\#ALGNAME=");
+					String[] splitFunctionRules = functionRules
+							.split("\\(\\?\\#ALGNAME=");
 					int FunctionLength = splitFunctionRules.length;
-					FunctionRules = new String [FunctionLength - 1];
+					FunctionRules = new String[FunctionLength - 1];
 					for (int i = 1; i < FunctionLength; i++) {
 						if (splitFunctionRules[i].length() != 0) {
-							FunctionRules[i - 1] = splitFunctionRules[i];						
+							FunctionRules[i - 1] = splitFunctionRules[i];
 						}
 					}
 					hashMapTypeToFunctionRule.put(idType, FunctionRules);
-				}				
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -478,7 +505,6 @@ public class RecoDao {
 		return ret;
 	}
 
-
 	// 商品条码零售商品编码EAN UPC前3位前缀码
 	public boolean getPrefixofRetailCommodityNumber(int code) {
 		Connection connection = JdbcUtils.getConnection();
@@ -562,7 +588,7 @@ public class RecoDao {
 		return ret;
 	}
 
-	/// 烟草机械产品用物料 企业机械标准件 编码中的类别代码，组别代码和品种代码(6)
+	// / 烟草机械产品用物料 企业机械标准件 编码中的类别代码，组别代码和品种代码(6)
 	public boolean getTabaccoStandardPart(String code) {
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
@@ -589,7 +615,6 @@ public class RecoDao {
 		}
 		return ret;
 	}
-
 
 	// 烟草机械产品用物料分类和编码 第6部分：原、辅材料(4)
 	public boolean getTabaccoMaterial(String categoryCode, String variatyCode) {
@@ -821,8 +846,6 @@ public class RecoDao {
 		}
 		return ret;
 	}
-
-
 
 	// 粮食信息分类与编码 粮食贸易业务统计分类与代码(14)
 	public boolean getFoodTrade(String code) {
@@ -1596,7 +1619,6 @@ public class RecoDao {
 		return ret;
 	}
 
-
 	// 烟草行业工商统计数据元第2部分 代码集(202)
 	public boolean getTrafficOrganization(String code) {
 		Connection connection = JdbcUtils.getConnection();
@@ -2108,7 +2130,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2135,7 +2157,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2162,7 +2184,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2189,7 +2211,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2216,7 +2238,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2243,7 +2265,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2270,7 +2292,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2297,7 +2319,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2324,7 +2346,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2351,7 +2373,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				System.out.println("results=" + results.toString());
+				//System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2405,7 +2427,7 @@ public class RecoDao {
 			}
 			if (1 == rowcount) {
 				ret = true;
-				//System.out.println("results=" + results.toString());
+				// System.out.println("results=" + results.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -5275,7 +5297,8 @@ public class RecoDao {
 	// function: query the table vehiclenonormal and thus check the legality of
 	// the prefix of a normal vehicle character (2 characters)
 	// creator: dgq
-	public boolean getPrefixNormalVehicleNO(String code) throws UnsupportedEncodingException {
+	public boolean getPrefixNormalVehicleNO(String code)
+			throws UnsupportedEncodingException {
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
@@ -5358,60 +5381,134 @@ public class RecoDao {
 		}
 		return ret;
 	}
-	
-	public static HashMap<String, String> test()
-	{
+
+	public static HashMap<String, String> test() {
 		HashMap<String, String> test = new HashMap<String, String>();
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
-		try{
+		try {
 			stmt = connection.prepareStatement(RecoUtil.SELECT_TEST);
 			results = stmt.executeQuery();
 			int rowcount = 0;
-			while(results.next()){
-				test.put(results.getString("testID"), results.getString("test"));
+			while (results.next()) {
+				test
+						.put(results.getString("testID"), results
+								.getString("test"));
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			JdbcUtils.free(null, null, connection);
 		}
 		return test;
 	}
-	//add priorProbabilityX
-	//by menglunyang
-	public static String add1ToPriorProbabilityX(int hour, String ID){
+
+	// add priorProbabilityX
+	// by menglunyang
+	public static String add1ToPriorProbabilityX(int hour, String ID) {
 		Connection connection = JdbcUtils.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet results = null;
 		try {
-			switch (hour){
-			case 0:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY0);break;
-			case 1:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY1);break;
-			case 2:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY2);break;
-			case 3:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY3);break;
-			case 4:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY4);break;
-			case 5:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY5);break;
-			case 6:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY6);break;
-			case 7:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY7);break;
-			case 8:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY8);break;
-			case 9:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY9);break;
-			case 10:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY10);break;
-			case 11:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY11);break;
-			case 12:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY12);break;
-			case 13:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY13);break;
-			case 14:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY14);break;
-			case 15:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY15);break;
-			case 16:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY16);break;
-			case 17:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY17);break;
-			case 18:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY18);break;
-			case 19:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY19);break;
-			case 20:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY20);break;
-			case 21:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY21);break;
-			case 22:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY22);break;
-			case 23:stmt = connection.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY23);break;
-			
+			switch (hour) {
+			case 0:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY0);
+				break;
+			case 1:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY1);
+				break;
+			case 2:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY2);
+				break;
+			case 3:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY3);
+				break;
+			case 4:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY4);
+				break;
+			case 5:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY5);
+				break;
+			case 6:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY6);
+				break;
+			case 7:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY7);
+				break;
+			case 8:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY8);
+				break;
+			case 9:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY9);
+				break;
+			case 10:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY10);
+				break;
+			case 11:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY11);
+				break;
+			case 12:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY12);
+				break;
+			case 13:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY13);
+				break;
+			case 14:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY14);
+				break;
+			case 15:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY15);
+				break;
+			case 16:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY16);
+				break;
+			case 17:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY17);
+				break;
+			case 18:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY18);
+				break;
+			case 19:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY19);
+				break;
+			case 20:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY20);
+				break;
+			case 21:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY21);
+				break;
+			case 22:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY22);
+				break;
+			case 23:
+				stmt = connection
+						.prepareStatement(RecoUtil.ADD_ONE_TO_PRIORPROBABILITY23);
+				break;
+
 			}
 			stmt.setString(1, ID);
 			stmt.executeUpdate();

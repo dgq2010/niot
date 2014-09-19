@@ -10,6 +10,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import cn.unitTest.RuleFuncTest;
+import cn.niot.dao.RecoDao;
 import cn.niot.service.*;
 import cn.niot.util.RecoUtil;
 
@@ -21,6 +22,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintStream;
+
+import java.util.Date; 
+import java.util.Calendar; 
+
+import java.text.SimpleDateFormat; 
 
 /**
  * 
@@ -42,9 +48,7 @@ public class IoTIDRecognitionAction extends ActionSupport {
 
 	private String data;
 
-
-	private String statement;
-	
+	private String statement;	
 
 	private String extraData;
 
@@ -84,43 +88,104 @@ public class IoTIDRecognitionAction extends ActionSupport {
     }
 
 	public String execute() throws Exception {
-		long begin = System.currentTimeMillis();
-		// added by dgq, for test only
-		int nflag = 1;
-		if (0 == nflag) {
+		int nflag =4;
+		if (1 == nflag) {
 			IDstrRecognition.readDao(0);
-			// System.setOut(new PrintStream(new
-			// FileOutputStream("e:\\result.txt")));
 			IDstrRecognition.testAndTestID();
 			System.out.println("The end of this run!!!!\n");
+			
 			return SUCCESS;
+		}
+		
+		//added by sq on 2014-08-28
+		if(2==nflag)
+		{
+			CreateIoTIDSample.generateIoTIDSamples();
+			System.out.println("The end of generrate!!!!\n");
+			//Runtime runtime = Runtime.getRuntime();
+		   // Process proc = runtime.exec("shutdown -s -t 0");
+		   // System.exit(0);
+			return SUCCESS;
+		}
+		if(3==nflag)
+		{
+			//记录开始时间
+			Date nowbegin = new Date(); 
+			SimpleDateFormat dateFormatbegin = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            String begin = dateFormatbegin.format( nowbegin ); 
+			
+            //开始识别
+            IDstrRecognition.readDao(0);
+			IDstrRecognition.testAndTestIDRandom();
+			System.out.println("The end of TestRandom!!!!\n");
+			
+			//记录结束时间
+			Date nowfinish = new Date(); 
+			SimpleDateFormat dateFormatfinish = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            String finish = dateFormatfinish.format( nowfinish ); 
+            
+            //将起始时间写入数据库
+            File f6 = new File("e://debug//TimeInfo.txt");
+            BufferedWriter output = new BufferedWriter(new FileWriter(
+					f6, true));
+			output.append("Begin_Time:"+"  "+begin);
+			output.append("\n");
+			output.append("Finish_Time:"+"  "+finish);
+			output.append("\n");
+			output.flush();
+			output.close();
+			//Runtime runtime = Runtime.getRuntime();
+		    //Process proc = runtime.exec("shutdown -s -t 0");
+		   // System.exit(0);
+			return SUCCESS;
+			
 		}
 
 		String IoTcode = null;
 		if (this.code != null) {
 			IoTcode = replaceBlank(this.code);
-			// System.out.println("\nIoTcode:   " + IoTcode);
-			// System.out.println("\nLength of IoTcode:   " + IoTcode.length());
+			
+
 		}
 
 		if (IoTcode != null) {
 			IDstrRecognition.readDao(0);
 			HashMap<String, Double> typeProbability = IDstrRecognition
 					.IoTIDRecognizeAlg(IoTcode);
+			
 			// added by dgq on 2014-04-29, to remove those items with
 			// probability of 0.0
-			Iterator iterator_IDPro = typeProbability.keySet().iterator();
-			while (iterator_IDPro.hasNext()) {
-				String key_IDstd = iterator_IDPro.next().toString();				
-				double probability = typeProbability.get(key_IDstd);
-				if (0 >= probability) {
-					iterator_IDPro.remove();
-				}
-			}
+//			Iterator iterator_IDPro = typeProbability.keySet().iterator();
+//			while (iterator_IDPro.hasNext()) {
+//				String key_IDstd = iterator_IDPro.next().toString();				
+//				double probability = typeProbability.get(key_IDstd);
+//				if (0 >= probability) {
+//					iterator_IDPro.remove();
+//				}
+//			}
+			
+//			// added by dgq on 2014-04-29, to remove those items with
+//			// probability of 0.0
+//			Iterator iterator_IDPro = typeProbability.keySet().iterator();
+//			double sumPro = 0;
+//			while (iterator_IDPro.hasNext()) {
+//				String key_IDstd = iterator_IDPro.next().toString();				
+//				double probability = typeProbability.get(key_IDstd);
+//				if (0 >= probability) {
+//					//iterator_IDPro.remove();
+//					probability = 0.1;
+//					typeProbability.put(key_IDstd, probability);					
+//				}
+//				sumPro = sumPro + probability;
+//			}
+//			
+//			iterator_IDPro = typeProbability.keySet().iterator();
+//			while (iterator_IDPro.hasNext()) {
+//				String key_IDstd = iterator_IDPro.next().toString();				
+//				double probability = typeProbability.get(key_IDstd);
+//				typeProbability.put(key_IDstd, probability / sumPro);
+//			}
 
-
-			// HashMap<String, Double> ChineseName_Pro =
-			// RecoUtil.replaceIotId(typeProbability);
 			HashMap<String, Double> ShortName_Probability = new HashMap<String, Double>();
 			JSONObject jsonObjectRes = IDstrRecognition.getTwoNamesByIDCode(
 					typeProbability, ShortName_Probability);
@@ -156,7 +221,7 @@ public class IoTIDRecognitionAction extends ActionSupport {
 			}
 
 		}
-		// System.out.println("during:"+(System.currentTimeMillis()-begin));
+
 		System.out.println("\nthis.data:   " + this.data);
 		System.out.println("\nthis.extraData:   " + this.extraData);
 		return SUCCESS;
